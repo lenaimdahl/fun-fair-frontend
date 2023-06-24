@@ -16,7 +16,7 @@ function Signup() {
 
   const handleSignup = (event) => {
     event.preventDefault();
-    const requestBody = { username, password };
+    const requestBody = { username, password, email };
 
     axios
       .post(`http://localhost:5005/auth/signup`, requestBody)
