@@ -102,6 +102,25 @@ body {
   text-align: center;
 }
 
+#mood-selection {
+  margin-bottom: 20px;
+}
+
+#mood-selection,
+.add-event-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.516);
+  border-radius: 20px;
+}
+
+.mood-container span {
+  padding: 10px;
+  font-size: 20px;
+}
+
 footer {
   background-image: linear-gradient(to right, #ed6ea0 , #ec8c69);
   color: white;
@@ -127,17 +146,3 @@ footer p {
 /* .VerticalAppointment-time {
   background-color: #fc7fb1;
 } */
-
-#mood-selection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.516);
-  border-radius: 20px;
-}
-
-.mood-container span {
-  padding: 10px;
-  font-size: 20px;
-}
