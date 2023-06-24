@@ -4,11 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 
 function Login() {
-  const [username, setusername] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
-  const handleusername = (e) => setusername(e.target.value);
+  const handleUsername = (e) => setUsername(e.target.value);
+  const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const navigate = useNavigate();
 
@@ -42,7 +44,15 @@ function Login() {
           name="username"
           value={username}
           autoComplete="username"
-          onChange={handleusername}
+          onChange={handleUsername}
+        />
+        <label>Email:</label>
+        <input
+          type="email"
+          name="email"
+          value={email}
+          autoComplete="email"
+          onChange={handleEmail}
         />
         <label>Password:</label>
         <input

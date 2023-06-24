@@ -4,12 +4,14 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 function Signup() {
-  const [username, setusername] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
-  const handleusername = (event) => setusername(event.target.value);
+  const handleUsername = (event) => setUsername(event.target.value);
+  const handleEmail = (event) => setEmail(event.target.value);
   const handlePassword = (event) => setPassword(event.target.value);
 
   const handleSignup = (event) => {
@@ -36,8 +38,10 @@ function Signup() {
           type="username"
           name="username"
           value={username}
-          onChange={handleusername}
+          onChange={handleUsername}
         />
+        <label>email:</label>
+        <input type="email" name="email" value={email} onChange={handleEmail} />
         <label>Password:</label>
         <input
           type="password"
