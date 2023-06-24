@@ -25,12 +25,13 @@ export class BackendAPI {
   }
   async saveMood(type, timestamp) {
     const { data } = await this.api.post("/api/mood", {
-      type: type,
+      title: type,
       timestamp: timestamp,
     });
     return data;
   }
-  // updateMood = (reqBody) => {
-  //   return this.api.put("/api/mood/update", reqBody);
-  // };
+  async getMoods() {
+    const { data } = await this.api.get("/api/moods");
+    return data;
+  }
 }

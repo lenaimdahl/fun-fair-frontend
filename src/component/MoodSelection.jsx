@@ -9,29 +9,17 @@ function MoodSelection() {
   const backendAPIInstance = new BackendAPI();
 
   const handleMoodSelection = async (type) => {
+    setIsLoading(true);
+    //is the timestamp
     const currentDay = new Date().setHours(0, 0, 0, 0);
     try {
       await backendAPIInstance.saveMood(type, currentDay);
+      setIsLoading(false);
     } catch (error) {
       console.error(error);
+      setIsLoading(false);
     }
   };
-
-  // function handleMoodSelection(mood) {
-  //   setIsLoading(true);
-  //   apiService
-  //     .updateMood({ mood })
-  //     .then((updatedMoods) => {
-  //       // use the updated mood from the response immediately
-  //       setMood(updatedMoods.data);
-  //       // hide the mood card after submit, "mood card timeout"
-  //       setShowMoodCard(false);
-  //       setIsLoading(false);
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //     });
-  // }
 
   return (
     <div>
