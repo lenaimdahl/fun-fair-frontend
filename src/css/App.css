@@ -1,38 +1,143 @@
-.App {
-  text-align: center;
+body {
+  background-image: url("../assets/milad-fakurian-CN2FEPXERRI-unsplash.jpg");
+  background-size: cover;
+  height: 100vh;
+  background-repeat: no-repeat;
+  color: white;
+  margin: 0 !important;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.calendar-flex {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 30px;
+}
+
+.calendar-container {
+  color: black;
+  /* margin: 40px; */
+  width: 800px;
+  background-color: rgba(255, 255, 255, 0.571);
+  border-radius: 30px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.653),
+    0 6px 20px 0 rgba(0, 0, 0, 0.432);
+}
+
+.activity-container {
+  font-family: inherit;
+  background-color: rgba(255, 255, 255, 0.528);
+  color: white;
+  /* font-family: "Courier New", Courier, monospace; */
+  width: 300px;
+  text-align: center;
+  border-radius: 20px;
+  padding: 20px;
+  font-weight: none;
+}
+
+.activity-container h1 {
+  color: black;
+  font-size: 20px;
+}
+
+.activity-container h2 {
+  font-size: 30px;
+}
+
+.activity-container p {
+  padding: 0 100px;
+}
+
+.signup-button {
+  margin-top: 20px;
+  background-color: #fc7fb1;
+  border: none;
+  border-radius: 40px;
+  padding: 20px 40px;
+  font-size: 12pt;
+}
+
+.signup-button:hover {
+  background-color: #ffb59a;
+  cursor: pointer;
+
+}
+
+.preview-container {
+  display: flex;
+  justify-content: center;
+  color: black;
+  margin: 20px;
+ 
+}
+
+.preview-container span {
+  text-align: left;
+  width: 150px;
+}
+
+.preview-container p {
+  font-size: 16px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+#preview-emoji {
+  font-size: 40px;
+  text-align: center;
+  margin: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.preview-features-container {
+  border-radius: 15px;
+  /* width: 00px; */
+  background-color: #fc7fb1c8;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  padding: 30px;
+  gap: 20px;
+}
+
+.preview-features-container h4 {
+  text-align: center;
+}
+
+footer {
+  background-image: linear-gradient(to right, #ed6ea0 , #ec8c69);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  width: 90%;
+  bottom: 20px;
+  padding: 0 20px;
+  /* margin: 0 auto 10px auto; */
+  margin: 0 5rem;
+  border-radius: 10px;
+  position: fixed;
+  
+}
+
+footer p {
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+/* calendar */
+/* .VerticalAppointment-time {
+  background-color: #fc7fb1;
+} */
+
+#mood-selection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.516);
+  border-radius: 20px;
+}
+
+.mood-container span {
+  padding: 10px;
+  font-size: 20px;
 }
