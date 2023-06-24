@@ -4,14 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 
 function Login() {
-  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
-  const handleUsername = (e) => setUsername(e.target.value);
-  const handleEmail = (e) => setEmail(e.target.value);
-  const handlePassword = (e) => setPassword(e.target.value);
+  const handleEmail = (event) => setEmail(event.target.value);
+  const handlePassword = (event) => setPassword(event.target.value);
   const navigate = useNavigate();
 
   const { setToken, authenticateUser, setIsLoggedIn } = useContext(AuthContext);
@@ -19,7 +17,7 @@ function Login() {
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
     try {
-      const userToLogin = { username, password };
+      const userToLogin = { email, password };
       const { data } = await axios.post(
         `http://localhost:5005/auth/login`,
         userToLogin
@@ -38,14 +36,6 @@ function Login() {
     <div>
       <h1>Login</h1>
       <form onSubmit={handleLoginSubmit}>
-        <label>username:</label>
-        <input
-          type="username"
-          name="username"
-          value={username}
-          autoComplete="username"
-          onChange={handleUsername}
-        />
         <label>Email:</label>
         <input
           type="email"
