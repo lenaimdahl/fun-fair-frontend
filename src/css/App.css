@@ -60,7 +60,6 @@ body {
 .signup-button:hover {
   background-color: #ffb59a;
   cursor: pointer;
-
 }
 
 .preview-container {
@@ -68,7 +67,6 @@ body {
   justify-content: center;
   color: black;
   margin: 20px;
- 
 }
 
 .preview-container span {
@@ -122,7 +120,7 @@ body {
 }
 
 footer {
-  background-image: linear-gradient(to right, #ed6ea0 , #ec8c69);
+  background-image: linear-gradient(to right, #ed6ea0, #ec8c69);
   color: white;
   display: flex;
   justify-content: space-between;
@@ -134,7 +132,6 @@ footer {
   margin: 0 5rem;
   border-radius: 10px;
   position: fixed;
-  
 }
 
 footer p {
@@ -146,3 +143,7 @@ footer p {
 /* .VerticalAppointment-time {
   background-color: #fc7fb1;
 } */
+/* calendar */
+.css-3nejl.Appointment-appointment {
+  background-color: transparent !important;
+}
