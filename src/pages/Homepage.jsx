@@ -42,11 +42,7 @@ function HomePage() {
   const sendActivityToBackend = async (activity) => {
     setIsLoading(true);
     try {
-      const payload = {
-        title: activity,
-      };
-
-      await backendAPIInstance.saveActivity(payload);
+      await backendAPIInstance.saveActivity(activity);
       setIsLoading(false);
     } catch (error) {
       console.error(error);
