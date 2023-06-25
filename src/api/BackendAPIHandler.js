@@ -30,8 +30,16 @@ export class BackendAPI {
     });
     return data;
   }
+
   async getMoods() {
     const { data } = await this.api.get("/api/moods");
+    return data;
+  }
+
+  async saveActivity(activity) {
+    const { data } = await this.api.post("/api/activity", {
+      title: activity,
+    });
     return data;
   }
 }
