@@ -10,7 +10,7 @@ function NewEvent() {
 
   const handleTitle = (event) => setTitle(event.target.value);
   const handleImage = (event) => setImage(event.target.value);
-  const handlePoints = (event) => setPoints(event.target.value);
+  const handlePoints = (event) => setPoints(parseInt(event.target.value));
 
   const navigate = useNavigate();
 
@@ -30,6 +30,10 @@ function NewEvent() {
       };
 
       await backendAPIInstance.saveEvent(newEvent);
+      setTitle("");
+      setImage("");
+      setPoints("");
+      
     } catch (error) {
       console.error(error);
     }
@@ -46,7 +50,7 @@ function NewEvent() {
 
         <label>points:</label>
         <input
-          type="points"
+          type="number"
           name="points"
           value={points}
           onChange={handlePoints}
