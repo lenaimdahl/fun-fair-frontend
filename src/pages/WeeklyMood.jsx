@@ -1,12 +1,9 @@
-import React from "react";
+import WeekTable from "../component/WeekTable";
 
 function WeeklyMood() {
   return (
     <div>
-      <div className="calendar-flex">
-        <div className="right-side-menu"></div>
-      </div>
-      <div className="logout-container"></div>
+      <WeekTable />
     </div>
   );
 }
