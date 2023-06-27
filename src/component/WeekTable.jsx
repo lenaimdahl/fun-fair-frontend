@@ -1,4 +1,5 @@
 import "../css/table.css";
+import { useEffect, useState } from "react";
 
 import {
   Chart as ChartJS,
@@ -34,6 +35,7 @@ export const options = {
     },
   },
 };
+
 const labels = [
   "Monday",
   "Tuesday",
@@ -55,16 +57,58 @@ export const data = {
     },
   ],
 };
-function WeekTable() {
-  return (
-    <div>
+function WeekTable({ moods }) {
+  const [isLoading, setIsLoading] = useState(true);
+  const [chart, setChart] = useState();
+
+  useEffect(() => {
+    // deal with async behavior
+    if (!moods) return;
+    const moodsCopy = moods.slice();
+
+    // DONE: funcionality to show last 7 entries / days
+    // reverse moods, then get entry 0 to seven
+    const lastSevenMoods = moodsCopy.reverse().slice(0, 7);
+    const pointStyles = lastSevenMoods.map((mood) => {
+      if (mood === "happy") return "😊";
+      if (mood === "in love") return "😍";
+      if (mood === "sleepy") return "😴";
+      if (mood === "sad") return "😔";
+      if (mood === "angry") return "😡";
+    });
+
+    // draw chart
+    setChart({
+      labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      datasets: [
+        {
+          label: "Mood",
+          data: lastSevenMoods,
+          pointStyle: pointStyles,
+          pointRadius: 10,
+          borderColor: "#D9FDED",
+          backgroundColor: "#D9FDED33",
+          fill: true,
+        },
+      ],
+    });
+
+    setIsLoading(false);
+  }, [moods]);
+
+  if (isLoading) {
+    return <Spinner />;
+  } else {
+    return (
       <div>
-        <h2>current week</h2>
-        <p></p>
+        <div>
+          <h2>current week</h2>
+          <p></p>
+        </div>
+        <Line options={options} data={data} />
       </div>
-      <Line options={options} data={data} />
-    </div>
-  );
+    );
+  }
 }
 
 export default WeekTable;
