@@ -15,10 +15,29 @@ import {
   AppointmentTooltip,
   ConfirmationDialog,
 } from "@devexpress/dx-react-scheduler-material-ui";
+import { BackendAPI } from "../api/BackendAPIHandler";
 
 function Calendar() {
   const [data, setData] = useState();
   const [currentDate, setCurrentDate] = useState();
+
+  const backendAPIInstance = new BackendAPI();
+
+  useEffect(() => {
+    (async () => {
+      const data = await backendAPIInstance.getEvents();
+      const convertedData = data.events.map((event) => {
+        return {
+          id: event._id,
+          title: event.image,
+          startDate: new Date(event.timestamp),
+          endDate: new Date(event.timestamp).setHours(0, 30, 0, 0),
+        };
+      });
+      console.log(convertedData);
+      setData(convertedData);
+    })();
+  }, []);
 
   const commitChanges = ({ added, changed, deleted }) => {
     let currentData = data;
