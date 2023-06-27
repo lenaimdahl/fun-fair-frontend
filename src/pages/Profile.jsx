@@ -18,8 +18,11 @@ function Profile() {
           <AddEvent />
         </div>
       </div>
-
-      <button onClick={logOutUser}>Logout</button>
+      <div className="logout-container">
+        <button className="logout-button" onClick={logOutUser}>
+          Logout
+        </button>
+      </div>
     </div>
   );
 }
