@@ -7,6 +7,7 @@ import NotFound from "./component/NotFound";
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import WeeklyMood from "./pages/WeeklyMood";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/weekly-mood" element={<WeeklyMood />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<NotFound />} />
@@ -25,4 +27,3 @@ function App() {
 }
 
 export default App;
-
