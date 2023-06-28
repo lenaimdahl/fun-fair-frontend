@@ -41,9 +41,8 @@ const AuthContextWrapper = (props) => {
     localStorage.removeItem("authToken");
   };
 
-  // const navigate = useNavigate();
-
   const logOutUser = () => {
+    // const navigate = useNavigate();
     removeToken();
     authenticateUser();
     // navigate("/");
