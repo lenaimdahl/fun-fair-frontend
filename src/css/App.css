@@ -57,7 +57,7 @@ body {
   border: none;
   border-radius: 40px;
   padding: 20px 40px;
-  font-size: 12pt;
+  font-size: 1.3vw;
 }
 
 .signup-button:hover {
@@ -119,6 +119,27 @@ body {
 
 .preview-features-container h4 {
   text-align: center;
+}
+
+.profile-page h2 {
+  text-align: center;
+}
+
+#btn-logout {
+  border: none;
+  background-color: #ed6ea0;
+  color: white;
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 1.3vw;
+  margin-top: 20px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+#btn-logout:hover {
+  background-color: #ffb59a;
+  cursor: pointer;
 }
 
 #mood-selection {

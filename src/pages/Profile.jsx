@@ -8,13 +8,16 @@ function Profile() {
   const { logOutUser, user } = useContext(AuthContext);
 
   return (
-    <div>
-      {/* {user && user.email} */}
+    <div className="profile-page">
+      <h2>Welcome {user && user.username}</h2>
       <div className="calendar-flex">
         <Calendar />
         <div className="right-side-menu">
           <MoodSelection />
           <AddEvent />
+          <button id="btn-logout" onClick={logOutUser}>
+            Log out
+          </button>
         </div>
       </div>
       <div className="logout-container">
