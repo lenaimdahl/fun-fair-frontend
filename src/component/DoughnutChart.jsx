@@ -1,3 +1,4 @@
+import "../css/App.css";
 import { useEffect, useState } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
@@ -24,22 +25,22 @@ export const options = {
   },
 };
 
-function convertEmoji(type) {
-  switch (type) {
-    case "😊":
-      return 5;
-    case "😍":
-      return 4;
-    case "😴":
-      return 3;
-    case "😔":
-      return 2;
-    case "😡":
-      return 1;
-    default:
-      return "";
-  }
-}
+// function convertEmoji(type) {
+//   switch (type) {
+//     case "😊":
+//       return 5;
+//     case "😍":
+//       return 4;
+//     case "😴":
+//       return 3;
+//     case "😔":
+//       return 2;
+//     case "😡":
+//       return 1;
+//     default:
+//       return "";
+//   }
+// }
 
 function DoughnutChart({ moods }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -50,15 +51,43 @@ function DoughnutChart({ moods }) {
     if (!moods) return;
     console.log(moods);
     const moodsCopy = moods.slice();
+    const moodCount = {
+      happy: 0,
+      inLove: 0,
+      sleepy: 0,
+      sad: 0,
+      angry: 0,
+    };
 
+    // Count the occurrences of each mood
+    moodsCopy.forEach((mood) => {
+      switch (mood) {
+        case "😊":
+          moodCount.happy++;
+          break;
+        case "😍":
+          moodCount.inLove++;
+          break;
+        case "😴":
+          moodCount.sleepy++;
+          break;
+        case "😔":
+          moodCount.sad++;
+          break;
+        case "😡":
+          moodCount.angry++;
+          break;
+        default:
+          break;
+      }
+    });
     // DONE: functionality to summarize all values
     // create an array with unique values, and sort descending >> [5,4,3,2,1]
     const moodsUniqueSorted = [...new Set(moodsCopy)].sort((a, b) => b - a);
     // get the total sum for each number of [5,4,3,2,1]
-    const moodsSummarized = moodsUniqueSorted.map((num) => {
-      const moodsConverted = moods.join("").split(num).length - 1;
-      return convertEmoji(moodsConverted);
-    });
+    const moodsSummarized = moodsUniqueSorted.map(
+      (num) => moods.join("").split(num).length - 1
+    );
     // DONE: draw chart
     setChart({
       labels: ["Happy", "in Love", "sleepy", "sad", "angry"],
@@ -94,7 +123,7 @@ function DoughnutChart({ moods }) {
     // return <Spinner />;
   } else {
     return (
-      <div>
+      <div className="doughnut-container">
         <Doughnut options={options} data={chart} />
       </div>
     );
