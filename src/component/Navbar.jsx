@@ -8,16 +8,16 @@ function Navbar() {
           <a href="/">Home</a>
         </li>
         <li className="menu-item">
-          <a href="#0">About</a>
+          <a href="/about">About</a>
         </li>
-        <li className="menu-item">
+         <li className="menu-item"> 
           <a href="/profile">Profile</a>
-          <ol className="sub-menu">
+          {/* <ol className="sub-menu">
             <li className="menu-item">
               <a href="/weekly-mood">weekly mood</a>
             </li>
-          </ol>
-        </li>
+          </ol> */}
+        </li> 
         <li className="menu-item">
           <a href="/weekly-mood">weekly mood</a>
         </li>

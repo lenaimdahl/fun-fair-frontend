@@ -4,7 +4,8 @@ body {
   height: 100vh;
   background-repeat: no-repeat;
   color: white;
-  margin: 0 !important;
+  /* margin: 0 !important; */
+  margin-bottom: 100px;
 }
 .calendar-flex {
   display: flex;

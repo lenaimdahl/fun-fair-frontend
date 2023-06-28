@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import "./css/App.css";
 import Homepage from "./pages/Homepage";
+import About from "./pages/About";
 import Navbar from "./component/Navbar";
 import Footer from "./component/Footer";
 import NotFound from "./component/NotFound";
@@ -15,6 +16,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/weekly-mood" element={<WeeklyMood />} />
         <Route path="/login" element={<Login />} />
