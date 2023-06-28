@@ -18,6 +18,8 @@ export const options = {
         color: "#F5F2FF",
         padding: 30,
       },
+      onHover: handleHover,
+      onLeave: handleLeave,
     },
   },
   title: {
@@ -25,22 +27,24 @@ export const options = {
   },
 };
 
-// function convertEmoji(type) {
-//   switch (type) {
-//     case "😊":
-//       return 5;
-//     case "😍":
-//       return 4;
-//     case "😴":
-//       return 3;
-//     case "😔":
-//       return 2;
-//     case "😡":
-//       return 1;
-//     default:
-//       return "";
-//   }
-// }
+function handleHover(evt, item, legend) {
+  legend.chart.data.datasets[0].backgroundColor.forEach(
+    (color, index, colors) => {
+      colors[index] =
+        index === item.index || color.length === 9 ? color : color + "4D";
+    }
+  );
+  legend.chart.update();
+}
+// doughnut hover behavior: Removes the alpha channel from background colors
+function handleLeave(evt, item, legend) {
+  legend.chart.data.datasets[0].backgroundColor.forEach(
+    (color, index, colors) => {
+      colors[index] = color.length === 9 ? color.slice(0, -2) : color;
+    }
+  );
+  legend.chart.update();
+}
 
 function DoughnutChart({ moods }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -49,38 +53,8 @@ function DoughnutChart({ moods }) {
   useEffect(() => {
     // deal with async behavior
     if (!moods) return;
-    console.log(moods);
     const moodsCopy = moods.slice();
-    const moodCount = {
-      happy: 0,
-      inLove: 0,
-      sleepy: 0,
-      sad: 0,
-      angry: 0,
-    };
 
-    // Count the occurrences of each mood
-    moodsCopy.forEach((mood) => {
-      switch (mood) {
-        case "😊":
-          moodCount.happy++;
-          break;
-        case "😍":
-          moodCount.inLove++;
-          break;
-        case "😴":
-          moodCount.sleepy++;
-          break;
-        case "😔":
-          moodCount.sad++;
-          break;
-        case "😡":
-          moodCount.angry++;
-          break;
-        default:
-          break;
-      }
-    });
     // DONE: functionality to summarize all values
     // create an array with unique values, and sort descending >> [5,4,3,2,1]
     const moodsUniqueSorted = [...new Set(moodsCopy)].sort((a, b) => b - a);
@@ -88,9 +62,10 @@ function DoughnutChart({ moods }) {
     const moodsSummarized = moodsUniqueSorted.map(
       (num) => moods.join("").split(num).length - 1
     );
+
     // DONE: draw chart
     setChart({
-      labels: ["Happy", "in Love", "sleepy", "sad", "angry"],
+      labels: ["Great", "Good", "Ok", "Bad", "Poor"],
       datasets: [
         {
           label: "Mood",
@@ -123,8 +98,12 @@ function DoughnutChart({ moods }) {
     // return <Spinner />;
   } else {
     return (
-      <div className="doughnut-container">
-        <Doughnut options={options} data={chart} />
+      <div>
+        <div className="doughnut-container">
+          <br />
+          {chart && <Doughnut options={options} data={chart} />}
+          <br />
+        </div>
       </div>
     );
   }

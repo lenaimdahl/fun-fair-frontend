@@ -22,32 +22,46 @@ function convertType(type) {
 
 function WeeklyMood() {
   const [moods, setMoods] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const backendAPIInstance = new BackendAPI();
 
   useEffect(() => {
-    (async () => {
-      const data = await backendAPIInstance.getMoods();
-      const convertedData = data.moods.map((mood) => {
-        return {
-          id: mood._id,
-          title: convertType(mood.title),
-          startDate: new Date(mood.timestamp),
-          endDate: new Date(mood.timestamp).setHours(0, 30, 0, 0),
-        };
-      });
-      setMoods(convertedData);
-    })();
+    const fetchMoods = async () => {
+      try {
+        const data = await backendAPIInstance.getMoods();
+        const convertedData = data.moods.map((mood) => {
+          return {
+            id: mood._id,
+            title: convertType(mood.title),
+            startDate: new Date(mood.timestamp),
+            endDate: new Date(mood.timestamp).setHours(0, 30, 0, 0),
+          };
+        });
+        setMoods(convertedData);
+      } catch (error) {
+        console.log("Error fetching moods:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchMoods();
   }, []);
 
   return (
     <div>
-      <div>
-        <LineChart moods={moods} />
-      </div>
-      <div>
-        <DoughnutChart moods={moods} />
-      </div>
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
+        <>
+          <div>
+            <LineChart moods={moods} />
+          </div>
+          <div>
+            <DoughnutChart moods={moods} />
+          </div>
+        </>
+      )}
     </div>
   );
 }
