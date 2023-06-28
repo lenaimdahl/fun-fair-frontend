@@ -101,6 +101,10 @@ body {
   text-align: center;
 }
 
+.profile-page {
+  margin: 0px 4vw;
+}
+
 .profile-page h2 {
   text-align: center;
 }
@@ -124,6 +128,32 @@ body {
 
 #mood-selection {
   margin-bottom: 20px;
+}
+
+.mood-container {
+  display: flex;
+  gap: 10px;
+}
+.mood-container button {
+  width: 5vw;
+  padding: 5px;
+  border: none;
+  background: none;
+}
+
+.mood-container button:hover {
+  cursor: pointer;
+  background-color: #ffb59a7d;
+  border-radius: 20px;
+}
+
+.mood-container p {
+  margin: 5px;
+}
+
+.mood-container h4 {
+  font-size: 3vw;
+  margin: 0;
 }
 
 #mood-selection,

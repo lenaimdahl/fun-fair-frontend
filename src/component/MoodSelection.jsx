@@ -30,23 +30,23 @@ function MoodSelection() {
           <h2>Select your mood</h2>
           <div className="mood-container">
             <button onClick={() => handleMoodSelection("happy")}>
-              😊
+              <h4>😊</h4>
               <p>happy</p>
             </button>
             <button onClick={() => handleMoodSelection("sad")}>
-              😔
+              <h4>😔</h4>
               <p>sad</p>
             </button>
             <button onClick={() => handleMoodSelection("angry")}>
-              😡
+              <h4>😡</h4>
               <p>angry</p>
             </button>
             <button onClick={() => handleMoodSelection("in love")}>
-              😍
+              <h4>😍</h4>
               <p>in love</p>
             </button>
             <button onClick={() => handleMoodSelection("sleepy")}>
-              😴
+              <h4>😴</h4>
               <p>sleepy</p>
             </button>
           </div>
