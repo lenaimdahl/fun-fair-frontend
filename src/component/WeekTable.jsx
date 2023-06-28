@@ -1,6 +1,5 @@
 import "../css/table.css";
-import { useContext, useEffect, useState } from "react";
-import { UserContext } from "../context/user.context";
+import { useEffect, useState } from "react";
 
 import {
   Chart as ChartJS,
@@ -53,17 +52,14 @@ function convertEmoji(type) {
   }
 }
 
-function WeekTable() {
-  const { moods } = useContext(UserContext);
+function WeekTable({ moods }) {
   const [isLoading, setIsLoading] = useState(true);
   const [chart, setChart] = useState();
 
   useEffect(() => {
-    // deal with async behavior
     if (!moods) return;
-
-    const lastSevenMoods = moods.slice().reverse().slice(0, 7);
-
+    const moodsCopy = moods.slice();
+    const lastSevenMoods = moodsCopy.reverse().slice(0, 7);
     const moodsAsNumbers = lastSevenMoods.map((mood) => {
       return convertEmoji(mood.title);
     });
@@ -72,7 +68,7 @@ function WeekTable() {
       return mood.title;
     });
     console.log(lastSevenMoods, pointStyles);
-    // draw chart
+
     setChart({
       labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
       datasets: [
