@@ -1,6 +1,7 @@
-import WeekTable from "../component/WeekTable";
+import LineChart from "../component/LineChart";
 import { useEffect, useState } from "react";
 import { BackendAPI } from "../api/BackendAPIHandler";
+import DoughnutChart from "../component/DoughnutChart";
 
 function convertType(type) {
   switch (type) {
@@ -20,7 +21,7 @@ function convertType(type) {
 }
 
 function WeeklyMood() {
-  const [moods, setMoods] = useState();
+  const [moods, setMoods] = useState([]);
 
   const backendAPIInstance = new BackendAPI();
 
@@ -41,7 +42,12 @@ function WeeklyMood() {
 
   return (
     <div>
-      <WeekTable moods={moods} />
+      <div>
+        <LineChart moods={moods} />
+      </div>
+      <div>
+        <DoughnutChart moods={moods} />
+      </div>
     </div>
   );
 }
