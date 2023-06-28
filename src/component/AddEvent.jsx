@@ -9,7 +9,8 @@ function AddEvent() {
   const fetchAllEvents = async () => {
     const fetchedEvents = await backendAPIInstance.getEvents();
     console.log("All events from DB", fetchedEvents);
-    setAllEvents(fetchedEvents);
+    const eventsArray = fetchedEvents.allEvents;
+    setAllEvents(eventsArray);
   };
 
   useEffect(() => {
@@ -21,21 +22,20 @@ function AddEvent() {
       <h2>Add an Event for today</h2>
       {/* <form onSubmit={handleAddEvent}> */}
       <form>
-        <label>events: </label>
-        {/* these need to be populated from our database */}
-        <select id="event" name="event">
-          {allEvents.map((oneEvent) => {
+        <label>events: </label> 
+      {/* {/* these need to be populated from our database */}
+      <select id="event" name="event">
+          {allEvents.map(oneEvent => {
             return (
-              <option value="event">
+              <option key={oneEvent.value} value={oneEvent.value}>
                 {oneEvent.title}
-                {/* {oneEvent.image} 
-                {oneEvent.points} */}
               </option>
             );
           })}
         </select>
         <button type="submit">Add an event</button>
       </form>
+
       <NewEvent />
     </div>
   );
