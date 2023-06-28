@@ -28,7 +28,7 @@ function AddEvent() {
           {allEvents.map(oneEvent => {
             return (
               <option key={oneEvent.value} value={oneEvent.value}>
-                {oneEvent.title}
+                {oneEvent.image} {oneEvent.title} {oneEvent.points} points
               </option>
             );
           })}
