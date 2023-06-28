@@ -1,4 +1,4 @@
-import "../css/table.css";
+import "../css/App.css";
 import { useEffect, useState } from "react";
 
 import {
@@ -31,6 +31,30 @@ export const options = {
       title: {
         display: false,
       },
+    },
+  },
+  scales: {
+    y: {
+      ticks: {
+        font: {
+          weight: "normal",
+        },
+        beginAtZero: true,
+        stepSize: 1,
+        padding: 5,
+      },
+      suggestedMin: 1,
+      suggestedMax: 5,
+    },
+    x: {
+      ticks: {
+        font: {
+          weight: "bold",
+        },
+        color: "#F5F2FF",
+        beginAtZero: true,
+      },
+      reverse: true,
     },
   },
 };
@@ -91,12 +115,14 @@ function WeekTable({ moods }) {
     // return <Spinner />;
   } else {
     return (
-      <div>
-        <div>
+      <div className="chart-flex">
+        <div className="chart-heading">
           <h2>current week</h2>
           <p></p>
         </div>
-        <Line options={options} data={chart} />
+        <div className="chart-container">
+          <Line options={options} data={chart} />
+        </div>
       </div>
     );
   }
