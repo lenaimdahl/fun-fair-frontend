@@ -178,8 +178,8 @@ body {
 .login-page {
   display: flex;
   flex-direction: column;
-  width: 80vw;
-  margin: 0 auto;
+  width: 500px;
+  margin: 50px auto 0 auto;
   align-items: center;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.516);
@@ -230,10 +230,16 @@ body {
   border-radius: 40px;
   padding: 20px 40px;
   font-size: 15px;
+  text-transform: uppercase;
 }
 
-.log-in-bottom Link {
+.log-in-page-link {
+  color:white;
   text-decoration: none;
+}
+
+.log-in-page-link:hover {
+  color: black;
 }
 
 footer {
