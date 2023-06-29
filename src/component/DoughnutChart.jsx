@@ -87,8 +87,7 @@ function DoughnutChart({ moods }) {
     });
 
     const totalMoods = moodsCopy.length;
-    const percentages = Object.keys(moodCount).map((key) => {
-      const count = moodCount[key];
+    const percentages = Object.entries(moodCount).map(([key, count]) => {
       const percentage =
         count > 0 ? ((count / totalMoods) * 100).toFixed(2) : 0;
       return {
