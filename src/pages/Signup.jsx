@@ -33,16 +33,16 @@ function Signup() {
     <div className="signup-page">
       <h1>Sign up</h1>
       <form onSubmit={handleSignup}>
-        <label>username:</label>
+        <label>username</label>
         <input
           type="username"
           name="username"
           value={username}
           onChange={handleUsername}
         />
-        <label>email:</label>
+        <label>email</label>
         <input type="email" name="email" value={email} onChange={handleEmail} />
-        <label>password:</label>
+        <label>password</label>
         <input
           type="password"
           name="password"
