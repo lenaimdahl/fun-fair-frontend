@@ -30,19 +30,19 @@ function Signup() {
   };
 
   return (
-    <div>
-      <h1>Signup</h1>
+    <div className="signup-page">
+      <h1>Sign up</h1>
       <form onSubmit={handleSignup}>
-        <label>username:</label>
+        <label>username</label>
         <input
           type="username"
           name="username"
           value={username}
           onChange={handleUsername}
         />
-        <label>email:</label>
+        <label>email</label>
         <input type="email" name="email" value={email} onChange={handleEmail} />
-        <label>Password:</label>
+        <label>password</label>
         <input
           type="password"
           name="password"
@@ -52,8 +52,12 @@ function Signup() {
         <button type="submit">Sign up!</button>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-      <p>Already have an account?</p>
-      <Link to={"/login"}>Login</Link>
+      <div className="signup-bottom">
+        <p>Already have an account?</p>
+        <button>
+          <Link to={"/login"} className="signup-page-link">Log in</Link>
+        </button>
+      </div>
     </div>
   );
 }

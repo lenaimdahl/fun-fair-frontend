@@ -68,7 +68,6 @@ function HomePage() {
           <button className="signup-button">Sign up!</button>
         </div>
       </div>
-      <Preview />
     </div>
   );
 }
