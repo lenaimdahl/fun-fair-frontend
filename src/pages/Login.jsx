@@ -33,10 +33,10 @@ function Login() {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
+    <div className="login-page">
+      <h1>Log in</h1>
       <form onSubmit={handleLoginSubmit}>
-        <label>Email:</label>
+        <label>email</label>
         <input
           type="email"
           name="email"
@@ -44,7 +44,7 @@ function Login() {
           autoComplete="email"
           onChange={handleEmail}
         />
-        <label>Password:</label>
+        <label>password</label>
         <input
           type="password"
           name="password"
@@ -52,11 +52,16 @@ function Login() {
           autoComplete="current-password"
           onChange={handlePassword}
         />
-        <button type="submit">Login</button>
+        <button type="submit">Log in</button>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-      <p>Don't have an account yet?</p>
-      <Link to={"/"}> Sign Up</Link>
+      <div className="log-in-bottom">
+        <p>Don't have an account yet?</p>
+        <button>
+          <Link to={"/"} style={{color: "black", textDecoration: 'none'}}> Sign Up</Link>
+        </button>
+        
+      </div>
     </div>
   );
 }
