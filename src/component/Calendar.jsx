@@ -26,7 +26,7 @@ function Calendar() {
   useEffect(() => {
     (async () => {
       const data = await backendAPIInstance.getEvents();
-      console.log(data);
+      console.log("events", data.events);
       const convertedData = data.events.map((event) => {
         return {
           id: event._id,
