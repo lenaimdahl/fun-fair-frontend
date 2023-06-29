@@ -58,7 +58,7 @@ function Login() {
       <div className="log-in-bottom">
         <p>Don't have an account yet?</p>
         <button>
-          <Link to={"/"} style={{color: "black", textDecoration: 'none'}}> Sign Up</Link>
+          <Link to={"/"} className="log-in-page-link"> Sign Up</Link>
         </button>
         
       </div>
