@@ -52,9 +52,4 @@ export class BackendAPI {
     const { data } = await this.api.post("/api/event", newEvent);
     return data;
   }
-
-  async getEvents() {
-    const { data } = await this.api.get("/api/all-events");
-    return data;
-  }
 }
