@@ -110,7 +110,6 @@ function WeekTable({ moods }) {
       ...weekDay.slice(0, today.getDay() + 1),
     ];
   }
-  console.log(generateDays());
 
   useEffect(() => {
     if (!moods) return;
