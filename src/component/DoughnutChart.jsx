@@ -65,7 +65,7 @@ function DoughnutChart({ moods }) {
 
     // Count the occurrences of each mood
     moodsCopy.forEach((mood) => {
-      switch (mood) {
+      switch (mood.title) {
         case "😊":
           moodCount.happy++;
           break;
