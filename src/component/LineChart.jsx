@@ -102,6 +102,16 @@ function WeekTable({ moods }) {
   const [isLoading, setIsLoading] = useState(true);
   const [chart, setChart] = useState();
 
+  function generateDays() {
+    const today = new Date();
+    const weekDay = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    return [
+      ...weekDay.slice(today.getDay() + 1),
+      ...weekDay.slice(0, today.getDay() + 1),
+    ];
+  }
+  console.log(generateDays());
+
   useEffect(() => {
     if (!moods) return;
     const moodsCopy = moods.slice();
@@ -130,7 +140,7 @@ function WeekTable({ moods }) {
     });
 
     setChart({
-      labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      labels: generateDays().reverse(),
       datasets: [
         {
           label: "Mood",
