@@ -20,30 +20,20 @@ import imgSleepy from "../assets/moods/sleepy.png";
 import imgSad from "../assets/moods/sad.png";
 import imgAngry from "../assets/moods/angry.png";
 
-const cpHappy = new Image();
+const cpHappy = new Image(20, 20);
 cpHappy.src = imgHappy;
-cpHappy.width = 20;
-cpHappy.height = 20;
 
-const cpInLove = new Image();
+const cpInLove = new Image(20, 20);
 cpInLove.src = imgInLove;
-cpInLove.width = 20;
-cpInLove.height = 20;
 
-const cpSleepy = new Image();
+const cpSleepy = new Image(20, 20);
 cpSleepy.src = imgSleepy;
-cpSleepy.width = 20;
-cpSleepy.height = 20;
 
-const cpSad = new Image();
+const cpSad = new Image(20, 20);
 cpSad.src = imgSad;
-cpSad.width = 20;
-cpSad.height = 20;
 
-const cpAngry = new Image();
+const cpAngry = new Image(20, 20);
 cpAngry.src = imgAngry;
-cpAngry.width = 20;
-cpAngry.height = 20;
 
 ChartJS.register(
   CategoryScale,
@@ -121,14 +111,23 @@ function WeekTable({ moods }) {
     });
 
     const pointStyles = moodsAsNumbers.map((mood) => {
-      if (mood === 5) return cpHappy;
-      if (mood === 4) return cpInLove;
-      if (mood === 3) return cpSleepy;
-      if (mood === 2) return cpSad;
-      if (mood === 1) return cpAngry;
+      if (mood === 5) {
+        return cpHappy;
+      }
+      if (mood === 4) {
+        return cpInLove;
+      }
+      if (mood === 3) {
+        return cpSleepy;
+      }
+      if (mood === 2) {
+        return cpSad;
+      }
+      if (mood === 1) {
+        return cpAngry;
+      }
+      return null;
     });
-    console.log("last seven", lastSevenMoods);
-    console.log("point]", pointStyles);
 
     setChart({
       labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
