@@ -109,6 +109,7 @@ body {
   text-align: center;
 }
 
+.signup-page form button,
 .login-page form button,
 #btn-logout {
   border: none;
@@ -122,6 +123,7 @@ body {
   text-transform: uppercase;
 }
 
+.signup-page form button:hover,
 .login-page form button:hover,
 .log-in-bottom button:hover,
 #btn-logout:hover {
@@ -175,6 +177,7 @@ body {
   font-size: 20px;
 }
 
+.signup-page,
 .login-page {
   display: flex;
   flex-direction: column;
@@ -186,11 +189,13 @@ body {
   border-radius: 20px;
 }
 
+.signup-page h1,
 .login-page h1 {
   text-align: center;
   color: black;
 }
 
+.signup-page form,
 .login-page form {
   display: flex;
   flex-direction: column;
@@ -199,6 +204,7 @@ body {
   
 }
 
+.signup-page form label,
 .login-page form label {
   color: black;
   margin-top: 10px;
@@ -206,12 +212,14 @@ body {
   margin-left: 20px;
 }
 
+.signup-page form input,
 .login-page form input {
   padding: 10px;
   border-radius: 20px;
   border: none;
 }
 
+.signup-bottom,
 .log-in-bottom {
   display: flex;
   flex-direction: column;
@@ -219,10 +227,12 @@ body {
   margin: 0 auto;
 }
 
+.signup-bottom p,
 .log-in-bottom p {
   color: black;
 }
 
+.signup-bottom button,
 .log-in-bottom button {
   /* margin-top: 20px; */
   background-color: #fc7fb1;
@@ -233,11 +243,13 @@ body {
   text-transform: uppercase;
 }
 
+.signup-page-link,
 .log-in-page-link {
   color:white;
   text-decoration: none;
 }
 
+.signup-page-link:hover,
 .log-in-page-link:hover {
   color: black;
 }
