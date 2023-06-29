@@ -20,11 +20,6 @@ function Profile() {
           </button>
         </div>
       </div>
-      <div className="logout-container">
-        <button className="logout-button" onClick={logOutUser}>
-          Logout
-        </button>
-      </div>
     </div>
   );
 }

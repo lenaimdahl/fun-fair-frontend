@@ -23,7 +23,7 @@ function AddEvent() {
       {/* <form onSubmit={handleAddEvent}> */}
       <form>
         <label>events: </label>
-        {/* {/* these need to be populated from our database */}
+       {/* these need to be populated from our database */}
         <select id="event" name="event">
           {allEvents.map((oneEvent) => {
             return (
