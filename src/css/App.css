@@ -109,19 +109,23 @@ body {
   text-align: center;
 }
 
+.login-page form button,
 #btn-logout {
   border: none;
-  background-color: #ed6ea0;
+  background-color: #fc7fb1;
   color: white;
   width: 100%;
   padding: 10px 20px;
-  font-size: 1.3vw;
+  font-size: 15px;
   margin-top: 20px;
   border-radius: 20px;
   text-transform: uppercase;
 }
 
+.login-page form button:hover,
+.log-in-bottom button:hover,
 #btn-logout:hover {
+  color: black;
   background-color: #ffb59a;
   cursor: pointer;
 }
@@ -169,6 +173,67 @@ body {
 .mood-container span {
   padding: 10px;
   font-size: 20px;
+}
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  margin: 0 auto;
+  align-items: center;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.516);
+  border-radius: 20px;
+}
+
+.login-page h1 {
+  text-align: center;
+  color: black;
+}
+
+.login-page form {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin-bottom: 50px;
+  
+}
+
+.login-page form label {
+  color: black;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-left: 20px;
+}
+
+.login-page form input {
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+}
+
+.log-in-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.log-in-bottom p {
+  color: black;
+}
+
+.log-in-bottom button {
+  /* margin-top: 20px; */
+  background-color: #fc7fb1;
+  border: none;
+  border-radius: 40px;
+  padding: 20px 40px;
+  font-size: 15px;
+}
+
+.log-in-bottom Link {
+  text-decoration: none;
 }
 
 footer {
