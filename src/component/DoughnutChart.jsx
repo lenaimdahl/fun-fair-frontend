@@ -51,41 +51,82 @@ function DoughnutChart({ moods }) {
   const [chart, setChart] = useState();
 
   useEffect(() => {
-    // deal with async behavior
     if (!moods) return;
+    console.log("mood]", moods);
+
     const moodsCopy = moods.slice();
+    const moodCount = {
+      happy: 0,
+      inLove: 0,
+      sleepy: 0,
+      sad: 0,
+      angry: 0,
+    };
 
-    // DONE: functionality to summarize all values
-    // create an array with unique values, and sort descending >> [5,4,3,2,1]
-    const moodsUniqueSorted = [...new Set(moodsCopy)].sort((a, b) => b - a);
-    // get the total sum for each number of [5,4,3,2,1]
-    const moodsSummarized = moodsUniqueSorted.map(
-      (num) => moods.join("").split(num).length - 1
+    // Count the occurrences of each mood
+    moodsCopy.forEach((mood) => {
+      switch (mood) {
+        case "😊":
+          moodCount.happy++;
+          break;
+        case "😍":
+          moodCount.inLove++;
+          break;
+        case "😴":
+          moodCount.sleepy++;
+          break;
+        case "😔":
+          moodCount.sad++;
+          break;
+        case "😡":
+          moodCount.angry++;
+          break;
+        default:
+          break;
+      }
+    });
+
+    const totalMoods = moodsCopy.length;
+    const percentages = Object.keys(moodCount).map((key) => {
+      const count = moodCount[key];
+      const percentage =
+        count > 0 ? ((count / totalMoods) * 100).toFixed(2) : 0;
+      return {
+        label: key,
+        percentage,
+      };
+    });
+
+    console.log("the totalMoods]", totalMoods);
+    console.log("the percentage]", percentages);
+
+    const labels = percentages.map(
+      (mood) => `${mood.label} ${mood.percentage}%`
     );
+    const data = percentages.map((mood) => mood.percentage);
+    const backgroundColor = [
+      "rgba(255, 99, 132, 0.2)",
+      "rgba(54, 162, 235, 0.2)",
+      "rgba(255, 206, 86, 0.2)",
+      "rgba(75, 192, 192, 0.2)",
+      "rgba(153, 102, 255, 0.2)",
+    ];
+    const borderColor = [
+      "rgba(255, 99, 132, 1)",
+      "rgba(54, 162, 235, 1)",
+      "rgba(255, 206, 86, 1)",
+      "rgba(75, 192, 192, 1)",
+      "rgba(153, 102, 255, 1)",
+    ];
 
-    // DONE: draw chart
     setChart({
-      labels: ["happy", "in love", "sleepy", "sad", "angry"],
+      labels,
       datasets: [
         {
           label: "Mood",
-          data: moodsSummarized,
-          backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(255, 206, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-          ],
-          borderColor: [
-            "rgba(255, 99, 132, 1)",
-            "rgba(54, 162, 235, 1)",
-            "rgba(255, 206, 86, 1)",
-            "rgba(75, 192, 192, 1)",
-            "rgba(153, 102, 255, 1)",
-            "rgba(255, 159, 64, 1)",
-          ],
+          data,
+          backgroundColor,
+          borderColor,
           borderWidth: 1,
         },
       ],
