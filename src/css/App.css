@@ -60,6 +60,7 @@ body {
   font-size: 1.3vw;
 }
 
+.signup-page button:hover,
 .signup-button:hover {
   background-color: #ffb59a;
   cursor: pointer;
