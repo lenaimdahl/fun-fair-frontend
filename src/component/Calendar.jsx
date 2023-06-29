@@ -17,23 +17,6 @@ import {
 } from "@devexpress/dx-react-scheduler-material-ui";
 import { BackendAPI } from "../api/BackendAPIHandler";
 
-function convertType(type) {
-  switch (type) {
-    case "happy":
-      return "😊";
-    case "sad":
-      return "😔";
-    case "angry":
-      return "😡";
-    case "in love":
-      return "😍";
-    case "sleepy":
-      return "😴";
-    default:
-      return "";
-  }
-}
-
 function Calendar() {
   const [data, setData] = useState();
   const [currentDate, setCurrentDate] = useState();
@@ -42,13 +25,14 @@ function Calendar() {
 
   useEffect(() => {
     (async () => {
-      const data = await backendAPIInstance.getMoods();
-      const convertedData = data.moods.map((mood) => {
+      const data = await backendAPIInstance.getEvents();
+      console.log("events", data.events);
+      const convertedData = data.events.map((event) => {
         return {
-          id: mood._id,
-          title: convertType(mood.title),
-          startDate: new Date(mood.timestamp),
-          endDate: new Date(mood.timestamp).setHours(0, 30, 0, 0),
+          id: event._id,
+          title: event.image,
+          startDate: new Date(event.timestamp),
+          endDate: new Date(event.timestamp).setHours(0, 30, 0, 0),
         };
       });
       console.log(convertedData);

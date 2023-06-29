@@ -43,13 +43,13 @@ export class BackendAPI {
     return data;
   }
 
-  async saveEvent(newEvent) {
-    const { data } = await this.api.post("/api/event", newEvent);
+  async getEvents() {
+    const { data } = await this.api.get("/api/events");
     return data;
   }
 
-  async getEvents() {
-    const { data } = await this.api.get("/api/all-events");
+  async saveEvent(newEvent) {
+    const { data } = await this.api.post("/api/event", newEvent);
     return data;
   }
 }

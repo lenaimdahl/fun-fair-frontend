@@ -10,14 +10,16 @@ body {
 .calendar-flex {
   display: flex;
   flex-direction: row;
+  /* flex-wrap: wrap; */
   justify-content: center;
   gap: 30px;
 }
 
 .calendar-container {
   color: black;
-  /* margin: 40px; */
-  width: 800px;
+  margin: 0 10px;
+  width: 600px;
+  height: auto;
   background-color: rgba(255, 255, 255, 0.571);
   border-radius: 30px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.653),
@@ -63,6 +65,23 @@ body {
   background-color: #ffb59a;
   cursor: pointer;
 }
+.logout-container {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.logout-button {
+  margin-top: 20px;
+  background-color: #fc7fb1;
+  border: none;
+  border-radius: 40px;
+  padding: 20px 40px;
+  font-size: 12pt;
+}
+.logout-button:hover {
+  background-color: #ffb59a;
+  cursor: pointer;
+}
 
 .preview-container {
   display: flex;
@@ -89,12 +108,13 @@ body {
 
 .preview-features-container {
   border-radius: 15px;
-  /* width: 00px; */
   background-color: #fc7fb1c8;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   text-align: center;
   padding: 30px;
+  margin: 0 20px;
   gap: 20px;
 }
 
@@ -168,6 +188,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-wrap: wrap;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.516);
   border-radius: 20px;
@@ -261,11 +282,10 @@ footer {
   display: flex;
   justify-content: space-between;
   text-align: center;
-  width: 90%;
   bottom: 20px;
   padding: 0 20px;
-  /* margin: 0 auto 10px auto; */
-  margin: 0 5rem;
+  width: 90%;
+  margin: 0 20px;
   border-radius: 10px;
   position: fixed;
 }
@@ -282,4 +302,22 @@ footer p {
 /* calendar */
 .css-3nejl.Appointment-appointment {
   background-color: transparent !important;
+}
+
+/* chart */
+.chart-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px 40px;
+}
+.chart-heading {
+  text-align: center;
+}
+.chart-container {
+  width: 600px;
+}
+
+.doughnut-container {
+  width: 300px;
 }

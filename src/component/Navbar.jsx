@@ -17,13 +17,13 @@ function Navbar() {
               <a href="#0">Big Widgets</a>
             </li>
             <li className="menu-item">
-              <a href="#0">Bigger Widgets</a>
-            </li>
-            <li className="menu-item">
-              <a href="#0">Huge Widgets</a>
+              <a href="/weekly-mood">weekly mood</a>
             </li>
           </ol> */}
         </li> 
+        <li className="menu-item">
+          <a href="/weekly-mood">weekly mood</a>
+        </li>
         <li className="menu-item">
           <a href="/login">Login</a>
         </li>

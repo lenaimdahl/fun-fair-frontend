@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import AddEvent from "../component/AddEvent";
-
 import Calendar from "../component/Calendar";
 import MoodSelection from "../component/MoodSelection";
 
@@ -16,7 +15,9 @@ function Profile() {
         <div className="right-side-menu">
           <MoodSelection />
           <AddEvent />
-          <button id="btn-logout" onClick={logOutUser}>Log out</button>
+          <button id="btn-logout" onClick={logOutUser}>
+            Log out
+          </button>
         </div>
       </div>
     </div>
