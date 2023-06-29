@@ -65,7 +65,7 @@ function DoughnutChart({ moods }) {
 
     // DONE: draw chart
     setChart({
-      labels: ["Great", "Good", "Ok", "Bad", "Poor"],
+      labels: ["happy", "in love", "sleepy", "sad", "angry"],
       datasets: [
         {
           label: "Mood",
