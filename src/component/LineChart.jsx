@@ -53,7 +53,7 @@ export const options = {
     },
     title: {
       display: true,
-      text: "Your mood of the week!",
+      text: "Your mood from last week!",
     },
   },
   scales: {

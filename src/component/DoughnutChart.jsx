@@ -21,7 +21,7 @@ export const options = {
     },
     title: {
       display: true,
-      text: "Your mood of the month!",
+      text: "Your mood in the last four weeks!",
     },
   },
 };
