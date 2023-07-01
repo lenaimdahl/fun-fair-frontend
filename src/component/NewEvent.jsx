@@ -7,12 +7,21 @@ function NewEvent() {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [points, setPoints] = useState("");
+  const [showEventForm, setShowEventForm] = useState(false);
 
   const handleTitle = (event) => setTitle(event.target.value);
   const handleImage = (event) => setImage(event.target.value);
   const handlePoints = (event) => setPoints(parseInt(event.target.value));
 
   const navigate = useNavigate();
+
+  const toggleForm = () => {
+    if(showEventForm === true) {
+      setShowEventForm(false)
+    } else {
+      setShowEventForm(true)
+    }
+  }
 
   const backendAPIInstance = new BackendAPI();
 
@@ -40,22 +49,41 @@ function NewEvent() {
 
   return (
     <div className="new-event-box">
-      <h2>Create a new Event</h2>
-      <form onSubmit={handleAddEvent}>
-        <label>title:</label>
+      <div className="event-form-head">
+        <h2>Create a new Event</h2>
+        <button onClick={toggleForm} className="btn-show-form">V</button>
+      </div>
+      {showEventForm? <form onSubmit={handleAddEvent} className="new-event-form">
+        <label>title</label>
         <input type="text" name="title" value={title} onChange={handleTitle} />
-        <label>emoji:</label>
+        <label>emoji</label>
         <input type="text" name="image" value={image} onChange={handleImage} />
 
-        <label>points:</label>
+        <label>points</label>
         <input
           type="number"
           name="points"
           value={points}
           onChange={handlePoints}
         />
-        <button type="submit">Add!</button>
-      </form>
+        <button type="submit">+</button>
+      </form> 
+      : null}
+      {/* <form onSubmit={handleAddEvent} className="new-event-form">
+        <label>title</label>
+        <input type="text" name="title" value={title} onChange={handleTitle} />
+        <label>emoji</label>
+        <input type="text" name="image" value={image} onChange={handleImage} />
+
+        <label>points</label>
+        <input
+          type="number"
+          name="points"
+          value={points}
+          onChange={handlePoints}
+        />
+        <button type="submit">+</button>
+      </form> */}
     </div>
   );
 }

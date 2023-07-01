@@ -144,6 +144,9 @@ body {
   text-transform: uppercase;
 }
 
+.btn-show-form:hover,
+.add-event-today-form button:hover,
+.new-event-form button:hover ,
 .signup-page form button:hover,
 .login-page form button:hover,
 .log-in-bottom button:hover,
@@ -183,8 +186,8 @@ body {
   margin: 0;
 }
 
-#mood-selection,
-.add-event-box {
+.event-side-pannel,
+#mood-selection {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -194,8 +197,80 @@ body {
   border-radius: 20px;
 }
 
+.add-event-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px;
+  /* background-color: rgba(255, 255, 255, 0.516); */
+  border-radius: 20px;
+}
+
 .mood-container span {
   padding: 10px;
+  font-size: 20px;
+}
+
+.add-event-today-form select {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.add-event-today-form button {
+  font-size: 15px;
+  height: 40px;
+  width: 40px;
+  border-radius: 40px;
+  background-color: #fc7fb1;
+  color: white;
+  border: none;
+  /* padding: 5px; */
+  margin-left: 5px;
+}
+
+.event-form-head {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.btn-show-form {
+  display: inline-block;
+ height: 40px;
+ width: 40px;
+ border-radius: 40px;
+ font-size: 20px;
+ border: none;
+ background-color: #fc7fb1;
+ color: white;
+}
+
+.new-event-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-event-form label {
+  margin: 10px 0 0 15px;
+}
+
+.new-event-form input {
+  background-color: white;
+  border-radius: 20px;
+  border: none;
+  padding: 10px 20px;
+}
+
+.new-event-form button {
+  color: white;
+  margin: 20px auto 0 auto;
+  background-color: #fc7fb1;
+  border: none;
+  border-radius: 50px;
+  width: 50px;
+  height: 50px;
   font-size: 20px;
 }
 

@@ -5,6 +5,7 @@ import AddEvent from "../component/AddEvent";
 import Calendar from "../component/Calendar";
 import MoodSelection from "../component/MoodSelection";
 import WeeklyMood from "../component/WeeklyMood";
+import NewEvent from "../component/NewEvent";
 import NewText from "../component/NewText";
 
 function Profile() {

@@ -14,14 +14,14 @@ import {
 import { BackendAPI } from "../api/BackendAPIHandler";
 
 function Calendar() {
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
   const [currentDate, setCurrentDate] = useState();
 
   const backendAPIInstance = new BackendAPI();
 
   useEffect(() => {
     (async () => {
-      const data = await backendAPIInstance.getEvents();
+      const data = await backendAPIInstance.getEventsByUser();
       console.log("events", data.events);
       const convertedData = data.events.map((event) => {
         return {
@@ -35,6 +35,7 @@ function Calendar() {
       setData(convertedData);
     })();
   }, []);
+  
 
   const commitChanges = ({ added, changed, deleted }) => {
     let currentData = data;
