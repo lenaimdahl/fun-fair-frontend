@@ -2,9 +2,7 @@ import { BackendAPI } from "../api/BackendAPIHandler";
 import { useState } from "react";
 
 function MoodSelection() {
-  const [mood, setMood] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const [showMoodCard, setShowMoodCard] = useState(true);
   const [showMoodSelection, setShowMoodSelection] = useState(true);
 
   const backendAPIInstance = new BackendAPI();
