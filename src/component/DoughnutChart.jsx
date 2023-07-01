@@ -11,7 +11,6 @@ export const options = {
     legend: {
       display: true,
       position: "bottom",
-      // align: "center",
       labels: {
         usePointStyle: true,
         pointStyle: "circle",
@@ -33,9 +32,8 @@ function DoughnutChart({ moods }) {
 
   useEffect(() => {
     if (!moods) return;
-    console.log("mood]", moods);
 
-    const moodsCopy = moods.slice();
+    const moodsCopy = moods.reverse().slice(0, 28);
     const moodCount = {
       happy: 0,
       inLove: 0,
