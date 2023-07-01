@@ -11,13 +11,16 @@ function Profile() {
   const { logOutUser, user } = useContext(AuthContext);
   const [showProfile, setShowProfile] = useState(true);
   const [showTextSection, setShowTextSection] = useState(false);
+  const [showWeeklyMood, setShowWeeklyMood] = useState(true);
 
   const handleAddTextClick = () => {
     setShowTextSection(true);
+    setShowWeeklyMood(false);
   };
 
   const handleCloseTextClick = () => {
     setShowTextSection(false);
+    setShowWeeklyMood(true);
   };
 
   return (
@@ -52,7 +55,7 @@ function Profile() {
         </div>
       )}
 
-      <WeeklyMood />
+      {showWeeklyMood && <WeeklyMood />}
     </div>
   );
 }
