@@ -49,6 +49,7 @@ function Profile() {
           <div className="right-side-menu">
             <MoodSelection />
             <AddEvent />
+            <NewEvent />
             <button id="btn-logout" onClick={logOutUser}>
               Log out
             </button>
