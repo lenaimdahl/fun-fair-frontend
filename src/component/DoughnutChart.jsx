@@ -11,17 +11,19 @@ export const options = {
     legend: {
       display: true,
       position: "bottom",
-      align: "center",
+      // align: "center",
       labels: {
         usePointStyle: true,
         pointStyle: "circle",
-        color: "#F5F2FF",
+        color: "white",
+        fontSize: 25,
         padding: 30,
       },
     },
-  },
-  title: {
-    display: false,
+    title: {
+      display: true,
+      text: "Your mood of the month!",
+    },
   },
 };
 
