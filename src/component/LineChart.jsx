@@ -50,9 +50,11 @@ export const options = {
   plugins: {
     legend: {
       display: false,
-      title: {
-        display: false,
-      },
+    },
+    title: {
+      color: "white",
+      display: true,
+      text: "Your mood from last week!",
     },
   },
   scales: {
