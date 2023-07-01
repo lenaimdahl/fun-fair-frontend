@@ -307,6 +307,15 @@ body {
   color: black;
 }
 
+.new-text-box {
+  display: flex;
+  justify-content: center;
+}
+.new-text-box input {
+  height: 400px;
+  width: 400px;
+}
+
 footer {
   background-image: linear-gradient(to right, #ed6ea0, #ec8c69);
   color: white;

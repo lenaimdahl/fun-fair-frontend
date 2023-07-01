@@ -28,13 +28,15 @@ function NewText() {
   };
 
   return (
-    <div className="new-event-box">
+    <div>
       <h2>Add you text </h2>
-      <form onSubmit={handleAddText}>
-        <label>text:</label>
-        <input type="text" name="text" value={text} onChange={handleText} />
-        <button type="submit">Add!</button>
-      </form>
+      <div className="new-text-box">
+        <form onSubmit={handleAddText}>
+          <label>text:</label>
+          <input type="text" name="text" value={text} onChange={handleText} />
+          <button type="submit">Add!</button>
+        </form>
+      </div>
     </div>
   );
 }

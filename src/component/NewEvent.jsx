@@ -33,7 +33,6 @@ function NewEvent() {
       setTitle("");
       setImage("");
       setPoints("");
-      
     } catch (error) {
       console.error(error);
     }
