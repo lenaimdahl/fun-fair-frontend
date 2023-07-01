@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
 import Paper from "@mui/material/Paper";
-import {
-  ViewState,
-  EditingState,
-  IntegratedEditing,
-} from "@devexpress/dx-react-scheduler";
+import { ViewState, EditingState } from "@devexpress/dx-react-scheduler";
 import {
   Toolbar,
   DateNavigator,
@@ -73,7 +69,6 @@ function Calendar() {
               onCurrentDateChange={(newDate) => setCurrentDate(newDate)}
             />
             <EditingState onCommitChanges={commitChanges} />
-            <IntegratedEditing />
             <MonthView />
             <Toolbar />
             <DateNavigator />

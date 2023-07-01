@@ -11,40 +11,20 @@ export const options = {
     legend: {
       display: true,
       position: "bottom",
-      align: "center",
       labels: {
         usePointStyle: true,
         pointStyle: "circle",
-        color: "#F5F2FF",
+        color: "white",
         padding: 30,
       },
-      onHover: handleHover,
-      onLeave: handleLeave,
+    },
+    title: {
+      color: "white",
+      display: true,
+      text: "Your mood in the last four weeks!",
     },
   },
-  title: {
-    display: false,
-  },
 };
-
-function handleHover(evt, item, legend) {
-  legend.chart.data.datasets[0].backgroundColor.forEach(
-    (color, index, colors) => {
-      colors[index] =
-        index === item.index || color.length === 9 ? color : color + "4D";
-    }
-  );
-  legend.chart.update();
-}
-// doughnut hover behavior: Removes the alpha channel from background colors
-function handleLeave(evt, item, legend) {
-  legend.chart.data.datasets[0].backgroundColor.forEach(
-    (color, index, colors) => {
-      colors[index] = color.length === 9 ? color.slice(0, -2) : color;
-    }
-  );
-  legend.chart.update();
-}
 
 function DoughnutChart({ moods }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -52,9 +32,8 @@ function DoughnutChart({ moods }) {
 
   useEffect(() => {
     if (!moods) return;
-    console.log("mood]", moods);
 
-    const moodsCopy = moods.slice();
+    const moodsCopy = moods.reverse().slice(0, 28);
     const moodCount = {
       happy: 0,
       inLove: 0,
@@ -96,19 +75,16 @@ function DoughnutChart({ moods }) {
       };
     });
 
-    console.log("the totalMoods]", totalMoods);
-    console.log("the percentage]", percentages);
-
     const labels = percentages.map(
-      (mood) => `${mood.label} ${mood.percentage}%`
+      (mood) => `${mood.label}: ${mood.percentage}%`
     );
     const data = percentages.map((mood) => mood.percentage);
     const backgroundColor = [
-      "rgba(255, 99, 132, 0.2)",
-      "rgba(54, 162, 235, 0.2)",
-      "rgba(255, 206, 86, 0.2)",
-      "rgba(75, 192, 192, 0.2)",
-      "rgba(153, 102, 255, 0.2)",
+      "rgba(255, 99, 132, 0.4)",
+      "rgba(54, 162, 235, 0.4)",
+      "rgba(255, 206, 86, 0.4)",
+      "rgba(75, 192, 192, 0.4)",
+      "rgba(153, 102, 255, 0.4)",
     ];
     const borderColor = [
       "rgba(255, 99, 132, 1)",
