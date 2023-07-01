@@ -3,6 +3,7 @@ import { AuthContext } from "../context/auth.context";
 import AddEvent from "../component/AddEvent";
 import Calendar from "../component/Calendar";
 import MoodSelection from "../component/MoodSelection";
+import WeeklyMood from "../component/WeeklyMood";
 
 function Profile() {
   const { logOutUser, user } = useContext(AuthContext);
@@ -20,6 +21,7 @@ function Profile() {
           </button>
         </div>
       </div>
+      <WeeklyMood />
     </div>
   );
 }

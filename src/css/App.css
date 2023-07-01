@@ -1,8 +1,8 @@
 body {
   background-image: url("../assets/milad-fakurian-CN2FEPXERRI-unsplash.jpg");
   background-size: cover;
-  height: 100vh;
-  background-repeat: no-repeat;
+  /* height: 100vh; */
+  /* background-repeat: no-repeat; */
   color: white;
   /* margin: 0 !important; */
   margin-bottom: 100px;
@@ -199,6 +199,38 @@ body {
   font-size: 20px;
 }
 
+.weekly-mood-box {
+  margin-top: 40px;
+  margin-bottom: 100px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.528);
+}
+
+.weekly-mood-box h2 {
+  padding-top: 20px;
+}
+
+.all-charts-box {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* chart */
+.chart-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px 40px;
+}
+
+.chart-container {
+  width: 600px;
+}
+
+.doughnut-container {
+  width: 300px;
+}
+
 .signup-page,
 .login-page {
   display: flex;
@@ -304,20 +336,4 @@ footer p {
   background-color: transparent !important;
 }
 
-/* chart */
-.chart-flex {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 20px 40px;
-}
-.chart-heading {
-  text-align: center;
-}
-.chart-container {
-  width: 600px;
-}
 
-.doughnut-container {
-  width: 300px;
-}

@@ -161,10 +161,6 @@ function WeekTable({ moods }) {
   } else {
     return (
       <div className="chart-flex">
-        <div className="chart-heading">
-          <h2>current week</h2>
-          <p></p>
-        </div>
         <div className="chart-container">
           <Line options={options} data={chart} />
         </div>

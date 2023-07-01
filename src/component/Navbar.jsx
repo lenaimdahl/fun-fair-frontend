@@ -22,9 +22,6 @@ function Navbar() {
           </ol> */}
         </li> 
         <li className="menu-item">
-          <a href="/weekly-mood">weekly mood</a>
-        </li>
-        <li className="menu-item">
           <a href="/login">Login</a>
         </li>
         <li className="menu-item">

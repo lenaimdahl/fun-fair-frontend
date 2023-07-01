@@ -140,9 +140,7 @@ function DoughnutChart({ moods }) {
     return (
       <div>
         <div className="doughnut-container">
-          <br />
           {chart && <Doughnut options={options} data={chart} />}
-          <br />
         </div>
       </div>
     );

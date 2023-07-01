@@ -1,7 +1,7 @@
-import LineChart from "../component/LineChart";
+import LineChart from "./LineChart";
 import { useEffect, useState } from "react";
 import { BackendAPI } from "../api/BackendAPIHandler";
-import DoughnutChart from "../component/DoughnutChart";
+import DoughnutChart from "./DoughnutChart";
 
 function convertType(type) {
   switch (type) {
@@ -53,14 +53,13 @@ function WeeklyMood() {
       {isLoading ? (
         <div>Loading...</div>
       ) : (
-        <>
-          <div>
+        <div className="weekly-mood-box">
+          <h2>current week</h2>
+          <div className="all-charts-box">
             <LineChart moods={moods} />
-          </div>
-          <div>
             <DoughnutChart moods={moods} />
           </div>
-        </>
+        </div>
       )}
     </div>
   );
