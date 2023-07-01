@@ -144,6 +144,7 @@ body {
   text-transform: uppercase;
 }
 
+.btn-show-form:hover,
 .add-event-today-form button:hover,
 .new-event-form button:hover ,
 .signup-page form button:hover,
@@ -185,14 +186,24 @@ body {
   margin: 0;
 }
 
-#mood-selection,
-.add-event-box {
+.event-side-pannel,
+#mood-selection {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.516);
+  border-radius: 20px;
+}
+
+.add-event-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px;
+  /* background-color: rgba(255, 255, 255, 0.516); */
   border-radius: 20px;
 }
 
@@ -217,6 +228,23 @@ body {
   border: none;
   /* padding: 5px; */
   margin-left: 5px;
+}
+
+.event-form-head {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.btn-show-form {
+  display: inline-block;
+ height: 40px;
+ width: 40px;
+ border-radius: 40px;
+ font-size: 20px;
+ border: none;
+ background-color: #fc7fb1;
+ color: white;
 }
 
 .new-event-form {

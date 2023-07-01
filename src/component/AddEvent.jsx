@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import NewEvent from "./NewEvent";
 import { BackendAPI } from "../api/BackendAPIHandler";
 
 function AddEvent() {
@@ -35,8 +34,6 @@ function AddEvent() {
         </select>
         <button type="submit">+</button>
       </form>
-
-      <NewEvent />
     </div>
   );
 }
