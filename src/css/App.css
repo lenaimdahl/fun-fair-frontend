@@ -255,7 +255,6 @@ body {
   flex-direction: column;
   width: 500px;
   margin-bottom: 50px;
-  
 }
 
 .signup-page form label,
@@ -299,7 +298,7 @@ body {
 
 .signup-page-link,
 .log-in-page-link {
-  color:white;
+  color: white;
   text-decoration: none;
 }
 
@@ -335,5 +334,3 @@ footer p {
 .css-3nejl.Appointment-appointment {
   background-color: transparent !important;
 }
-
-
