@@ -42,20 +42,20 @@ function NewEvent() {
   return (
     <div className="new-event-box">
       <h2>Create a new Event</h2>
-      <form onSubmit={handleAddEvent}>
-        <label>title:</label>
+      <form onSubmit={handleAddEvent} className="new-event-form">
+        <label>title</label>
         <input type="text" name="title" value={title} onChange={handleTitle} />
-        <label>emoji:</label>
+        <label>emoji</label>
         <input type="text" name="image" value={image} onChange={handleImage} />
 
-        <label>points:</label>
+        <label>points</label>
         <input
           type="number"
           name="points"
           value={points}
           onChange={handlePoints}
         />
-        <button type="submit">Add!</button>
+        <button type="submit">+</button>
       </form>
     </div>
   );

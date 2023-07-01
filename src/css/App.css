@@ -144,6 +144,7 @@ body {
   text-transform: uppercase;
 }
 
+.new-event-form button:hover ,
 .signup-page form button:hover,
 .login-page form button:hover,
 .log-in-bottom button:hover,
@@ -196,6 +197,33 @@ body {
 
 .mood-container span {
   padding: 10px;
+  font-size: 20px;
+}
+
+.new-event-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-event-form label {
+  margin: 10px 0 0 15px;
+}
+
+.new-event-form input {
+  background-color: white;
+  border-radius: 20px;
+  border: none;
+  padding: 10px 20px;
+}
+
+.new-event-form button {
+  color: white;
+  margin: 20px auto 0 auto;
+  background-color: #fc7fb1;
+  border: none;
+  border-radius: 50px;
+  width: 50px;
+  height: 50px;
   font-size: 20px;
 }
 
