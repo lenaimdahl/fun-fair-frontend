@@ -15,11 +15,11 @@ export const options = {
         usePointStyle: true,
         pointStyle: "circle",
         color: "white",
-        fontSize: 25,
         padding: 30,
       },
     },
     title: {
+      color: "white",
       display: true,
       text: "Your mood in the last four weeks!",
     },

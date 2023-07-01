@@ -52,6 +52,7 @@ export const options = {
       display: false,
     },
     title: {
+      color: "white",
       display: true,
       text: "Your mood from last week!",
     },
