@@ -52,4 +52,9 @@ export class BackendAPI {
     const { data } = await this.api.post("/api/event", newEvent);
     return data;
   }
+
+  async saveText(newText) {
+    const { data } = await this.api.post("/api/text", newText);
+    return data;
+  }
 }

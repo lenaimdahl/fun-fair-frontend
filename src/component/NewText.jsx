@@ -3,28 +3,24 @@ import { useState } from "react";
 import { BackendAPI } from "../api/BackendAPIHandler";
 
 function NewText() {
-  const [title, setTitle] = useState("");
   const [text, setText] = useState("");
 
-  const handleTitle = (event) => setTitle(event.target.value);
   const handleText = (event) => setText(event.target.value);
 
   const backendAPIInstance = new BackendAPI();
 
-  const handleAddEvent = async (e) => {
+  const handleAddText = async (e) => {
     e.preventDefault();
 
     const currentDay = new Date().setHours(0, 0, 0, 0);
 
     try {
-      let newEvent = {
-        title,
+      let newText = {
         text,
         timestamp: currentDay,
       };
 
-      await backendAPIInstance.saveEvent(newEvent);
-      setTitle("");
+      await backendAPIInstance.saveText(newText);
       setText("");
     } catch (error) {
       console.error(error);
@@ -34,9 +30,7 @@ function NewText() {
   return (
     <div className="new-event-box">
       <h2>Add you text </h2>
-      <form onSubmit={handleAddEvent}>
-        <label>title:</label>
-        <input type="text" name="title" value={title} onChange={handleTitle} />
+      <form onSubmit={handleAddText}>
         <label>text:</label>
         <input type="text" name="text" value={text} onChange={handleText} />
         <button type="submit">Add!</button>
