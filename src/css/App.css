@@ -144,6 +144,7 @@ body {
   text-transform: uppercase;
 }
 
+.add-event-today-form button:hover,
 .new-event-form button:hover ,
 .signup-page form button:hover,
 .login-page form button:hover,
@@ -198,6 +199,24 @@ body {
 .mood-container span {
   padding: 10px;
   font-size: 20px;
+}
+
+.add-event-today-form select {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.add-event-today-form button {
+  font-size: 15px;
+  height: 40px;
+  width: 40px;
+  border-radius: 40px;
+  background-color: #fc7fb1;
+  color: white;
+  border: none;
+  /* padding: 5px; */
+  margin-left: 5px;
 }
 
 .new-event-form {

@@ -21,7 +21,7 @@ function AddEvent() {
     <div className="add-event-box">
       <h2>Add an Event for today</h2>
       {/* <form onSubmit={handleAddEvent}> */}
-      <form>
+      <form className="add-event-today-form"> 
         <label>events: </label>
        {/* these need to be populated from our database */}
         <select id="event" name="event">
@@ -33,7 +33,7 @@ function AddEvent() {
             );
           })}
         </select>
-        <button type="submit">Add an event</button>
+        <button type="submit">+</button>
       </form>
 
       <NewEvent />
