@@ -6,7 +6,7 @@ import {
   DateNavigator,
   TodayButton,
   Scheduler,
-  MonthView,
+  WeekView,
   Appointments,
   AppointmentTooltip,
   ConfirmationDialog,
@@ -35,7 +35,6 @@ function Calendar() {
       setData(convertedData);
     })();
   }, []);
-  
 
   const commitChanges = ({ added, changed, deleted }) => {
     let currentData = data;
@@ -63,13 +62,13 @@ function Calendar() {
     <div>
       <div className="calendar-container">
         <Paper>
-          <Scheduler data={data} height={600}>
+          <Scheduler data={data} height={500}>
             <ViewState
               currentDate={currentDate}
               onCurrentDateChange={(newDate) => setCurrentDate(newDate)}
             />
             <EditingState onCommitChanges={commitChanges} />
-            <MonthView />
+            <WeekView />
             <Toolbar />
             <DateNavigator />
             <TodayButton />
