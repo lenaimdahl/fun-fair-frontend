@@ -34,7 +34,9 @@ function NewText() {
         <form onSubmit={handleAddText}>
           <label>text:</label>
           <input type="text" name="text" value={text} onChange={handleText} />
-          <button type="submit">Add!</button>
+          <button className="button" type="submit">
+            Add!
+          </button>
         </form>
       </div>
     </div>

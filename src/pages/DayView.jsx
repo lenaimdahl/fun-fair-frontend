@@ -17,7 +17,17 @@ function DayView() {
 
   return (
     <div>
-      <div></div>
+      <table>
+        <tr>
+          <th>Today</th>
+        </tr>
+        <tr>
+          <td>Your events:</td>
+        </tr>
+        <tr>
+          <td>your Entry:</td>
+        </tr>
+      </table>
       {!showTextSection && (
         <button className="button" onClick={handleAddTextClick}>
           <p>Add a new Text Entry for today</p>
