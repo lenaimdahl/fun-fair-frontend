@@ -10,7 +10,7 @@ function DayView() {
   const [showTextSection, setShowTextSection] = useState(false);
   const [events, setEvents] = useState([]);
   const [entries, setEntries] = useState([]);
-  const [startDate, setStartDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
   const backendAPIInstance = new BackendAPI();
 
@@ -25,7 +25,7 @@ function DayView() {
   const handleDateChange = async (date) => {
     const dateAtMidnight = new Date(date);
     dateAtMidnight.setHours(0, 0, 0, 0);
-    setStartDate(dateAtMidnight);
+    setSelectedDate(dateAtMidnight);
     const { allEvents, allEntries } = await backendAPIInstance.searchEvents(
       dateAtMidnight
     );
@@ -34,16 +34,20 @@ function DayView() {
   };
 
   useEffect(() => {
-    handleDateChange(startDate);
+    handleDateChange(selectedDate);
   }, []);
 
   return (
     <div className="table-container">
-      <DatePicker showIcon selected={startDate} onChange={handleDateChange} />
+      <DatePicker
+        showIcon
+        selected={selectedDate}
+        onChange={handleDateChange}
+      />
       <table>
         <thead>
           <tr>
-            <th>Today</th>
+            <th>{selectedDate.toString()}</th>
           </tr>
         </thead>
         <tbody>
@@ -51,7 +55,7 @@ function DayView() {
             <td>
               Your events:
               {events.map((event) => (
-                <div key={event.id}>
+                <div key={event._id}>
                   {event.image} {event.title}
                 </div>
               ))}
@@ -61,9 +65,7 @@ function DayView() {
             <td>
               Your Entries:
               {entries.map((entry) => (
-                <div key={entry.id}>
-                  {entry.image} {entry.title}
-                </div>
+                <div key={entry._id}>{entry.text}</div>
               ))}
             </td>
           </tr>
