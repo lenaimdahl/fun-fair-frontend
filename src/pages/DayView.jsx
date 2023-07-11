@@ -1,13 +1,16 @@
 import "../css/calendar.css";
-import React, { useContext } from "react";
-import { useState, useEffect } from "react";
+import React from "react";
+import { useState } from "react";
 import NewText from "../component/NewText";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { BackendAPI } from "../api/BackendAPIHandler";
 
 function DayView() {
   const [showTextSection, setShowTextSection] = useState(false);
   const [events, setEvents] = useState([]);
   const [currentDate, setCurrentDate] = useState();
+  const [startDate, setStartDate] = useState(new Date());
 
   const backendAPIInstance = new BackendAPI();
 
@@ -38,17 +41,22 @@ function DayView() {
 
   return (
     <div className="table-container">
+      <DatePicker
+        showIcon
+        selected={startDate}
+        onChange={(date) => setStartDate(date)}
+      />
       <table>
         <tr>
           <th>Today</th>
         </tr>
         <tr>
           Your events:
-          {events.map((event) => (
+          {/* {events.map((event) => (
             <div key={event.id}>
               <img src={event.image} alt={event.name} />
               <span>{event.name}</span>
-            </div>
+            </div> */}
           ))}
         </tr>
         <tr>

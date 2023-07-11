@@ -70,12 +70,17 @@ export class BackendAPI {
     return data;
   }
 
-  async searchEvents(keyword, num) {
-    const { data } = await axios.get(`api/search`, {
-      params: {
-        startDate: keyword,
-      },
-    });
-    return data;
+  async searchEvents(startDate) {
+    try {
+      const { data } = await axios.get(`api/search`, {
+        params: {
+          startDate,
+        },
+      });
+      return data;
+    } catch (err) {
+      console.error("ERROR while fetching all events from db:", err);
+      throw new Error("Internal Server Error");
+    }
   }
 }
