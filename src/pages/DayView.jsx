@@ -17,6 +17,8 @@ function DayView() {
 
   return (
     <div>
+      DayView
+      <div></div>
       {!showTextSection && (
         <button onClick={handleAddTextClick}>
           <p>Add a new Text Entry for today</p>
@@ -30,8 +32,6 @@ function DayView() {
           <NewText />
         </div>
       )}
-      DayView
-      <div></div>
     </div>
   );
 }
