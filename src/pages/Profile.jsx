@@ -26,7 +26,7 @@ function Profile() {
       </div>
       <div>
         <Link to={"/day-view"}>
-          <button className="logout-button">
+          <button className="button">
             Add a text for today & see todays activities
           </button>
         </Link>

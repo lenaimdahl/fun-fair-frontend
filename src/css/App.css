@@ -7,6 +7,15 @@ body {
   /* margin: 0 !important; */
   margin-bottom: 100px;
 }
+.button {
+  color: white;
+  margin-top: 20px;
+  background-color: #fc7fb1;
+  border: none;
+  border-radius: 40px;
+  padding: 20px 40px;
+  font-size: 12pt;
+}
 .calendar-flex {
   display: flex;
   flex-direction: row;
@@ -146,7 +155,7 @@ body {
 
 .btn-show-form:hover,
 .add-event-today-form button:hover,
-.new-event-form button:hover ,
+.new-event-form button:hover,
 .signup-page form button:hover,
 .login-page form button:hover,
 .log-in-bottom button:hover,
@@ -238,13 +247,13 @@ body {
 
 .btn-show-form {
   display: inline-block;
- height: 40px;
- width: 40px;
- border-radius: 40px;
- font-size: 20px;
- border: none;
- background-color: #fc7fb1;
- color: white;
+  height: 40px;
+  width: 40px;
+  border-radius: 40px;
+  font-size: 20px;
+  border: none;
+  background-color: #fc7fb1;
+  color: white;
 }
 
 .new-event-form {
