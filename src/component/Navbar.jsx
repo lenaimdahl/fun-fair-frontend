@@ -15,9 +15,7 @@ function Navbar() {
           <a href="/profile">Profile</a>
           <ol className="sub-menu">
             <li className="menu-item">
-              <Link to={"/day-view"} className="signup-page-link">
-                Day View
-              </Link>
+              <Link to={"/day-view"}>Day View</Link>
             </li>
             <li className="menu-item">
               <a href="/weekly-mood">weekly mood</a>

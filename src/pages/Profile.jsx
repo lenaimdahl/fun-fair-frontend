@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import AddEvent from "../component/AddEvent";
 import Calendar from "../component/Calendar";
@@ -22,6 +23,11 @@ function Profile() {
             Log out
           </button>
         </div>
+      </div>
+      <div>
+        <Link to={"/day-view"}>
+          <button className="signup-page-link">Day View</button>
+        </Link>
       </div>
       <WeeklyMood />
     </div>
