@@ -47,26 +47,25 @@ function DayView() {
       <table>
         <thead>
           <tr>
-            <th>{selectedDate.toString()}</th>
+            <th>Your events</th>
+            <th>Your entries</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>
-              Your events:
               {events.map((event) => (
                 <div key={event._id}>
                   {event.image} {event.title}
                 </div>
               ))}
             </td>
-          </tr>
-          <tr>
             <td>
-              Your Entries:
-              {entries.map((entry) => (
-                <div key={entry._id}>{entry.text}</div>
-              ))}
+              <ul>
+                {entries.map((entry) => (
+                  <li key={entry._id}>{entry.text}</li>
+                ))}
+              </ul>
             </td>
           </tr>
         </tbody>
