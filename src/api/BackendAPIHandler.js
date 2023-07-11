@@ -42,13 +42,13 @@ export class BackendAPI {
     });
     return data;
   }
-//saves existing event in a calendar of a given user
+  //saves existing event in a calendar of a given user
   async addEventToCal(eventToAdd) {
     const { data } = await this.api.post("/api/event", eventToAdd);
     return data;
   }
 
-//fetches all the events from DB to populate select menu
+  //fetches all the events from DB to populate select menu
   async getEvents() {
     const { data } = await this.api.get("/api/events");
     return data;
@@ -59,7 +59,7 @@ export class BackendAPI {
     return data;
   }
 
-//saves a new event from new event form in general events DB
+  //saves a new event from new event form in general events DB
   async saveEvent(newEvent) {
     const { data } = await this.api.post("/api/new-event", newEvent);
     return data;
@@ -67,6 +67,15 @@ export class BackendAPI {
 
   async saveText(newText) {
     const { data } = await this.api.post("/api/text", newText);
+    return data;
+  }
+
+  async searchEvents(keyword, num) {
+    const { data } = await axios.get(`api/search`, {
+      params: {
+        startDate: keyword,
+      },
+    });
     return data;
   }
 }
