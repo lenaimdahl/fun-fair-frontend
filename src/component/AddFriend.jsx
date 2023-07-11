@@ -7,9 +7,9 @@ function AddFriend() {
   const backendAPIInstance = new BackendAPI();
 
   const fetchAllUser = async () => {
-    const fetchedUser = await backendAPIInstance.getUser();
-    const fetchedUserArray = fetchedUser.allUser;
-    setAllUser(fetchedUserArray);
+    const { allUser } = await backendAPIInstance.getUser();
+
+    setAllUser(allUser);
   };
 
   useEffect(() => {
@@ -20,7 +20,6 @@ function AddFriend() {
     e.preventDefault();
 
     const selectEl = e.target[0].options[e.target[0].selectedIndex];
-    console.log(allUser);
     try {
       let userToAdd = {
         user: selectEl.getAttribute("user"),
@@ -40,12 +39,8 @@ function AddFriend() {
           <select id="user" name="user">
             {allUser.map((oneUser) => {
               return (
-                <option
-                  key={oneUser.value}
-                  value={oneUser.value}
-                  user={oneUser.username}
-                >
-                  {oneUser.User}
+                <option key={oneUser._id} user={oneUser.username}>
+                  {oneUser.username}
                 </option>
               );
             })}
