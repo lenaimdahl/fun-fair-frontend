@@ -4,7 +4,6 @@ import { useState } from "react";
 import NewText from "../component/NewText";
 
 function DayView() {
-  const [showProfile, setShowProfile] = useState(true);
   const [showTextSection, setShowTextSection] = useState(false);
 
   const handleAddTextClick = () => {
@@ -16,7 +15,7 @@ function DayView() {
   };
 
   return (
-    <div>
+    <div className="table-container">
       <table>
         <tr>
           <th>Today</th>
@@ -28,6 +27,7 @@ function DayView() {
           <td>your Entry:</td>
         </tr>
       </table>
+
       {!showTextSection && (
         <button className="button" onClick={handleAddTextClick}>
           <p>Add a new Text Entry for today</p>
