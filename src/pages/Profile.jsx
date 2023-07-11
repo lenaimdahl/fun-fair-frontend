@@ -6,6 +6,7 @@ import Calendar from "../component/Calendar";
 import MoodSelection from "../component/MoodSelection";
 import WeeklyMood from "../component/WeeklyMood";
 import NewEvent from "../component/NewEvent";
+import AddFriend from "../component/AddFriend";
 
 function Profile() {
   const { logOutUser, user } = useContext(AuthContext);
@@ -13,6 +14,7 @@ function Profile() {
   return (
     <div className="profile-page">
       <h2>Welcome {user && user.username}</h2>
+      <AddFriend />
       <div className="calendar-flex">
         <Calendar />
         <div className="right-side-menu">
