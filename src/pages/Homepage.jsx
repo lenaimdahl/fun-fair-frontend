@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { BoredAPI } from "../api/BoredAPIHandler";
 import { BackendAPI } from "../api/BackendAPIHandler";
+import { Link } from "react-router-dom";
 import Preview from "../component/Preview";
 import CalenderPreview from "../assets/calendar-example.png";
 
@@ -66,6 +67,12 @@ function HomePage() {
             <h2>"{activity}"</h2>
           </div>
           <button className="signup-button">Sign up!</button>
+          <p>Already have an account?</p>
+          <button className="signup-button">
+            <Link to={"/login"} className="signup-page-link">
+              Log in
+            </Link>
+          </button>
         </div>
       </div>
     </div>
