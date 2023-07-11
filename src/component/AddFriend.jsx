@@ -8,7 +8,6 @@ function AddFriend() {
 
   const fetchAllUser = async () => {
     const { allUser } = await backendAPIInstance.getUser();
-
     setAllUser(allUser);
   };
 
@@ -38,11 +37,7 @@ function AddFriend() {
           <label>User: </label>
           <select id="user" name="user">
             {allUser.map((oneUser) => {
-              return (
-                <option key={oneUser._id} user={oneUser.username}>
-                  {oneUser.username}
-                </option>
-              );
+              return <option key={oneUser._id}>{oneUser.username}</option>;
             })}
           </select>
           <button type="submit">+</button>
