@@ -72,11 +72,7 @@ export class BackendAPI {
 
   async searchEvents(startDate) {
     try {
-      const { data } = await axios.get(`api/search`, {
-        params: {
-          startDate,
-        },
-      });
+      const { data } = await this.api.post(`/api/search`, startDate);
       return data;
     } catch (err) {
       console.error("ERROR while fetching all events from db:", err);

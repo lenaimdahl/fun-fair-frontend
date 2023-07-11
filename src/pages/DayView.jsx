@@ -1,6 +1,6 @@
 import "../css/calendar.css";
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NewText from "../component/NewText";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -9,7 +9,6 @@ import { BackendAPI } from "../api/BackendAPIHandler";
 function DayView() {
   const [showTextSection, setShowTextSection] = useState(false);
   const [events, setEvents] = useState([]);
-  const [currentDate, setCurrentDate] = useState();
   const [startDate, setStartDate] = useState(new Date());
 
   const backendAPIInstance = new BackendAPI();
@@ -22,46 +21,45 @@ function DayView() {
     setShowTextSection(false);
   };
 
-  useEffect(() => {
-    (async () => {
-      const data = await backendAPIInstance.searchEvents(currentDate);
-      console.log("events", data.events);
-      const convertedData = data.events.map((event) => {
-        return {
-          id: event._id,
-          name: event.title,
-          title: event.image,
-          startDate: new Date(event.timestamp),
-          endDate: new Date(event.timestamp).setHours(0, 30, 0, 0),
-        };
-      });
-      setEvents(convertedData);
-    })();
-  }, []);
+  const handleDateChange = async (date) => {
+    setStartDate(date);
+    console.log(typeof startDate);
+    const data = await backendAPIInstance.searchEvents(startDate);
+    console.log("events", data.allEvents);
+    setEvents(data.allEvents);
+  };
+
+  // useEffect(() => {
+  //   (async () => {
+
+  //   })();
+  // }, []);
 
   return (
     <div className="table-container">
-      <DatePicker
-        showIcon
-        selected={startDate}
-        onChange={(date) => setStartDate(date)}
-      />
+      <DatePicker showIcon selected={startDate} onChange={handleDateChange} />
       <table>
-        <tr>
-          <th>Today</th>
-        </tr>
-        <tr>
-          Your events:
-          {/* {events.map((event) => (
-            <div key={event.id}>
-              <img src={event.image} alt={event.name} />
-              <span>{event.name}</span>
-            </div> */}
-          ))}
-        </tr>
-        <tr>
-          <td>your Entry:</td>
-        </tr>
+        <thead>
+          <tr>
+            <th>Today</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              Your events:
+              {events.map((event) => (
+                <div key={event.id}>
+                  <img src={event.image} alt={event.name} />
+                  <span>{event.name}</span>
+                </div>
+              ))}
+            </td>
+          </tr>
+          <tr>
+            <td>your Entry:</td>
+          </tr>
+        </tbody>
       </table>
 
       {!showTextSection && (
