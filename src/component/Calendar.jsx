@@ -62,13 +62,13 @@ function Calendar() {
     <div>
       <div className="calendar-container">
         <Paper>
-          <Scheduler data={data} height={500}>
+          <Scheduler data={data} height={400}>
             <ViewState
               currentDate={currentDate}
               onCurrentDateChange={(newDate) => setCurrentDate(newDate)}
             />
             <EditingState onCommitChanges={commitChanges} />
-            <WeekView />
+            <WeekView cellDuration={240} />
             <Toolbar />
             <DateNavigator />
             <TodayButton />
