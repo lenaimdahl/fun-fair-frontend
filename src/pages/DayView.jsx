@@ -9,6 +9,7 @@ import { BackendAPI } from "../api/BackendAPIHandler";
 function DayView() {
   const [showTextSection, setShowTextSection] = useState(false);
   const [events, setEvents] = useState([]);
+  const [entries, setEntries] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
 
   const backendAPIInstance = new BackendAPI();
@@ -22,18 +23,19 @@ function DayView() {
   };
 
   const handleDateChange = async (date) => {
-    setStartDate(date);
-    console.log(typeof startDate);
-    const data = await backendAPIInstance.searchEvents(startDate);
-    console.log("events", data.allEvents);
-    setEvents(data.allEvents);
+    const dateAtMidnight = new Date(date);
+    dateAtMidnight.setHours(0, 0, 0, 0);
+    setStartDate(dateAtMidnight);
+    const { allEvents, allEntries } = await backendAPIInstance.searchEvents(
+      dateAtMidnight
+    );
+    setEvents(allEvents);
+    setEntries(allEntries);
   };
 
-  // useEffect(() => {
-  //   (async () => {
-
-  //   })();
-  // }, []);
+  useEffect(() => {
+    handleDateChange(startDate);
+  }, []);
 
   return (
     <div className="table-container">
@@ -50,14 +52,20 @@ function DayView() {
               Your events:
               {events.map((event) => (
                 <div key={event.id}>
-                  <img src={event.image} alt={event.name} />
-                  <span>{event.name}</span>
+                  {event.image} {event.title}
                 </div>
               ))}
             </td>
           </tr>
           <tr>
-            <td>your Entry:</td>
+            <td>
+              Your Entries:
+              {entries.map((entry) => (
+                <div key={entry.id}>
+                  {entry.image} {entry.title}
+                </div>
+              ))}
+            </td>
           </tr>
         </tbody>
       </table>
