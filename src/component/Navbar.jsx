@@ -1,4 +1,5 @@
 import "../css/navbar.scss";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -10,17 +11,19 @@ function Navbar() {
         <li className="menu-item">
           <a href="/about">About</a>
         </li>
-         <li className="menu-item"> 
+        <li className="menu-item">
           <a href="/profile">Profile</a>
-          {/* <ol className="sub-menu">
+          <ol className="sub-menu">
             <li className="menu-item">
-              <a href="#0">Big Widgets</a>
+              <Link to={"/day"} className="signup-page-link">
+                Day View
+              </Link>
             </li>
             <li className="menu-item">
               <a href="/weekly-mood">weekly mood</a>
             </li>
-          </ol> */}
-        </li> 
+          </ol>
+        </li>
         <li className="menu-item">
           <a href="/login">Login</a>
         </li>

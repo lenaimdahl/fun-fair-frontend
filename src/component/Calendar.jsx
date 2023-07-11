@@ -6,7 +6,7 @@ import {
   DateNavigator,
   TodayButton,
   Scheduler,
-  WeekView,
+  MonthView,
   Appointments,
   AppointmentTooltip,
   ConfirmationDialog,
@@ -26,12 +26,12 @@ function Calendar() {
       const convertedData = data.events.map((event) => {
         return {
           id: event._id,
+          name: event.name,
           title: event.image,
           startDate: new Date(event.timestamp),
           endDate: new Date(event.timestamp).setHours(0, 30, 0, 0),
         };
       });
-      console.log(convertedData);
       setData(convertedData);
     })();
   }, []);
@@ -62,13 +62,13 @@ function Calendar() {
     <div>
       <div className="calendar-container">
         <Paper>
-          <Scheduler data={data} height={400}>
+          <Scheduler data={data} height={500}>
             <ViewState
               currentDate={currentDate}
               onCurrentDateChange={(newDate) => setCurrentDate(newDate)}
             />
             <EditingState onCommitChanges={commitChanges} />
-            <WeekView cellDuration={240} />
+            <MonthView />
             <Toolbar />
             <DateNavigator />
             <TodayButton />
