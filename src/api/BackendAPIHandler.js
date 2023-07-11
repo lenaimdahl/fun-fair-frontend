@@ -65,8 +65,11 @@ export class BackendAPI {
     return data;
   }
 
-  async saveText(newText) {
-    const { data } = await this.api.post("/api/text", newText);
+  async saveText(text, currentDay) {
+    const { data } = await this.api.post("/api/text", {
+      text,
+      timestamp: currentDay,
+    });
     return data;
   }
 

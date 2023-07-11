@@ -15,12 +15,7 @@ function NewText() {
     const currentDay = new Date().setHours(0, 0, 0, 0);
 
     try {
-      let newText = {
-        text,
-        timestamp: currentDay,
-      };
-
-      await backendAPIInstance.saveText(newText);
+      await backendAPIInstance.saveText(text, currentDay);
       setText("");
     } catch (error) {
       console.error(error);
