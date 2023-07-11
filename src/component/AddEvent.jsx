@@ -7,7 +7,6 @@ function AddEvent() {
 
   const fetchAllEvents = async () => {
     const fetchedEvents = await backendAPIInstance.getEvents();
-    console.log("All events from DB", fetchedEvents);
     const fetchedEventsArray = fetchedEvents.allEvents;
     setAllEvents(fetchedEventsArray);
   };
@@ -16,14 +15,11 @@ function AddEvent() {
     fetchAllEvents();
   }, []);
 
-  const handleAddToCalendar = async (e) => {
-    e.preventDefault();
-
-    console.log(e.target[0])
+  const handleAddToCalendar = async (event) => {
+    event.preventDefault();
 
     const currentDay = new Date().setHours(0, 0, 0, 0);
-
-    const selectEl = e.target[0].options[e.target[0].selectedIndex];
+    const selectEl = event.target[0].options[event.target[0].selectedIndex];
 
     try {
       let eventToAdd = {
@@ -32,11 +28,7 @@ function AddEvent() {
         points: selectEl.getAttribute("points"),
         timestamp: currentDay,
       };
-
-      console.log("EVENT TO ADD TO CAL", eventToAdd);
-
       await backendAPIInstance.addEventToCal(eventToAdd);
-
     } catch (error) {
       console.error(error);
     }
@@ -45,13 +37,19 @@ function AddEvent() {
   return (
     <div className="add-event-box">
       <h2>Add an Event for today</h2>
-      <form onSubmit={handleAddToCalendar} className="add-event-today-form"> 
+      <form onSubmit={handleAddToCalendar} className="add-event-today-form">
         <label>events: </label>
-       {/* these need to be populated from our database */}
+        {/* these need to be populated from our database */}
         <select id="event" name="event">
           {allEvents.map((oneEvent) => {
             return (
-              <option key={oneEvent.value} value={oneEvent.value} points={oneEvent.points} title={oneEvent.title} image={oneEvent.image} >
+              <option
+                key={oneEvent.value}
+                value={oneEvent.value}
+                points={oneEvent.points}
+                title={oneEvent.title}
+                image={oneEvent.image}
+              >
                 {oneEvent.image} {oneEvent.title} {oneEvent.points} points
               </option>
             );

@@ -23,6 +23,17 @@ export class BackendAPI {
       return config;
     });
   }
+
+  async getUser() {
+    const { data } = await this.api.get("/api/user");
+    return data;
+  }
+
+  async addFriendToUser(userToAdd) {
+    const { data } = await this.api.post("/api/user", userToAdd);
+    return data;
+  }
+
   async saveMood(type, timestamp) {
     const { data } = await this.api.post("/api/mood", {
       title: type,
