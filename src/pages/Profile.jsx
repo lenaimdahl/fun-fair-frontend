@@ -7,6 +7,7 @@ import MoodSelection from "../component/MoodSelection";
 import WeeklyMood from "../component/WeeklyMood";
 import NewEvent from "../component/NewEvent";
 import AddFriend from "../component/AddFriend";
+import ShowFriends from "../component/ShowFriends"
 
 function Profile() {
   const { user } = useContext(AuthContext);
@@ -35,6 +36,7 @@ function Profile() {
             </div>
             <AddFriend />
           </div>
+          <ShowFriends />
         </div>
       </div>
     </div>

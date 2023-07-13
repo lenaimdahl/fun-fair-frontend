@@ -4,7 +4,6 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { BackendAPI } from "../api/BackendAPIHandler";
 import AddText from "../component/AddText";
-import ShowFriends from "../component/ShowFriends";
 
 function DayView() {
   const [events, setEvents] = useState([]);
@@ -31,7 +30,6 @@ function DayView() {
 
   return (
     <div className="day-view-flex">
-      <ShowFriends />
       <div className="day-view-container">
         <div className="date-picker-div">
           <h3>Pick a date</h3>
