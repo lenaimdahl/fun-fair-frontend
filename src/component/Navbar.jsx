@@ -25,7 +25,7 @@ function Navbar() {
               <Link to={"/day-view"}>Day View</Link>
             </li>
             <li className="menu-item">
-              <a href="/weekly-mood">Weekly mood</a>
+             <Link to={"/weekly-mood"}>Weekly mood</Link>
             </li>
           </ol>
         </li>
@@ -44,10 +44,10 @@ function Navbar() {
         ) : (
           <Fragment>
             <li className="menu-item">
-              <a href="/login">Login</a>
+              <a href="/login">Log in</a>
             </li>
             <li className="menu-item">
-              <a href="/signup">Signup</a>
+              <a href="/signup">Sign up</a>
             </li>
           </Fragment>
         )}

@@ -32,7 +32,7 @@ function Profile() {
           </button>
         </Link>
       </div>
-      <WeeklyMood />
+      
     </div>
   );
 }
