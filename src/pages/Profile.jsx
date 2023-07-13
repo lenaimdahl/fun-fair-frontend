@@ -9,7 +9,7 @@ import NewEvent from "../component/NewEvent";
 import AddFriend from "../component/AddFriend";
 
 function Profile() {
-  const { logOutUser, user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   return (
     <div className="profile-page">
@@ -21,9 +21,6 @@ function Profile() {
           <MoodSelection />
           <AddEvent />
           <NewEvent />
-          <button id="btn-logout" onClick={logOutUser}>
-            Log out
-          </button>
         </div>
       </div>
       <div>

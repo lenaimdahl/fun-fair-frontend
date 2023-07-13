@@ -7,12 +7,11 @@ function Login() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
+  const { setToken, authenticateUser, setIsLoggedIn } = useContext(AuthContext);
 
   const handleEmail = (event) => setEmail(event.target.value);
   const handlePassword = (event) => setPassword(event.target.value);
   const navigate = useNavigate();
-
-  const { setToken, authenticateUser, setIsLoggedIn } = useContext(AuthContext);
 
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
@@ -58,9 +57,11 @@ function Login() {
       <div className="log-in-bottom">
         <p>Don't have an account yet?</p>
         <button>
-          <Link to={"/"} className="log-in-page-link"> Sign Up</Link>
+          <Link to={"/"} className="log-in-page-link">
+            {" "}
+            Sign Up
+          </Link>
         </button>
-        
       </div>
     </div>
   );

@@ -1,7 +1,14 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+
 import "../css/navbar.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Fragment, useContext } from "react";
+import { AuthContext } from "../context/auth.context";
 
 function Navbar() {
+  const { isLoggedIn, logOutUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   return (
     <nav className="menu">
       <ol>
@@ -18,16 +25,32 @@ function Navbar() {
               <Link to={"/day-view"}>Day View</Link>
             </li>
             <li className="menu-item">
-              <a href="/weekly-mood">weekly mood</a>
+              <a href="/weekly-mood">Weekly mood</a>
             </li>
           </ol>
         </li>
-        <li className="menu-item">
-          <a href="/login">Login</a>
-        </li>
-        <li className="menu-item">
-          <a href="/signup">Signup</a>
-        </li>
+        {isLoggedIn ? (
+          <li className="menu-item">
+            <a
+              href="#"
+              onClick={() => {
+                logOutUser();
+                navigate("/");
+              }}
+            >
+              Logout
+            </a>
+          </li>
+        ) : (
+          <Fragment>
+            <li className="menu-item">
+              <a href="/login">Login</a>
+            </li>
+            <li className="menu-item">
+              <a href="/signup">Signup</a>
+            </li>
+          </Fragment>
+        )}
       </ol>
     </nav>
   );

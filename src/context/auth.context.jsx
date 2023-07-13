@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import { loadAuthToken, saveAuthToken, removeToken } from "../util";
 
 const AuthContext = createContext();
 
@@ -9,11 +10,11 @@ const AuthContextWrapper = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const setToken = (token) => {
-    localStorage.setItem("authToken", token);
+    saveAuthToken(token);
   };
 
   const authenticateUser = async () => {
-    const gotToken = localStorage.getItem("authToken");
+    const gotToken = loadAuthToken();
     if (gotToken) {
       try {
         const { data } = await axios.get("http://localhost:5005/auth/verify", {
@@ -34,15 +35,9 @@ const AuthContextWrapper = (props) => {
     }
   };
 
-  const removeToken = () => {
-    localStorage.removeItem("authToken");
-  };
-
   const logOutUser = () => {
-    // const navigate = useNavigate();
     removeToken();
     authenticateUser();
-    // navigate("/");
   };
 
   useEffect(() => {
