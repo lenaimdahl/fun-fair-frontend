@@ -42,7 +42,6 @@ function ShowFriends() {
               );
             })}
           </select>
-          <button type="submit">+</button>
         </form>
       </div>
     </div>
