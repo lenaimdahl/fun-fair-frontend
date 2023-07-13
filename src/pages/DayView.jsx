@@ -20,6 +20,7 @@ function DayView() {
       dateAtMidnight
     );
     setEvents(allEvents);
+    console.log(allEvents);
     setEntries(allEntries);
   };
 
@@ -41,23 +42,27 @@ function DayView() {
         </div>
         <div className="day-entries">
           <h3>Your events</h3>
-          <p>
-            {events.map((event) => (
-              <div key={event._id}>
+          {events.length > 0 ? (
+            events.map((event) => (
+              <p key={event._id}>
                 {event.image} {event.title}
-              </div>
-            ))}
-          </p>
+              </p>
+            ))
+          ) : (
+            <p>No events to display</p>
+          )}
         </div>
         <div className="day-entries">
           <h3>Your entries</h3>
-          <p>
+          {entries.length > 0 ? (
             <ul>
               {entries.map((entry) => (
                 <li key={entry._id}>{entry.text}</li>
               ))}
             </ul>
-          </p>
+          ) : (
+            <p>No entries to display</p>
+          )}
         </div>
       </div>
       <AddText />
