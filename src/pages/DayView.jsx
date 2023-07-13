@@ -1,25 +1,16 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import NewText from "../component/NewText";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { BackendAPI } from "../api/BackendAPIHandler";
+import AddText from "../component/AddText";
 
 function DayView() {
-  const [showTextSection, setShowTextSection] = useState(false);
   const [events, setEvents] = useState([]);
   const [entries, setEntries] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const backendAPIInstance = new BackendAPI();
-
-  const handleAddTextClick = () => {
-    setShowTextSection(true);
-  };
-
-  const handleCloseTextClick = () => {
-    setShowTextSection(false);
-  };
 
   const handleDateChange = async (date) => {
     const dateAtMidnight = new Date(date);
@@ -69,20 +60,7 @@ function DayView() {
           </p>
         </div>
       </div>
-
-      {!showTextSection && (
-        <button className="button" onClick={handleAddTextClick}>
-          <p>Add a new Text Entry for today</p>
-        </button>
-      )}
-      {showTextSection && (
-        <div>
-          <button onClick={handleCloseTextClick}>
-            <p>Close</p>
-          </button>
-          <NewText />
-        </div>
-      )}
+      <AddText />
     </div>
   );
 }
