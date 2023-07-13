@@ -13,8 +13,9 @@ function Profile() {
 
   return (
     <div className="profile-page">
-      <h2>Welcome {user && user.username}</h2>
-      <AddFriend />
+      <div className="welcome-box">
+        <h2>Welcome {user && user.username}</h2>
+      </div>
       <div className="calendar-flex">
         <Calendar />
         <div className="right-side-menu">
@@ -23,16 +24,19 @@ function Profile() {
             <AddEvent />
             <NewEvent />
           </div>
+          <div className="text-friend-box">
+            <div className="add-text-box">
+              <h3>
+                Add a text for today <br></br>& see todays activities
+              </h3>
+              <Link to={"/day-view"}>
+                <button>➡️</button>
+              </Link>
+            </div>
+            <AddFriend />
+          </div>
         </div>
       </div>
-      <div>
-        <Link to={"/day-view"}>
-          <button className="button">
-            Add a text for today & see todays activities
-          </button>
-        </Link>
-      </div>
-      
     </div>
   );
 }
