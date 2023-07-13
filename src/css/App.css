@@ -391,13 +391,16 @@ body {
   color: black;
 }
 
-.new-text-box {
+.new-text-container {
   display: flex;
   justify-content: center;
 }
-.new-text-box input {
-  height: 400px;
-  width: 400px;
+
+.new-text-container input {
+  border-radius: 10px;
+  height: 200px;
+  width: 300px;
+  margin-right: 10px;
 }
 
 footer {

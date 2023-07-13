@@ -24,9 +24,8 @@ function NewText() {
   return (
     <div>
       <h2>Add your text</h2>
-      <div className="new-text-box">
+      <div className="new-text-container">
         <form onSubmit={handleAddText}>
-          <label>text:</label>
           <input type="text" name="text" value={text} onChange={handleText} />
           <button className="button" type="submit">
             Add!
