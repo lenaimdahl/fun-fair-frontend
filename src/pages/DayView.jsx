@@ -1,4 +1,3 @@
-import "../css/calendar.css";
 import React from "react";
 import { useState, useEffect } from "react";
 import NewText from "../component/NewText";
@@ -39,38 +38,37 @@ function DayView() {
   }, []);
 
   return (
-    <div className="table-container">
-      <DatePicker
-        showIcon
-        selected={selectedDate}
-        onChange={handleDateChange}
-      />
-      <table>
-        <thead>
-          <tr>
-            <th>Your events</th>
-            <th>Your entries</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              {events.map((event) => (
-                <div key={event._id}>
-                  {event.image} {event.title}
-                </div>
+    <div className="day-view-flex">
+      <div className="day-view-container">
+        <div className="date-picker-div">
+          <h3>Pick a date</h3>
+          <DatePicker
+            showIcon
+            selected={selectedDate}
+            onChange={handleDateChange}
+          />
+        </div>
+        <div className="day-entries">
+          <h3>Your events</h3>
+          <p>
+            {events.map((event) => (
+              <div key={event._id}>
+                {event.image} {event.title}
+              </div>
+            ))}
+          </p>
+        </div>
+        <div className="day-entries">
+          <h3>Your entries</h3>
+          <p>
+            <ul>
+              {entries.map((entry) => (
+                <li key={entry._id}>{entry.text}</li>
               ))}
-            </td>
-            <td>
-              <ul>
-                {entries.map((entry) => (
-                  <li key={entry._id}>{entry.text}</li>
-                ))}
-              </ul>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </ul>
+          </p>
+        </div>
+      </div>
 
       {!showTextSection && (
         <button className="button" onClick={handleAddTextClick}>

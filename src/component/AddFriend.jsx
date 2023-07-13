@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { BackendAPI } from "../api/BackendAPIHandler";
-import "../css/day-view.css";
 
 function AddFriend() {
   const [allUsers, setAllUsers] = useState([]);
