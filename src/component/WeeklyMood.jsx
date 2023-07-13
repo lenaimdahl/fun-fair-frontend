@@ -55,7 +55,7 @@ function WeeklyMood() {
         <div>Loading...</div>
       ) : (
         <div className="weekly-mood-box">
-          <h2>current week</h2>
+          <h2>Your mood charts</h2>
           <div className="all-charts-box">
             <LineChart moods={moods} />
             <DoughnutChart moods={moods} />

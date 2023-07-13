@@ -9,6 +9,7 @@ import Profile from "./pages/Profile";
 import DayView from "./pages/DayView";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import WeeklyMoodPage from "./pages/WeeklyMoodPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/day-view" element={<DayView />} />
+        <Route path="/weekly-mood" element={<WeeklyMoodPage/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<NotFound />} />
