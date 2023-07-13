@@ -150,7 +150,6 @@ function WeekTable({ moods }) {
           pointStyle: pointStyles,
           borderColor: "#D9FDED",
           backgroundColor: "#D9FDED33",
-          fill: true,
         },
       ],
     });

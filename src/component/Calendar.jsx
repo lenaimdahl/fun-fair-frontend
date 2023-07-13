@@ -22,20 +22,19 @@ function Calendar() {
   useEffect(() => {
     (async () => {
       const data = await backendAPIInstance.getEventsByUser();
-      console.log("events", data.events);
       const convertedData = data.events.map((event) => {
         return {
           id: event._id,
+          name: event.name,
           title: event.image,
           startDate: new Date(event.timestamp),
           endDate: new Date(event.timestamp).setHours(0, 30, 0, 0),
         };
       });
-      console.log(convertedData);
       setData(convertedData);
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
 
   const commitChanges = ({ added, changed, deleted }) => {
     let currentData = data;
@@ -63,7 +62,7 @@ function Calendar() {
     <div>
       <div className="calendar-container">
         <Paper>
-          <Scheduler data={data} height={600}>
+          <Scheduler data={data} height={500}>
             <ViewState
               currentDate={currentDate}
               onCurrentDateChange={(newDate) => setCurrentDate(newDate)}

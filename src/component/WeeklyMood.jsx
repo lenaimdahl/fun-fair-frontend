@@ -46,6 +46,7 @@ function WeeklyMood() {
       }
     };
     fetchMoods();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
