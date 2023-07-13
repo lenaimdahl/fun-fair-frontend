@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState } from "react";
 import { BackendAPI } from "../api/BackendAPIHandler";
 
@@ -24,7 +23,7 @@ function NewText() {
 
   return (
     <div>
-      <h2>Add you text </h2>
+      <h2>Add your text</h2>
       <div className="new-text-box">
         <form onSubmit={handleAddText}>
           <label>text:</label>

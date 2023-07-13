@@ -13,6 +13,7 @@ function AddEvent() {
 
   useEffect(() => {
     fetchAllEvents();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleAddToCalendar = async (event) => {
@@ -22,7 +23,7 @@ function AddEvent() {
     const selectEl = event.target[0].options[event.target[0].selectedIndex];
 
     try {
-      let eventToAdd = {
+      const eventToAdd = {
         title: selectEl.getAttribute("title"),
         image: selectEl.getAttribute("image"),
         points: selectEl.getAttribute("points"),
