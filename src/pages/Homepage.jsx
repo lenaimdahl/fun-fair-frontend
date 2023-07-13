@@ -2,12 +2,10 @@ import { useEffect, useState } from "react";
 import { BoredAPI } from "../api/BoredAPIHandler";
 import { BackendAPI } from "../api/BackendAPIHandler";
 import { Link } from "react-router-dom";
-import Preview from "../component/Preview";
 import CalenderPreview from "../assets/calendar-example.png";
 
 function HomePage() {
   const [activity, setActivity] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
 
   const boredAPIInstance = new BoredAPI();
   const backendAPIInstance = new BackendAPI();
@@ -22,6 +20,7 @@ function HomePage() {
     } else {
       fetchActivity();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const isWithinLast24Hours = (dateString) => {
@@ -41,13 +40,10 @@ function HomePage() {
   };
 
   const sendActivityToBackend = async (activity) => {
-    setIsLoading(true);
     try {
       await backendAPIInstance.saveActivity(activity);
-      setIsLoading(false);
     } catch (error) {
       console.error(error);
-      setIsLoading(false);
     }
   };
 

@@ -5,13 +5,11 @@ const AuthContext = createContext();
 
 const AuthContextWrapper = (props) => {
   const [user, setUser] = useState(null);
-  const [tokenState, setTokenState] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const setToken = (token) => {
     localStorage.setItem("authToken", token);
-    setTokenState(token);
   };
 
   const authenticateUser = async () => {

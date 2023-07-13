@@ -2,22 +2,18 @@ import { BackendAPI } from "../api/BackendAPIHandler";
 import { useState } from "react";
 
 function MoodSelection() {
-  const [isLoading, setIsLoading] = useState(true);
   const [showMoodSelection, setShowMoodSelection] = useState(true);
 
   const backendAPIInstance = new BackendAPI();
 
   const handleMoodSelection = async (type) => {
-    setIsLoading(true);
     //is the timestamp
     const currentDay = new Date().setHours(0, 0, 0, 0);
     try {
       await backendAPIInstance.saveMood(type, currentDay);
       setShowMoodSelection(false);
-      setIsLoading(false);
     } catch (error) {
       console.error(error);
-      setIsLoading(false);
     }
   };
 
