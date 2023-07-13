@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { BackendAPI } from "../api/BackendAPIHandler";
 import AddText from "../component/AddText";
+import ShowFriends from "../component/ShowFriends";
 
 function DayView() {
   const [events, setEvents] = useState([]);
@@ -20,7 +21,6 @@ function DayView() {
       dateAtMidnight
     );
     setEvents(allEvents);
-    console.log(allEvents);
     setEntries(allEntries);
   };
 
@@ -31,6 +31,7 @@ function DayView() {
 
   return (
     <div className="day-view-flex">
+      <ShowFriends />
       <div className="day-view-container">
         <div className="date-picker-div">
           <h3>Pick a date</h3>
@@ -55,11 +56,11 @@ function DayView() {
         <div className="day-entries">
           <h3>Your entries</h3>
           {entries.length > 0 ? (
-            <ul>
+            <p>
               {entries.map((entry) => (
                 <li key={entry._id}>{entry.text}</li>
               ))}
-            </ul>
+            </p>
           ) : (
             <p>No entries to display</p>
           )}
