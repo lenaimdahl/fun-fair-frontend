@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { BackendAPI } from "../api/BackendAPIHandler";
+import "../css/day-view.css";
 
 function AddFriend() {
   const [allUsers, setAllUsers] = useState([]);
@@ -30,7 +31,6 @@ function AddFriend() {
   return (
     <div>
       <div>
-        <h2>Add a friend</h2>
         <form onSubmit={handleAddFriends} className="add-event-today-form">
           <label>User: </label>
           <select id="user" name="user">

@@ -21,7 +21,7 @@ function Signup() {
     axios
       .post(`http://localhost:5005/auth/signup`, requestBody)
       .then(() => {
-        navigate("/profile");
+        navigate("/login");
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;
@@ -55,7 +55,9 @@ function Signup() {
       <div className="signup-bottom">
         <p>Already have an account?</p>
         <button>
-          <Link to={"/login"} className="signup-page-link">Log in</Link>
+          <Link to={"/login"} className="signup-page-link">
+            Log in
+          </Link>
         </button>
       </div>
     </div>
