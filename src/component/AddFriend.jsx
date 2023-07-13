@@ -7,8 +7,8 @@ function AddFriend() {
   const backendAPIInstance = new BackendAPI();
 
   const fetchAllUser = async () => {
-    const { allUsers } = await backendAPIInstance.getUsers();
-    setAllUsers(allUsers);
+    const { users } = await backendAPIInstance.getNonFriends();
+    setAllUsers(users);
   };
 
   useEffect(() => {

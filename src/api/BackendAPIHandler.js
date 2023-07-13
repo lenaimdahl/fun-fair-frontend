@@ -24,8 +24,8 @@ export class BackendAPI {
     });
   }
 
-  async getUsers() {
-    const { data } = await this.api.get("/api/users");
+  async getNonFriends() {
+    const { data } = await this.api.get("/api/nonfriends");
     return data;
   }
 
