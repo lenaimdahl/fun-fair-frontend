@@ -7,6 +7,7 @@ body {
   /* margin: 0 !important; */
   margin-bottom: 100px;
 }
+
 .button {
   color: white;
   margin-top: 20px;
@@ -16,6 +17,7 @@ body {
   padding: 20px 40px;
   font-size: 12pt;
 }
+
 .calendar-flex {
   display: flex;
   flex-direction: row;
@@ -74,6 +76,7 @@ body {
   background-color: #ffb59a;
   cursor: pointer;
 }
+
 .logout-container {
   margin-top: 40px;
   text-align: center;
@@ -87,6 +90,7 @@ body {
   padding: 20px 40px;
   font-size: 12pt;
 }
+
 .logout-button:hover {
   background-color: #ffb59a;
   cursor: pointer;
@@ -139,6 +143,7 @@ body {
   text-align: center;
 }
 
+.new-event-form button:hover ,
 .signup-page form button,
 .login-page form button,
 #btn-logout {

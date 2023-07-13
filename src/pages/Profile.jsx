@@ -19,8 +19,10 @@ function Profile() {
         <Calendar />
         <div className="right-side-menu">
           <MoodSelection />
-          <AddEvent />
-          <NewEvent />
+          <div className="event-side-pannel">
+            <AddEvent />
+            <NewEvent />
+          </div>
         </div>
       </div>
       <div>
