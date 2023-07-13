@@ -55,7 +55,9 @@ function Signup() {
       <div className="signup-bottom">
         <p>Already have an account?</p>
         <button>
-          <Link to={"/login"} className="signup-page-link">Log in</Link>
+          <Link to={"/login"} className="signup-page-link">
+            Log in
+          </Link>
         </button>
       </div>
     </div>

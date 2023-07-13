@@ -29,6 +29,11 @@ export class BackendAPI {
     return data;
   }
 
+  async getFriends() {
+    const { data } = await this.api.get("/api/friends");
+    return data;
+  }
+
   async addFriendToUser(userId) {
     const { data } = await this.api.post("/api/addFriend", {
       userId,

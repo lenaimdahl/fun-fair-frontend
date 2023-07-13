@@ -458,13 +458,16 @@ body {
   color: black;
 }
 
-.new-text-box {
+.new-text-container {
   display: flex;
   justify-content: center;
 }
-.new-text-box input {
-  height: 400px;
-  width: 400px;
+
+.new-text-container input {
+  border-radius: 10px;
+  height: 200px;
+  width: 300px;
+  margin-right: 10px;
 }
 
 footer {
@@ -493,4 +496,28 @@ footer p {
 /* calendar */
 .css-3nejl.Appointment-appointment {
   background-color: transparent !important;
+}
+
+/* DayView */
+.day-view-container {
+  padding: 10px;
+  color: black;
+  margin: 0 10px;
+  background-color: rgba(255, 255, 255, 0.571);
+  border-radius: 30px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.653),
+    0 6px 20px 0 rgba(0, 0, 0, 0.432);
+}
+
+.day-entries {
+  text-align: center;
+  border-top: 2px solid #fc7fb1;
+}
+
+.date-picker-div {
+  margin: 20px 0;
+  text-align: center;
+}
+.day-view-flex {
+  text-align: center;
 }
