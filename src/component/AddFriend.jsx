@@ -2,28 +2,25 @@ import { useEffect, useState } from "react";
 import { BackendAPI } from "../api/BackendAPIHandler";
 
 function AddFriend() {
-  const [allUser, setAllUser] = useState([]);
+  const [allUsers, setAllUsers] = useState([]);
 
   const backendAPIInstance = new BackendAPI();
 
   const fetchAllUser = async () => {
-    const { allUser } = await backendAPIInstance.getUser();
-    setAllUser(allUser);
+    const { allUsers } = await backendAPIInstance.getUsers();
+    setAllUsers(allUsers);
   };
 
   useEffect(() => {
     fetchAllUser();
   }, []);
 
-  const handleAddFriends = async (e) => {
-    e.preventDefault();
-
-    const selectEl = e.target[0].options[e.target[0].selectedIndex];
+  const handleAddFriends = async (event) => {
+    event.preventDefault();
+    const selectEl = event.target[0].options[event.target[0].selectedIndex];
+    const userId = selectEl.id;
     try {
-      let userToAdd = {
-        user: selectEl.getAttribute("user"),
-      };
-      await backendAPIInstance.addFriendToUser(userToAdd);
+      await backendAPIInstance.addFriendToUser(userId);
     } catch (error) {
       console.error(error);
     }
@@ -36,8 +33,12 @@ function AddFriend() {
         <form onSubmit={handleAddFriends} className="add-event-today-form">
           <label>User: </label>
           <select id="user" name="user">
-            {allUser.map((oneUser) => {
-              return <option key={oneUser._id}>{oneUser.username}</option>;
+            {allUsers.map((user) => {
+              return (
+                <option id={user._id} key={user._id}>
+                  {user.username}
+                </option>
+              );
             })}
           </select>
           <button type="submit">+</button>

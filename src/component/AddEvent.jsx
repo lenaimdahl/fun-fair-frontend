@@ -44,7 +44,7 @@ function AddEvent() {
           {allEvents.map((oneEvent) => {
             return (
               <option
-                key={oneEvent.value}
+                key={oneEvent._id}
                 value={oneEvent.value}
                 points={oneEvent.points}
                 title={oneEvent.title}
