@@ -10,10 +10,6 @@ function AddText() {
     setShowTextSection(true);
   };
 
-  const handleCloseTextClick = () => {
-    setShowTextSection(false);
-  };
-
   const handleText = (event) => setText(event.target.value);
 
   const handleAddText = async (event) => {
@@ -22,6 +18,7 @@ function AddText() {
     try {
       await backendAPIInstance.saveText(text, currentDay);
       setText("");
+      setShowTextSection(false);
     } catch (error) {
       console.error(error);
     }
@@ -46,11 +43,7 @@ function AddText() {
                   value={text}
                   onChange={handleText}
                 />
-                <button
-                  onClick={handleCloseTextClick}
-                  className="button-add"
-                  type="submit"
-                >
+                <button className="button-add" type="submit">
                   Add!
                 </button>
               </form>
