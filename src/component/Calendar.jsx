@@ -45,21 +45,17 @@ function Calendar() {
               onCurrentDateChange={(newDate) => setCurrentDate(newDate)}
             />
             <MonthView />
-            <Toolbar />{" "}
-            <div className="add-text-box">
-              <h3>
-                Add a text for today <br></br>& see todays activities
-              </h3>
-              <Link to={"/day-view"}>
-                <button>➡️</button>
-              </Link>
-            </div>
+            <Toolbar />
             <DateNavigator />
             <TodayButton />
+
             <Appointments />
           </Scheduler>
         </Paper>
       </div>
+      <Link to={"/day-view"}>
+        <button className="button">Add a text for today</button>
+      </Link>
     </div>
   );
 }
