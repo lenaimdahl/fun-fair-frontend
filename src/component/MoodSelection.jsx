@@ -7,7 +7,6 @@ function MoodSelection() {
   const backendAPIInstance = new BackendAPI();
 
   const handleMoodSelection = async (type) => {
-    //is the timestamp
     const currentDay = new Date().setHours(0, 0, 0, 0);
     try {
       await backendAPIInstance.saveMood(type, currentDay);
