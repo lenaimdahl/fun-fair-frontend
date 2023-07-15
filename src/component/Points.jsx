@@ -37,6 +37,9 @@ function Points() {
 
     fetchEvents();
 
+  }, []);
+
+  useEffect(() => {
     const weekPointsfromEvents = events.map((oneEvent) => {
       return Number(oneEvent.points);
     });
@@ -50,7 +53,7 @@ function Points() {
 
     setWeekPoints(sumOfPoints);
 
-  }, []);
+  }, [events]);
 
 
 
@@ -62,6 +65,7 @@ function Points() {
   // }, []);
 
   const handleChange = (e) => {
+    e.preventDefault();
     setValue(parseInt(e.target.value));
   };
 
@@ -70,7 +74,7 @@ function Points() {
   return (
     <div className="points-box">
       <div>
-        <p>Points collected so far: {weekPoints}</p>
+        <p>Your score: {weekPoints}</p>
         <p>
           Your weekly goal:{" "}
           <input
