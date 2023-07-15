@@ -69,7 +69,8 @@ function Points() {
     setValue(parseInt(e.target.value));
   };
 
-  const inputValue = document.getElementById("input-value");
+  // const inputValue = document.getElementById("input-points").value;
+  // console.log("log of input value", inputValue);
 
   return (
     <div className="points-box">
@@ -78,7 +79,7 @@ function Points() {
         <p>
           Your weekly goal:{" "}
           <input
-            id="input-value"
+            id="input-points"
             type="number"
             value={value}
             onChange={handleChange}
@@ -86,7 +87,7 @@ function Points() {
         </p>
       </div>
       <div className="points-image">
-        {{ weekPoints } > { inputValue } ? <p>🥳</p> : <p>🥴</p>}
+        {/* {{ weekPoints } > { inputValue } ? <p>🥳</p> : <p>🥴</p>} */}
       </div>
     </div>
   );
