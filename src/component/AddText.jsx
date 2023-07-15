@@ -30,7 +30,7 @@ function AddText() {
   return (
     <div>
       {!showTextSection && (
-        <button className="button" onClick={handleAddTextClick}>
+        <button className="button-add" onClick={handleAddTextClick}>
           <p>Add a new Text Entry for today</p>
         </button>
       )}
@@ -48,7 +48,7 @@ function AddText() {
                 />
                 <button
                   onClick={handleCloseTextClick}
-                  className="button"
+                  className="button-add"
                   type="submit"
                 >
                   Add!

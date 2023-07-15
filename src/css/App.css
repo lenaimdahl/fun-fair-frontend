@@ -17,6 +17,15 @@ body {
   padding: 20px 40px;
   font-size: 12pt;
 }
+.button-add {
+  color: white;
+  margin-top: 20px;
+  background-color: #fc7fb1;
+  border: none;
+  border-radius: 40px;
+  padding: 10px;
+  font-size: 12pt;
+}
 
 .button-delete {
   color: white;
@@ -25,7 +34,7 @@ body {
   border-radius: 20px;
   padding: 10px;
   font-size: 10pt;
-  margin: 0 10px;
+  margin: 10px;
 }
 
 .button-edit {
@@ -35,7 +44,7 @@ body {
   border-radius: 20px;
   padding: 10px;
   font-size: 10pt;
-  margin: 0 10px;
+  margin: 10px;
 }
 
 .calendar-flex {
