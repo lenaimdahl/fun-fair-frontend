@@ -1,16 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { BackendAPI } from "../api/BackendAPIHandler";
 
 function DayEntry(props) {
   const [isEditing, setIsEditing] = useState(false);
   const [text, setText] = useState(props.text);
 
-  const handleUpdateEntry = () => {
-    setIsEditing(false);
+  const backendAPIInstance = new BackendAPI();
+
+  const handleUpdateEntry = async () => {
+    try {
+      await backendAPIInstance.updateEntry(props._id, text);
+      setIsEditing(false);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleChangeText = (event) => {
     setText(event.target.value);
   };
+
+  const handleDeleteText = () => {};
+
+  function handleCancelEditing() {
+    setIsEditing(false);
+  }
 
   return (
     <>
@@ -18,6 +32,7 @@ function DayEntry(props) {
         <>
           <input type="text" value={text} onChange={handleChangeText} />
           <button onClick={handleUpdateEntry}>ok</button>
+          <button onClick={handleCancelEditing}>cancel</button>
         </>
       ) : (
         <>
@@ -29,6 +44,7 @@ function DayEntry(props) {
           >
             Update your entry
           </button>
+          <button onClick={handleDeleteText}>delete entry</button>
         </>
       )}
     </>
