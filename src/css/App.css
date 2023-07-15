@@ -18,6 +18,26 @@ body {
   font-size: 12pt;
 }
 
+.button-delete {
+  color: white;
+  background-color: #fa2525;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 10pt;
+  margin: 0 10px;
+}
+
+.button-edit {
+  color: white;
+  background-color: #000000;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 10pt;
+  margin: 0 10px;
+}
+
 .calendar-flex {
   display: flex;
   flex-direction: row;

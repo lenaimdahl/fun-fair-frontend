@@ -45,13 +45,16 @@ function DayEntry(props) {
         <>
           {text}
           <button
+            className="button-edit"
             onClick={() => {
               setIsEditing(true);
             }}
           >
             Update your entry
           </button>
-          <button onClick={handleDeleteText}>delete entry</button>
+          <button className="button-delete" onClick={handleDeleteText}>
+            delete entry
+          </button>
         </>
       )}
     </>
