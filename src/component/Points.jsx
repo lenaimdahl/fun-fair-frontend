@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { BackendAPI } from "../api/BackendAPIHandler";
 
 function Points() {
-
   const [events, setEvents] = useState([]);
   const [weekPoints, setWeekPoints] = useState("");
+  const [value, setValue] = useState(0);
   const backendAPIInstance = new BackendAPI();
 
   useEffect(() => {
@@ -17,7 +17,7 @@ function Points() {
       startDate.setDate(startDate.getDate() - daysUntilMonday); // Start date (Monday) of the week
       const endDate = new Date(startDate);
       endDate.setDate(endDate.getDate() + 6); // End date (Sunday) of the week
-      
+
       // Make an API request or retrieve events from a local data store
       const fetchedEvents = await backendAPIInstance.getEventsByUser();
       const fetchedEventsArray = fetchedEvents.events;
@@ -25,7 +25,7 @@ function Points() {
       console.log("fetched events by user", fetchedEvents);
 
       // Filter events for the week (Monday to Sunday)
-      const weekEvents = fetchedEventsArray.filter(event => {
+      const weekEvents = fetchedEventsArray.filter((event) => {
         const eventDate = new Date(event.timestamp);
         return eventDate >= startDate && eventDate <= endDate;
       });
@@ -38,27 +38,49 @@ function Points() {
     fetchEvents();
   }, []);
 
-  const weekPointsfromEvents = events.map( oneEvent => {
-    return  Number(oneEvent.points);
+  const weekPointsfromEvents = events.map((oneEvent) => {
+    return Number(oneEvent.points);
   });
 
-  const sumOfPoints = weekPointsfromEvents.reduce((accumulator, currentValue) => {
-    return accumulator + currentValue;
-  }, 0);
+  const sumOfPoints = weekPointsfromEvents.reduce(
+    (accumulator, currentValue) => {
+      return accumulator + currentValue;
+    },
+    0
+  );
 
-//   let initialPointCount= 0;
-//   let weekPointsSum = 0 + weekPointsfromEvents;
+  //   let initialPointCount= 0;
+  //   let weekPointsSum = 0 + weekPointsfromEvents;
 
   useEffect(() => {
     setWeekPoints(sumOfPoints);
-  },[]);
+  }, []);
 
-    return (
+  const handleChange = (e) => {
+    setValue(parseInt(e.target.value));
+  };
+
+  const inputValue = document.getElementById("input-value");
+
+  return (
+    <div className="points-box">
       <div>
         <p>Points collected so far: {weekPoints}</p>
-     
+        <p>
+          Your weekly goal:{" "}
+          <input
+            id="input-value"
+            type="number"
+            value={value}
+            onChange={handleChange}
+          />
+        </p>
       </div>
-    );
-  }
-  
-  export default Points;
+      <div className="points-image">
+        {{ weekPoints } > { inputValue } ? <p>🥳</p> : <p>🥴</p>}
+      </div>
+    </div>
+  );
+}
+
+export default Points;

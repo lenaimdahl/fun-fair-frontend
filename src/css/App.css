@@ -21,7 +21,6 @@ body {
 
 .calendar-flex {
   display: flex;
-  flex-direction: row;
   /* flex-wrap: wrap; */
   justify-content: center;
   gap: 30px;
@@ -166,6 +165,29 @@ body {
   padding: 0px;
   font-size: 30px;
   height: 35px;
+}
+
+.points-box {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.516);
+  border-radius: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.points-box p {
+  color: black;
+  margin: 0px;
+  padding: 0px;
+}
+
+.points-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
 }
 
 .add-text-box,
@@ -416,6 +438,7 @@ body {
   margin-left: 20px;
 }
 
+.points-box input,
 .signup-page form input,
 .login-page form input {
   padding: 10px;
