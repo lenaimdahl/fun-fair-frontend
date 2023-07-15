@@ -9,7 +9,6 @@ function ShowFriends() {
   const fetchFriends = async () => {
     const { friends } = await backendAPIInstance.getFriends();
     setFriends(friends);
-    console.log(friends);
   };
 
   useEffect(() => {

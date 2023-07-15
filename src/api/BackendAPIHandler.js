@@ -32,11 +32,26 @@ export class BackendAPI {
   }
 
   async saveMood(type, timestamp) {
-    const { data } = await this.api.post("/api/mood", {
-      title: type,
-      timestamp: timestamp,
-    });
-    return data;
+    try {
+      const { data } = await this.api.post("/api/mood", {
+        title: type,
+        timestamp: timestamp,
+      });
+      return data;
+    } catch (error) {
+      throw new Error(error.response.data.message);
+    }
+  }
+
+  async getMoodForDay(timestamp) {
+    try {
+      const { data } = await this.api.get("/api/moods", {
+        params: { timestamp },
+      });
+      return data;
+    } catch (error) {
+      throw new Error(error.response.data.message);
+    }
   }
 
   async getMoods() {
