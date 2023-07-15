@@ -8,6 +8,7 @@ import WeeklyMood from "../component/WeeklyMood";
 import NewEvent from "../component/NewEvent";
 import AddFriend from "../component/AddFriend";
 import ShowFriends from "../component/ShowFriends"
+import Points from "../component/Points";
 
 function Profile() {
   const { user } = useContext(AuthContext);
@@ -37,6 +38,7 @@ function Profile() {
             <AddFriend />
           </div>
           <ShowFriends />
+          <Points/>
         </div>
       </div>
     </div>
