@@ -10,7 +10,6 @@ import DayView from "./pages/DayView";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import WeeklyMoodPage from "./pages/WeeklyMoodPage";
-import UpdateText from "./pages/UpdateText";
 
 function App() {
   return (
@@ -22,7 +21,6 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/day-view" element={<DayView />} />
         <Route path="/weekly-mood" element={<WeeklyMoodPage />} />
-        <Route path="/update-entry" element={<UpdateText />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<NotFound />} />
