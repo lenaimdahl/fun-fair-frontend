@@ -36,25 +36,30 @@ function Points() {
     };
 
     fetchEvents();
+
+    const weekPointsfromEvents = events.map((oneEvent) => {
+      return Number(oneEvent.points);
+    });
+  
+    const sumOfPoints = weekPointsfromEvents.reduce(
+      (accumulator, currentValue) => {
+        return accumulator + currentValue;
+      },
+      0
+    );
+
+    setWeekPoints(sumOfPoints);
+
   }, []);
 
-  const weekPointsfromEvents = events.map((oneEvent) => {
-    return Number(oneEvent.points);
-  });
 
-  const sumOfPoints = weekPointsfromEvents.reduce(
-    (accumulator, currentValue) => {
-      return accumulator + currentValue;
-    },
-    0
-  );
 
   //   let initialPointCount= 0;
   //   let weekPointsSum = 0 + weekPointsfromEvents;
 
-  useEffect(() => {
-    setWeekPoints(sumOfPoints);
-  }, []);
+  // useEffect(() => {
+  //   setWeekPoints(sumOfPoints);
+  // }, []);
 
   const handleChange = (e) => {
     setValue(parseInt(e.target.value));
