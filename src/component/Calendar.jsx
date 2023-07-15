@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Paper from "@mui/material/Paper";
+import { Link } from "react-router-dom";
 import { ViewState } from "@devexpress/dx-react-scheduler";
 import {
   Toolbar,
@@ -44,7 +45,15 @@ function Calendar() {
               onCurrentDateChange={(newDate) => setCurrentDate(newDate)}
             />
             <MonthView />
-            <Toolbar />
+            <Toolbar />{" "}
+            <div className="add-text-box">
+              <h3>
+                Add a text for today <br></br>& see todays activities
+              </h3>
+              <Link to={"/day-view"}>
+                <button>➡️</button>
+              </Link>
+            </div>
             <DateNavigator />
             <TodayButton />
             <Appointments />
