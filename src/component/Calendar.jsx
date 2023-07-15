@@ -48,7 +48,6 @@ function Calendar() {
             <Toolbar />
             <DateNavigator />
             <TodayButton />
-
             <Appointments />
           </Scheduler>
         </Paper>
