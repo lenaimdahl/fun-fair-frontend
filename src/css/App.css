@@ -8,8 +8,7 @@ body {
   margin-bottom: 100px;
 }
 
-
-/* .button {
+.button {
   color: white;
   margin-top: 20px;
   background-color: #fc7fb1;
@@ -17,7 +16,7 @@ body {
   border-radius: 40px;
   padding: 20px 40px;
   font-size: 12pt;
-} */
+}
 
 .calendar-flex {
   display: flex;
@@ -156,10 +155,10 @@ body {
 }
 
 .welcome-box {
- display: flex;
- flex-direction: column;
- align-items: center;
- padding: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
 }
 
 .welcome-box h2 {
@@ -195,7 +194,7 @@ body {
   justify-content: space-between;
 }
 
-.new-event-form button:hover ,
+.new-event-form button:hover,
 .signup-page form button,
 .login-page form button,
 #btn-logout {
@@ -209,7 +208,6 @@ body {
   border-radius: 20px;
   text-transform: uppercase;
 }
-
 
 .add-text-box button:hover,
 .btn-show-form:hover,

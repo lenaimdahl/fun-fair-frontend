@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -62,6 +63,11 @@ function DayView() {
           ) : (
             <p>No entries to display</p>
           )}
+        </div>
+        <div>
+          <Link to={"/update-entry"}>
+            <button className="button">Update you enrty</button>
+          </Link>
         </div>
       </div>
       <AddText />
