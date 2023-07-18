@@ -33,11 +33,26 @@ export class BackendAPI {
   }
 
   async saveMood(type, timestamp) {
-    const { data } = await this.api.post("/api/mood", {
-      title: type,
-      timestamp: timestamp,
-    });
-    return data;
+    try {
+      const { data } = await this.api.post("/api/mood", {
+        title: type,
+        timestamp: timestamp,
+      });
+      return data;
+    } catch (error) {
+      throw new Error(error.response.data.message);
+    }
+  }
+
+  async getMoodForDay(timestamp) {
+    try {
+      const { data } = await this.api.get("/api/moods", {
+        params: { timestamp },
+      });
+      return data;
+    } catch (error) {
+      throw new Error(error.response.data.message);
+    }
   }
 
   async getMoods() {
@@ -86,6 +101,24 @@ export class BackendAPI {
     try {
       const { data } = await this.api.post(`/api/search`, { startDate });
       return data;
+    } catch (err) {
+      console.error("ERROR while fetching all events from db:", err);
+      throw new Error("Internal Server Error");
+    }
+  }
+
+  async deleteEntry(id) {
+    try {
+      return this.api.delete(`/api/text/${id}`);
+    } catch (err) {
+      console.error("ERROR while fetching all events from db:", err);
+      throw new Error("Internal Server Error");
+    }
+  }
+
+  async updateEntry(id, text) {
+    try {
+      return this.api.patch(`/api/text/${id}`, { text });
     } catch (err) {
       console.error("ERROR while fetching all events from db:", err);
       throw new Error("Internal Server Error");

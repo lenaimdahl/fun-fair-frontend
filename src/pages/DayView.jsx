@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { BackendAPI } from "../api/BackendAPIHandler";
 import AddText from "../component/AddText";
+import DayEntry from "../component/DayEntry";
 
 function DayView() {
   const [events, setEvents] = useState([]);
@@ -56,13 +57,18 @@ function DayView() {
           {entries.length > 0 ? (
             <p>
               {entries.map((entry) => (
-                <li key={entry._id}>{entry.text}</li>
+                <div>
+                  <li key={entry._id}>
+                    <DayEntry text={entry.text} id={entry._id} />
+                  </li>
+                </div>
               ))}
             </p>
           ) : (
             <p>No entries to display</p>
           )}
         </div>
+        <div></div>
       </div>
       <AddText />
     </div>

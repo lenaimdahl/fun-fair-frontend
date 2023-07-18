@@ -1,19 +1,34 @@
 import { BackendAPI } from "../api/BackendAPIHandler";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function MoodSelection() {
-  const [showMoodSelection, setShowMoodSelection] = useState(true);
+  const [showMoodSelection, setShowMoodSelection] = useState(false);
 
   const backendAPIInstance = new BackendAPI();
 
+  useEffect(() => {
+    const checkExistingMood = async () => {
+      try {
+        const currentDay = new Date().setHours(0, 0, 0, 0);
+        const mood = await backendAPIInstance.getMoodForDay(currentDay);
+        console.log("Existing Mood:", mood);
+        if (mood.moods.length === 0) {
+          setShowMoodSelection(true);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    checkExistingMood();
+  }, []);
+
   const handleMoodSelection = async (type) => {
-    //is the timestamp
     const currentDay = new Date().setHours(0, 0, 0, 0);
     try {
       await backendAPIInstance.saveMood(type, currentDay);
       setShowMoodSelection(false);
     } catch (error) {
-      console.error(error);
+      console.error(error.response.data.message);
     }
   };
 
