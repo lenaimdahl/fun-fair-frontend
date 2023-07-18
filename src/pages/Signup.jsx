@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../config/config.index";
 
 function Signup() {
   const [username, setUsername] = useState("");
@@ -19,7 +20,7 @@ function Signup() {
     const requestBody = { username, password, email };
 
     axios
-      .post(`https://fun-fair-backend.adaptable.app/auth/signup`, requestBody)
+      .post(`${API_URL}/auth/signup`, requestBody)
       .then(() => {
         navigate("/login");
       })
