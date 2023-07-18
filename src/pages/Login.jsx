@@ -18,7 +18,7 @@ function Login() {
     try {
       const userToLogin = { email, password };
       const { data } = await axios.post(
-        `http://localhost:5005/auth/login`,
+        `https://fun-fair-backend.adaptable.app/auth/login`,
         userToLogin
       );
       const actualToken = data.authToken;

@@ -19,7 +19,7 @@ function Signup() {
     const requestBody = { username, password, email };
 
     axios
-      .post(`http://localhost:5005/auth/signup`, requestBody)
+      .post(`https://fun-fair-backend.adaptable.app/auth/signup`, requestBody)
       .then(() => {
         navigate("/login");
       })
