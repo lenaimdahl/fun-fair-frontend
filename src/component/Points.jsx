@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { BackendAPI } from "../api/BackendAPIHandler";
 
 function Points() {
+
   const [events, setEvents] = useState([]);
   const [weekPoints, setWeekPoints] = useState("");
-  const [value, setValue] = useState(0);
+  const [weeklyGoal, setWeeklyGoal] = useState("");
   const backendAPIInstance = new BackendAPI();
 
   useEffect(() => {
@@ -55,39 +56,29 @@ function Points() {
 
   }, [events]);
 
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const fetchedUser = await backendAPIInstance.getUserData();
+      console.log("user data for point goal", fetchedUser);
 
+      // setWeeklyGoal(weekEvents);
+    };
 
-  //   let initialPointCount= 0;
-  //   let weekPointsSum = 0 + weekPointsfromEvents;
+    fetchUserData();
 
-  // useEffect(() => {
-  //   setWeekPoints(sumOfPoints);
-  // }, []);
-
-  const handleChange = (e) => {
-    e.preventDefault();
-    setValue(parseInt(e.target.value));
-  };
-
-  // const inputValue = document.getElementById("input-points").value;
-  // console.log("log of input value", inputValue);
+  }, []);
 
   return (
     <div className="points-box">
       <div>
         <p>Your score: {weekPoints}</p>
         <p>
-          Your weekly goal:{" "}
-          <input
-            id="input-points"
-            type="number"
-            value={value}
-            onChange={handleChange}
-          />
+          Your weekly goal: 
+          {/* {weeklyGoal} */}
         </p>
       </div>
       <div className="points-image">
-        {/* {{ weekPoints } > { inputValue } ? <p>🥳</p> : <p>🥴</p>} */}
+        {/* {{ weekPoints } > { weeklyGoal } ? <p>🥳</p> : <p>🥴</p>} */}
       </div>
     </div>
   );
