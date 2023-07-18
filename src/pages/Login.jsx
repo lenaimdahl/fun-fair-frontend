@@ -56,7 +56,6 @@ function Login() {
         <p>Don't have an account yet?</p>
         <button>
           <Link to={"/"} className="log-in-page-link">
-            {" "}
             Sign Up
           </Link>
         </button>
