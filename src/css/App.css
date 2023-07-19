@@ -173,6 +173,7 @@ body {
   border-radius: 20px;
   margin-bottom: 20px;
   display: flex;
+  justify-content: space-evenly;
   gap: 10px;
 }
 
@@ -180,14 +181,56 @@ body {
   color: black;
   margin: 0px;
   padding: 0px;
+  text-align: center;
 }
 
-.points-image {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 50px;
+.points-highlighter {
+  padding: 10px 0 0 0;
+  font-size: 25px;
+  margin: 0;
+  color: white;
+  text-shadow:
+        0 0 7px #961DE4,
+        0 0 10px #961DE4,
+        0 0 21px #961DE4,
+        0 0 42px #961DE4,
+        0 0 82px #961DE4,
+        0 0 92px #961DE4,
+        0 0 102px #961DE4,
+        0 0 151px #961DE4;
+}
+
+.points-green {
+  padding: 10px 0 0 0;
+  font-size: 25px;
+  margin: 0;
+  color: white;
+  text-shadow:
+        0 0 7px #24e41d,
+        0 0 10px #24e41d,
+        0 0 21px #24e41d,
+        0 0 42px #24e41d,
+        0 0 82px #24e41d,
+        0 0 92px #24e41d,
+        0 0 102px #24e41d,
+        0 0 151px #24e41d;
+}
+
+.points-red {
+  padding: 10px 0 0 0;
+  font-size: 25px;
+  margin: 0;
+  color: white;
+  text-shadow:
+        0 0 7px #e41d1d,
+        0 0 10px #e41d1d,
+        0 0 21px #e41d1d,
+        0 0 42px #e41d1d,
+        0 0 82px #e41d1d,
+        0 0 92px #e41d1d,
+        0 0 102px #e41d1d,
+        0 0 151px #e41d1d;
+
 }
 
 .add-text-box,

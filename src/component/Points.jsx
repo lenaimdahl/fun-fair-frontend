@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { BackendAPI } from "../api/BackendAPIHandler";
 
 function Points() {
-
   const [events, setEvents] = useState([]);
   const [weekPoints, setWeekPoints] = useState("");
   const [weeklyGoal, setWeeklyGoal] = useState("");
@@ -37,14 +36,13 @@ function Points() {
     };
 
     fetchEvents();
-
   }, []);
 
   useEffect(() => {
     const weekPointsfromEvents = events.map((oneEvent) => {
       return Number(oneEvent.points);
     });
-  
+
     const sumOfPoints = weekPointsfromEvents.reduce(
       (accumulator, currentValue) => {
         return accumulator + currentValue;
@@ -53,7 +51,6 @@ function Points() {
     );
 
     setWeekPoints(sumOfPoints);
-
   }, [events]);
 
   useEffect(() => {
@@ -66,20 +63,19 @@ function Points() {
     };
 
     fetchUserData();
-
   }, []);
 
   return (
     <div className="points-box">
-      <div>
-        <p>Your score: {weekPoints}</p>
-        <p>
-          Your weekly goal: {weeklyGoal}
-        </p>
-      </div>
-      <div className="points-image">
-        {{ weekPoints } > { weeklyGoal } ? <p>🥳</p> : <p>🥴</p>}
-      </div>
+      <p>
+        Your score: <br></br>
+        <h3 className={weekPoints > weeklyGoal ? 'points-green' : 'points-red'}>
+          {weekPoints}</h3>
+      </p>
+      <p>
+        Your weekly goal: <br></br>
+        <h3 className="points-highlighter">{weeklyGoal}</h3>
+      </p>
     </div>
   );
 }
