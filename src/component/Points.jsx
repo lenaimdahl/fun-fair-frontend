@@ -59,9 +59,10 @@ function Points() {
   useEffect(() => {
     const fetchUserData = async () => {
       const fetchedUser = await backendAPIInstance.getUserData();
-      console.log("user data for point goal", fetchedUser);
+      const usersWeeklyGoal = fetchedUser.user.weeklyGoal;
+      console.log("user point goal", usersWeeklyGoal);
 
-      // setWeeklyGoal(weekEvents);
+      setWeeklyGoal(usersWeeklyGoal);
     };
 
     fetchUserData();
@@ -73,12 +74,11 @@ function Points() {
       <div>
         <p>Your score: {weekPoints}</p>
         <p>
-          Your weekly goal: 
-          {/* {weeklyGoal} */}
+          Your weekly goal: {weeklyGoal}
         </p>
       </div>
       <div className="points-image">
-        {/* {{ weekPoints } > { weeklyGoal } ? <p>🥳</p> : <p>🥴</p>} */}
+        {{ weekPoints } > { weeklyGoal } ? <p>🥳</p> : <p>🥴</p>}
       </div>
     </div>
   );

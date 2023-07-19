@@ -7,7 +7,7 @@ function Signup() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [weeklyGoal, setWeeklyGoal] = useState("0");
+  const [weeklyGoal, setWeeklyGoal] = useState("100");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
