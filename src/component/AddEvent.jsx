@@ -39,12 +39,13 @@ function AddEvent() {
       const eventToAdd = {
         title: selectEl.getAttribute("title"),
         image: selectEl.getAttribute("image"),
-        points: selectEl.getAttribute("points"),
+        points: customPoints,
         timestamp: selectedDate.getTime(),
         friend: selectedFriend,
       };
       await backendAPIInstance.addEventToCal(eventToAdd);
       setSelectedFriend("");
+      setCustomPoints(0);
       setSelectedDate(new Date());
     } catch (error) {
       console.error(error);
@@ -60,6 +61,7 @@ function AddEvent() {
   };
 
   const handleCustomPointsChange = (event) => {
+    console.log(event.target.value);
     const points = parseInt(event.target.value);
     setCustomPoints(points);
   };
@@ -116,7 +118,6 @@ function AddEvent() {
               <option
                 key={oneEvent._id}
                 value={oneEvent.value}
-                points={oneEvent.points}
                 title={oneEvent.title}
                 image={oneEvent.image}
               >
