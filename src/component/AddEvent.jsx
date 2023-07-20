@@ -32,6 +32,7 @@ function AddEvent() {
 
   const handleAddToCalendar = async (event) => {
     event.preventDefault();
+    const selectedDateAdMidnight = new Date(selectedDate).setHours(0, 0, 0, 0);
 
     const selectEl = event.target[0].options[event.target[0].selectedIndex];
 
@@ -40,7 +41,7 @@ function AddEvent() {
         title: selectEl.getAttribute("title"),
         image: selectEl.getAttribute("image"),
         points: customPoints,
-        timestamp: selectedDate.getTime(),
+        timestamp: selectedDateAdMidnight,
         friend: selectedFriend,
       };
       await backendAPIInstance.addEventToCal(eventToAdd);

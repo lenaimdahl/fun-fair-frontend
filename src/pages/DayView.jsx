@@ -20,6 +20,7 @@ function DayView() {
     const { allMeetings, allEntries } = await backendAPIInstance.searchMeetings(
       dateAtMidnight
     );
+    console.log(allMeetings);
     setMeetings(allMeetings);
     setEntries(allEntries);
   };
