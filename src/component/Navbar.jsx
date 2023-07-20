@@ -13,41 +13,41 @@ function Navbar() {
     <nav className="menu">
       <ol>
         <li className="menu-item">
-          <a href="/">Home</a>
+          <Link to={"/"}>Home</Link>
         </li>
         <li className="menu-item">
-          <a href="/about">About</a>
+          <Link to={"/about"}>About</Link>
         </li>
         <li className="menu-item">
-          <a href="/profile">Profile</a>
+          <Link to={"/profile"}>Profile</Link>
           <ol className="sub-menu">
             <li className="menu-item">
               <Link to={"/day-view"}>Day View</Link>
             </li>
             <li className="menu-item">
-             <Link to={"/weekly-mood"}>Weekly mood</Link>
+              <Link to={"/weekly-mood"}>Weekly mood</Link>
             </li>
           </ol>
         </li>
         {isLoggedIn ? (
           <li className="menu-item">
-            <a
-              href="#"
+            <Link
+              to="#"
               onClick={() => {
                 logOutUser();
                 navigate("/");
               }}
             >
               Logout
-            </a>
+            </Link>
           </li>
         ) : (
           <Fragment>
             <li className="menu-item">
-              <a href="/login">Log in</a>
+              <Link to={"/login"}>Log in</Link>
             </li>
             <li className="menu-item">
-              <a href="/signup">Sign up</a>
+              <Link to={"/signup"}>Sign up</Link>
             </li>
           </Fragment>
         )}
