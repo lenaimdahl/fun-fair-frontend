@@ -20,7 +20,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/day-view" element={<DayView />} />
-        <Route path="/weekly-mood" element={<WeeklyMoodPage/>} />
+        <Route path="/weekly-mood" element={<WeeklyMoodPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<NotFound />} />

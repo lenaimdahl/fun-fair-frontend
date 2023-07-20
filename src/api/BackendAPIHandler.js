@@ -1,22 +1,13 @@
 import axios from "axios";
+import { API_URL } from "../config/config.index";
 
 export class BackendAPI {
   constructor() {
-    //instead of writing axios. now always write this.api. to do a post or get... and then the token will always be sent too. if not, we have to send it everytime with:
-    // const gotToken = localStorage.getItem("authToken");
-    //     const { data } = await axios.get("http://localhost:5005/auth/verify", {
-    //       headers: { authorization: `Bearer ${gotToken}` },
-    //     });
-
-    // creates a axios client, like a class
     this.api = axios.create({
-      baseURL: "http://localhost:5005",
+      baseURL: API_URL,
     });
-    // edits every requests to add the current token
     this.api.interceptors.request.use((config) => {
-      // get token from local storage
       const storedToken = localStorage.getItem("authToken");
-      // pass stored token to headers
       if (storedToken) {
         config.headers = { Authorization: `Bearer ${storedToken}` };
       }
@@ -47,11 +38,26 @@ export class BackendAPI {
   }
 
   async saveMood(type, timestamp) {
-    const { data } = await this.api.post("/api/mood", {
-      title: type,
-      timestamp: timestamp,
-    });
-    return data;
+    try {
+      const { data } = await this.api.post("/api/mood", {
+        title: type,
+        timestamp: timestamp,
+      });
+      return data;
+    } catch (error) {
+      throw new Error(error.response.data.message);
+    }
+  }
+
+  async getMoodForDay(timestamp) {
+    try {
+      const { data } = await this.api.get("/api/moods", {
+        params: { timestamp },
+      });
+      return data;
+    } catch (error) {
+      throw new Error(error.response.data.message);
+    }
   }
 
   async getMoods() {
@@ -100,6 +106,24 @@ export class BackendAPI {
     try {
       const { data } = await this.api.post(`/api/search`, { startDate });
       return data;
+    } catch (err) {
+      console.error("ERROR while fetching all events from db:", err);
+      throw new Error("Internal Server Error");
+    }
+  }
+
+  async deleteEntry(id) {
+    try {
+      return this.api.delete(`/api/text/${id}`);
+    } catch (err) {
+      console.error("ERROR while fetching all events from db:", err);
+      throw new Error("Internal Server Error");
+    }
+  }
+
+  async updateEntry(id, text) {
+    try {
+      return this.api.patch(`/api/text/${id}`, { text });
     } catch (err) {
       console.error("ERROR while fetching all events from db:", err);
       throw new Error("Internal Server Error");

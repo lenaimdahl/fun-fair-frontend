@@ -8,8 +8,7 @@ body {
   margin-bottom: 100px;
 }
 
-
-/* .button {
+.button {
   color: white;
   margin-top: 20px;
   background-color: #fc7fb1;
@@ -17,7 +16,36 @@ body {
   border-radius: 40px;
   padding: 20px 40px;
   font-size: 12pt;
-} */
+}
+.button-add {
+  color: white;
+  margin-top: 20px;
+  background-color: #fc7fb1;
+  border: none;
+  border-radius: 40px;
+  padding: 10px;
+  font-size: 12pt;
+}
+
+.button-delete {
+  color: white;
+  background-color: #fa2525;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 10pt;
+  margin: 10px;
+}
+
+.button-edit {
+  color: white;
+  background-color: #1616fe;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 10pt;
+  margin: 10px;
+}
 
 .calendar-flex {
   display: flex;
@@ -155,10 +183,10 @@ body {
 }
 
 .welcome-box {
- display: flex;
- flex-direction: column;
- align-items: center;
- padding: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
 }
 
 .welcome-box h2 {
@@ -260,7 +288,7 @@ body {
   justify-content: space-between;
 }
 
-.new-event-form button:hover ,
+.new-event-form button:hover,
 .signup-page form button,
 .login-page form button,
 #btn-logout {
@@ -274,7 +302,6 @@ body {
   border-radius: 20px;
   text-transform: uppercase;
 }
-
 
 .add-text-box button:hover,
 .btn-show-form:hover,

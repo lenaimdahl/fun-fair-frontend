@@ -9,7 +9,6 @@ function ShowFriends() {
   const fetchFriends = async () => {
     const { friends } = await backendAPIInstance.getFriends();
     setFriends(friends);
-    console.log(friends);
   };
 
   useEffect(() => {
@@ -30,7 +29,8 @@ function ShowFriends() {
 
   return (
     <div>
-      <div>
+      <div className="add-friend-box">
+        <h2>See your friends</h2>
         <form onSubmit={handleGetFriends} className="add-event-today-form">
           <label>Your friends: </label>
           <select id="friend" name="friend">

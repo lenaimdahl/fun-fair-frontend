@@ -9,6 +9,7 @@ import AddFriend from "../component/AddFriend";
 import ShowFriends from "../component/ShowFriends";
 import Points from "../component/Points";
 
+
 function Profile() {
   const { user } = useContext(AuthContext);
 
@@ -29,17 +30,9 @@ function Profile() {
             <NewEvent />
           </div>
           <div className="text-friend-box">
-            <div className="add-text-box">
-              <h3>
-                Add a text for today <br></br>& see todays activities
-              </h3>
-              <Link to={"/day-view"}>
-                <button>➡️</button>
-              </Link>
-            </div>
+            <ShowFriends />
             <AddFriend />
           </div>
-          <ShowFriends />
         </div>
       </div>
     </div>
