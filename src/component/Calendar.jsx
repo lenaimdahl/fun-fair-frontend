@@ -20,14 +20,14 @@ function Calendar() {
 
   useEffect(() => {
     (async () => {
-      const data = await backendAPIInstance.getEventsByUser();
-      const convertedData = data.events.map((event) => {
+      const data = await backendAPIInstance.getMeetingsByUser();
+      const convertedData = data.meetings.map((meeting) => {
         return {
-          id: event._id,
-          name: event.name,
-          title: event.image,
-          startDate: new Date(event.timestamp),
-          endDate: new Date(event.timestamp).setHours(0, 30, 0, 0),
+          id: meeting._id,
+          name: meeting.name,
+          title: meeting.image,
+          startDate: new Date(meeting.timestamp),
+          endDate: new Date(meeting.timestamp).setHours(0, 30, 0, 0),
         };
       });
       setData(convertedData);

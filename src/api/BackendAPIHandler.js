@@ -89,8 +89,8 @@ export class BackendAPI {
     return data;
   }
 
-  async getEventsByUser() {
-    const { data } = await this.api.get("/api/events-calendar");
+  async getMeetingsByUser() {
+    const { data } = await this.api.get("/api/meetings-calendar");
     return data;
   }
 
