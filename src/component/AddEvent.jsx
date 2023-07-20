@@ -25,7 +25,8 @@ function AddEvent() {
         title: selectEl.getAttribute("title"),
         image: selectEl.getAttribute("image"),
         points: selectEl.getAttribute("points"),
-        timestamp: currentDay,
+        timestamp: selectedDate.getTime(),
+        friend: selectedFriend,
       };
       await backendAPIInstance.addEventToCal(eventToAdd);
     } catch (error) {
