@@ -15,6 +15,11 @@ export class BackendAPI {
     });
   }
 
+  async getUserData() {
+    const { data } = await this.api.get("/api/user");
+    return data;
+  }
+
   async getNonFriends() {
     const { data } = await this.api.get("/api/nonfriends");
     return data;

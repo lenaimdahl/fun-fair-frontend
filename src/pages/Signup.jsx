@@ -8,16 +8,18 @@ function Signup() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [weeklyGoal, setWeeklyGoal] = useState("100");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
   const handleUsername = (event) => setUsername(event.target.value);
   const handleEmail = (event) => setEmail(event.target.value);
   const handlePassword = (event) => setPassword(event.target.value);
+  const handlePoints = (event) => setWeeklyGoal(event.target.value);
 
   const handleSignup = (event) => {
     event.preventDefault();
-    const requestBody = { username, password, email };
+    const requestBody = { username, password, email, weeklyGoal };
 
     axios
       .post(`${API_URL}/auth/signup`, requestBody)
@@ -49,6 +51,13 @@ function Signup() {
           name="password"
           value={password}
           onChange={handlePassword}
+        />
+        <label>weekly points goal</label>
+        <input
+          type="text"
+          name="weeklyGoal"
+          value={weeklyGoal}
+          onChange={handlePoints}
         />
         <button type="submit">Sign up!</button>
       </form>
