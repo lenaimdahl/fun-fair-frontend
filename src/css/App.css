@@ -27,7 +27,7 @@ body {
   font-size: 12pt;
 }
 
-.button-delete {
+/* .button-delete {
   color: white;
   background-color: #fa2525;
   border: none;
@@ -35,9 +35,9 @@ body {
   padding: 10px;
   font-size: 10pt;
   margin: 10px;
-}
+} */
 
-.button-edit {
+/* .button-edit {
   color: white;
   background-color: #1616fe;
   border: none;
@@ -45,7 +45,7 @@ body {
   padding: 10px;
   font-size: 10pt;
   margin: 10px;
-}
+} */
 
 .calendar-flex {
   display: flex;
@@ -295,6 +295,7 @@ body {
   text-transform: uppercase;
 }
 
+.button-edit:hover,
 .button-add:hover,
 .button:hover,
 .add-text-box button:hover,
@@ -372,6 +373,8 @@ body {
   border-radius: 10px;
 }
 
+.button-delete,
+.button-edit,
 .add-event-today-form button {
   font-size: 15px;
   height: 40px;
@@ -627,6 +630,42 @@ footer p {
   text-align: center;
 }
 
+.single-diary-entry li {
+  list-style: none;
+  /* background-color: white; */
+}
+
+.entry-text {
+  width: 60%;
+}
+
+.entry-edit-buttons {
+  width: 40%;
+}
+
+.button-delete:hover {
+  background-color: red;
+  cursor: pointer;
+}
+
+.button-edit {
+  font-size: 30px;
+}
+
+.single-entry-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.383);
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.entry-edit-buttons {
+  display: flex;
+  justify-content: end;
+}
 
 .flex-row {
   display: flex;

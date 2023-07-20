@@ -42,20 +42,22 @@ function DayEntry(props) {
           <button onClick={handleCancelEditing}>cancel</button>
         </>
       ) : (
-        <>
-          {text}
-          <button
-            className="button-edit"
-            onClick={() => {
-              setIsEditing(true);
-            }}
-          >
-            Update your entry
-          </button>
-          <button className="button-delete" onClick={handleDeleteText}>
-            delete entry
-          </button>
-        </>
+        <div className="single-entry-box">
+          <div className="entry-text">{text}</div>
+          <div className="entry-edit-buttons">
+            <button
+              className="button-edit"
+              onClick={() => {
+                setIsEditing(true);
+              }}
+            >
+              ✎
+            </button>
+            <button className="button-delete" onClick={handleDeleteText}>
+            ✖️
+            </button>
+          </div>
+        </div>
       )}
     </>
   );

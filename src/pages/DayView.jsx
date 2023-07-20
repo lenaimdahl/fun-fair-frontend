@@ -57,7 +57,7 @@ function DayView() {
           {entries.length > 0 ? (
             <p>
               {entries.map((entry) => (
-                <div>
+                <div className="single-diary-entry">
                   <li key={entry._id}>
                     <DayEntry text={entry.text} id={entry._id} />
                   </li>
