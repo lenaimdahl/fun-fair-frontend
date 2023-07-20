@@ -3,31 +3,31 @@ import { BackendAPI } from "../api/BackendAPIHandler";
 
 function AddEvent() {
   const [allEvents, setAllEvents] = useState([]);
-  const [eventsInCalendar, setEventsInCalendar] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedFriend, setSelectedFriend] = useState("");
   const [customPoints, setCustomPoints] = useState(0);
   const [friends, setFriends] = useState([]);
+
   const backendAPIInstance = new BackendAPI();
 
   const fetchAllEvents = async () => {
     const fetchedEvents = await backendAPIInstance.getEvents();
-    const fetchedEventsArray = fetchedEvents.allEvents;
+    const fetchedEventsArray = fetchedEvents.allEvents.reduce(
+      (result, event) => {
+        if (!result.find((ev) => ev.title === event.title)) {
+          result.push(event);
+        }
+        return result;
+      },
+      []
+    );
+
     setAllEvents(fetchedEventsArray);
   };
 
   const fetchFriends = async () => {
     const { friends } = await backendAPIInstance.getFriends();
     setFriends(friends);
-  };
-
-  const fetchEventsInCalendar = async () => {
-    try {
-      const { events } = await backendAPIInstance.getEventsInCalendar();
-      setEventsInCalendar(events);
-    } catch (error) {
-      console.error(error);
-    }
   };
 
   const handleAddToCalendar = async (event) => {
@@ -67,22 +67,8 @@ function AddEvent() {
   useEffect(() => {
     fetchAllEvents();
     fetchFriends();
-    fetchEventsInCalendar();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const isEventInCalendar = (eventTitle) => {
-    for (const calendarEvent of eventsInCalendar) {
-      if (calendarEvent.title === eventTitle.title) {
-        return true;
-      }
-    }
-    return false;
-  };
-
-  const availableEvents = allEvents.filter(
-    (event) => !isEventInCalendar(event.title)
-  );
 
   return (
     <div className="add-event-box">
@@ -125,7 +111,7 @@ function AddEvent() {
         <label>events: </label>
         {/* these need to be populated from our database */}
         <select id="event" name="event">
-          {availableEvents.map((oneEvent) => {
+          {allEvents.map((oneEvent) => {
             return (
               <option
                 key={oneEvent._id}

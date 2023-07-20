@@ -71,6 +71,12 @@ export class BackendAPI {
     });
     return data;
   }
+
+  async getEventsInCalendar() {
+    const { data } = await this.api.get("/api/events-calendar");
+    return data;
+  }
+
   //saves existing event in a calendar of a given user
   async addEventToCal(eventToAdd) {
     const { data } = await this.api.post("/api/event", eventToAdd);

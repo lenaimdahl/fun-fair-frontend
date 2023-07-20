@@ -78,21 +78,6 @@ function NewEvent() {
           <button type="submit">+</button>
         </form>
       ) : null}
-      {/* <form onSubmit={handleAddEvent} className="new-event-form">
-        <label>title</label>
-        <input type="text" name="title" value={title} onChange={handleTitle} />
-        <label>emoji</label>
-        <input type="text" name="image" value={image} onChange={handleImage} />
-
-        <label>points</label>
-        <input
-          type="number"
-          name="points"
-          value={points}
-          onChange={handlePoints}
-        />
-        <button type="submit">+</button>
-      </form> */}
     </div>
   );
 }
