@@ -10,13 +10,14 @@ body {
 
 .button {
   color: white;
-  margin-top: 20px;
+  margin-top: 10px;
   background-color: #fc7fb1;
   border: none;
   border-radius: 40px;
   padding: 20px 40px;
   font-size: 12pt;
-}
+} 
+
 .button-add {
   color: white;
   margin-top: 20px;
@@ -261,8 +262,7 @@ body {
 
 }
 
-.add-text-box,
-.add-friend-box {
+.add-text-box {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -282,12 +282,6 @@ body {
   text-align: center;
 }
 
-.text-friend-box {
-  display: flex;
-  gap: 20px;
-  justify-content: space-between;
-}
-
 .new-event-form button:hover,
 .signup-page form button,
 .login-page form button,
@@ -303,6 +297,7 @@ body {
   text-transform: uppercase;
 }
 
+.button:hover,
 .add-text-box button:hover,
 .btn-show-form:hover,
 .add-event-today-form button:hover,
@@ -346,7 +341,7 @@ body {
   margin: 0;
 }
 
-.event-side-pannel,
+.combo-pannel,
 #mood-selection {
   display: flex;
   flex-direction: column;
@@ -612,5 +607,15 @@ footer p {
   text-align: center;
 }
 .day-view-flex {
+  text-align: center;
+}
+
+.flex-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.centered {
   text-align: center;
 }

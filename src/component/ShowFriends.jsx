@@ -29,8 +29,7 @@ function ShowFriends() {
 
   return (
     <div>
-      <div className="add-friend-box">
-        <h2>See your friends</h2>
+      <div className="">
         <form onSubmit={handleGetFriends} className="add-event-today-form">
           <label>Your friends: </label>
           <select id="friend" name="friend">

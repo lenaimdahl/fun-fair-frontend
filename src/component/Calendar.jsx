@@ -52,9 +52,6 @@ function Calendar() {
           </Scheduler>
         </Paper>
       </div>
-      <Link to={"/day-view"}>
-        <button className="button">Add a text for today</button>
-      </Link>
     </div>
   );
 }
