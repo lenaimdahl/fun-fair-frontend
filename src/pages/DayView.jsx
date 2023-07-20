@@ -7,7 +7,7 @@ import AddText from "../component/AddText";
 import DayEntry from "../component/DayEntry";
 
 function DayView() {
-  const [events, setEvents] = useState([]);
+  const [meetings, setMeetings] = useState([]);
   const [entries, setEntries] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
 
@@ -17,10 +17,10 @@ function DayView() {
     const dateAtMidnight = new Date(date);
     dateAtMidnight.setHours(0, 0, 0, 0);
     setSelectedDate(dateAtMidnight);
-    const { allEvents, allEntries } = await backendAPIInstance.searchEvents(
+    const { allMeetings, allEntries } = await backendAPIInstance.searchMeetings(
       dateAtMidnight
     );
-    setEvents(allEvents);
+    setMeetings(allMeetings);
     setEntries(allEntries);
   };
 
@@ -41,15 +41,15 @@ function DayView() {
           />
         </div>
         <div className="day-entries">
-          <h3>Your events</h3>
-          {events.length > 0 ? (
-            events.map((event) => (
+          <h3>Your meetings</h3>
+          {meetings.length > 0 ? (
+            meetings.map((event) => (
               <p key={event._id}>
                 {event.image} {event.title}
               </p>
             ))
           ) : (
-            <p>No events to display</p>
+            <p>No meetings to display</p>
           )}
         </div>
         <div className="day-entries">

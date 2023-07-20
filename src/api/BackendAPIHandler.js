@@ -108,12 +108,12 @@ export class BackendAPI {
     return data;
   }
 
-  async searchEvents(startDate) {
+  async searchMeetings(startDate) {
     try {
       const { data } = await this.api.post(`/api/search`, { startDate });
       return data;
     } catch (err) {
-      console.error("ERROR while fetching all events from db:", err);
+      console.error("ERROR while fetching all meetings from db:", err);
       throw new Error("Internal Server Error");
     }
   }

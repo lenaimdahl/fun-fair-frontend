@@ -15,7 +15,7 @@ import { BackendAPI } from "../api/BackendAPIHandler";
 function Calendar() {
   const [data, setData] = useState([]);
   const [currentDate, setCurrentDate] = useState();
-
+  console.log(data);
   const backendAPIInstance = new BackendAPI();
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function Calendar() {
       const convertedData = data.meetings.map((meeting) => {
         return {
           id: meeting._id,
-          name: meeting.name,
+          name: meeting.title,
           title: meeting.image,
           startDate: new Date(meeting.timestamp),
           endDate: new Date(meeting.timestamp).setHours(0, 30, 0, 0),
