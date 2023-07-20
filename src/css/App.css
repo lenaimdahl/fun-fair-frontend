@@ -619,3 +619,17 @@ footer p {
 .centered {
   text-align: center;
 }
+
+.goal-edit-btn {
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  font-size: 25px;
+}
+
+.goal-and-btn {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  align-items: center;
+}

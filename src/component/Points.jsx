@@ -5,6 +5,7 @@ function Points() {
   const [events, setEvents] = useState([]);
   const [weekPoints, setWeekPoints] = useState("");
   const [weeklyGoal, setWeeklyGoal] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
   const backendAPIInstance = new BackendAPI();
 
   useEffect(() => {
@@ -65,17 +66,53 @@ function Points() {
     fetchUserData();
   }, []);
 
+  const handleChangeGoal = (event) => {
+    setWeeklyGoal(event.target.value);
+  }
+
+  const handleUpdateGoal = async () => {
+    try {
+      const fetchedUser = await backendAPIInstance.getUserData();
+      console.log(fetchedUser);
+      await backendAPIInstance.updateGoal(props.id, weeklyGoal);
+      setIsEditing(false);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="points-box">
       <p>
         Your score: <br></br>
-        <h3 className={weekPoints > weeklyGoal ? 'points-green' : 'points-red'}>
-          {weekPoints}</h3>
+        <h3 className={weekPoints > weeklyGoal ? "points-green" : "points-red"}>
+          {weekPoints}
+        </h3>
       </p>
-      <p>
-        Your weekly goal: <br></br>
-        <h3 className="points-highlighter">{weeklyGoal}</h3>
-      </p>
+
+      <div>
+        {isEditing ? (
+          <p>
+            <input type="text" value={weeklyGoal} onChange={handleChangeGoal} />
+            <button onClick={handleUpdateGoal}>ok</button>
+          </p>
+        ) : (
+          <p>
+            Your weekly goal:<br></br>
+            <div className="goal-and-btn">
+              <button
+                className="goal-edit-btn"
+                onClick={() => {
+                  setIsEditing(true);
+                }}
+              >
+                ✎
+              </button>
+              <h3 className="points-highlighter">{weeklyGoal}</h3>
+            </div>
+          </p>
+        )}
+      </div>
     </div>
   );
 }
