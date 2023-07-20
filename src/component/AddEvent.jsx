@@ -3,8 +3,10 @@ import { BackendAPI } from "../api/BackendAPIHandler";
 
 function AddEvent() {
   const [allEvents, setAllEvents] = useState([]);
+  const [eventsInCalendar, setEventsInCalendar] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedFriend, setSelectedFriend] = useState("");
+  const [customPoints, setCustomPoints] = useState(0);
   const [friends, setFriends] = useState([]);
   const backendAPIInstance = new BackendAPI();
 
@@ -14,10 +16,23 @@ function AddEvent() {
     setAllEvents(fetchedEventsArray);
   };
 
+  const fetchFriends = async () => {
+    const { friends } = await backendAPIInstance.getFriends();
+    setFriends(friends);
+  };
+
+  const fetchEventsInCalendar = async () => {
+    try {
+      const { events } = await backendAPIInstance.getEventsInCalendar();
+      setEventsInCalendar(events);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const handleAddToCalendar = async (event) => {
     event.preventDefault();
 
-    const currentDay = new Date().setHours(0, 0, 0, 0);
     const selectEl = event.target[0].options[event.target[0].selectedIndex];
 
     try {
@@ -29,6 +44,8 @@ function AddEvent() {
         friend: selectedFriend,
       };
       await backendAPIInstance.addEventToCal(eventToAdd);
+      setSelectedFriend("");
+      setSelectedDate(new Date());
     } catch (error) {
       console.error(error);
     }
@@ -42,16 +59,30 @@ function AddEvent() {
     setSelectedFriend(event.target.value);
   };
 
-  const fetchFriends = async () => {
-    const { friends } = await backendAPIInstance.getFriends();
-    setFriends(friends);
+  const handleCustomPointsChange = (event) => {
+    const points = parseInt(event.target.value);
+    setCustomPoints(points);
   };
 
   useEffect(() => {
     fetchAllEvents();
     fetchFriends();
+    fetchEventsInCalendar();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const isEventInCalendar = (eventTitle) => {
+    for (const calendarEvent of eventsInCalendar) {
+      if (calendarEvent.title === eventTitle.title) {
+        return true;
+      }
+    }
+    return false;
+  };
+
+  const availableEvents = allEvents.filter(
+    (event) => !isEventInCalendar(event.title)
+  );
 
   return (
     <div className="add-event-box">
@@ -66,6 +97,15 @@ function AddEvent() {
           onChange={(event) => handleDateChange(new Date(event.target.value))}
         />
       </div>
+
+      {/* Add custom points input */}
+      <label>Custom Points: </label>
+      <input
+        type="number"
+        value={customPoints}
+        onChange={handleCustomPointsChange}
+        min="0"
+      />
 
       {/* Friend Selector */}
       <div>
@@ -85,7 +125,7 @@ function AddEvent() {
         <label>events: </label>
         {/* these need to be populated from our database */}
         <select id="event" name="event">
-          {allEvents.map((oneEvent) => {
+          {availableEvents.map((oneEvent) => {
             return (
               <option
                 key={oneEvent._id}
@@ -94,7 +134,7 @@ function AddEvent() {
                 title={oneEvent.title}
                 image={oneEvent.image}
               >
-                {oneEvent.image} {oneEvent.title} {oneEvent.points} points
+                {oneEvent.image} {oneEvent.title}
               </option>
             );
           })}
