@@ -130,9 +130,9 @@ export class BackendAPI {
     }
   }
 
-  async updateGoal(id, text) {
+  async updateGoal(weeklyGoal) {
     try {
-      return this.api.patch(`/api/text/${id}`, { text });
+      return this.api.patch(`/api/newGoal`, { weeklyGoal });
     } catch (err) {
       console.error("ERROR while fetching all events from db:", err);
       throw new Error("Internal Server Error");

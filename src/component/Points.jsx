@@ -72,9 +72,7 @@ function Points() {
 
   const handleUpdateGoal = async () => {
     try {
-      const fetchedUser = await backendAPIInstance.getUserData();
-      console.log(fetchedUser);
-      await backendAPIInstance.updateGoal(props.id, weeklyGoal);
+      await backendAPIInstance.updateGoal(weeklyGoal);
       setIsEditing(false);
     } catch (error) {
       console.error(error);
@@ -93,8 +91,9 @@ function Points() {
       <div>
         {isEditing ? (
           <p>
+            Your weekly goal:<br></br>
             <input type="text" value={weeklyGoal} onChange={handleChangeGoal} />
-            <button onClick={handleUpdateGoal}>ok</button>
+            <button className="goal-edit-btn" onClick={handleUpdateGoal}>✅</button>
           </p>
         ) : (
           <p>
