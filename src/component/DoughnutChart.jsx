@@ -33,7 +33,7 @@ function DoughnutChart({ moods }) {
   useEffect(() => {
     if (!moods) return;
 
-    const moodsCopy = moods.reverse().slice(0, 28);
+    const moodsCopy = moods.slice().reverse().slice(0, 28);
     const moodCount = {
       happy: 0,
       inLove: 0,

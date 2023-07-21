@@ -1,5 +1,6 @@
 import "../css/App.css";
 import { useEffect, useState } from "react";
+import moment from "moment";
 
 import {
   Chart as ChartJS,
@@ -46,10 +47,11 @@ ChartJS.register(
 );
 
 export const options = {
+  spanGaps: true,
   responsive: true,
   plugins: {
     legend: {
-      display: false,
+      display: true,
     },
     title: {
       color: "white",
@@ -83,28 +85,57 @@ export const options = {
   },
 };
 
-function convertEmoji(type) {
-  switch (type) {
-    case "😊":
-      return 5;
-    case "😍":
-      return 4;
-    case "😴":
-      return 3;
-    case "😔":
-      return 2;
-    case "😡":
-      return 1;
-    default:
-      return "";
+const convertEmojiToImage = (title) => {
+  switch (title) {
+    case "😊": {
+      return cpHappy;
+    }
+    case "😍": {
+      return cpInLove;
+    }
+    case "😴": {
+      return cpSleepy;
+    }
+    case "😔": {
+      return cpSad;
+    }
+    case "😡": {
+      return cpAngry;
+    }
+    default: {
+      return null;
+    }
   }
-}
+};
+
+const convertEmojiToNumber = (title) => {
+  switch (title) {
+    case "😊": {
+      return 5;
+    }
+    case "😍": {
+      return 4;
+    }
+    case "😴": {
+      return 3;
+    }
+    case "😔": {
+      return 2;
+    }
+    case "😡": {
+      return 1;
+    }
+    default: {
+      return null;
+    }
+  }
+};
 
 function WeekTable({ moods }) {
   const [isLoading, setIsLoading] = useState(true);
   const [chart, setChart] = useState();
 
-  function generateDays() {
+  function generateWeekDays() {
     const today = new Date();
     const weekDay = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     return [
@@ -113,41 +144,60 @@ function WeekTable({ moods }) {
     ];
   }
 
+  function generateLast14Days() {
+    const today = new Date();
+    return [...new Array(13)].map((_, index) =>
+      moment(today).subtract(index, "day").format("YYYY-MM-DD")
+    );
+  }
+
   useEffect(() => {
     if (!moods) return;
     const moodsCopy = moods.slice();
-    const lastSevenMoods = moodsCopy.reverse().slice(0, 7);
-    const moodsAsNumbers = lastSevenMoods.map((mood) => {
-      return convertEmoji(mood.title);
-    });
 
-    const pointStyles = moodsAsNumbers.map((mood) => {
-      if (mood === 5) {
-        return cpHappy;
+    const moodDataWithGaps = [];
+
+    for (const date of generateLast14Days()) {
+      const moodEntry = moodsCopy.find((mood) => mood.date === date);
+      if (moodEntry) {
+        moodDataWithGaps.push(moodEntry);
+      } else {
+        moodDataWithGaps.push(null);
       }
-      if (mood === 4) {
-        return cpInLove;
-      }
-      if (mood === 3) {
-        return cpSleepy;
-      }
-      if (mood === 2) {
-        return cpSad;
-      }
-      if (mood === 1) {
-        return cpAngry;
-      }
-      return null;
+    }
+
+    const lastSevenMoods = moodDataWithGaps.slice(0, 7);
+    const weekBeforeMoods = moodDataWithGaps.slice(7, 14);
+    console.log({
+      generateLast14Days: generateLast14Days(),
+      lastSevenMoods,
+      weekBeforeMoods,
     });
 
     setChart({
-      labels: generateDays().reverse(),
+      labels: generateWeekDays().reverse(),
       datasets: [
         {
-          label: "Mood",
-          data: moodsAsNumbers,
+          label: "Mood last 7 days",
+          data: lastSevenMoods.map((mood) =>
+            mood ? convertEmojiToNumber(mood.title) : null
+          ),
           pointRadius: 10,
-          pointStyle: pointStyles,
+          pointStyle: lastSevenMoods.map((mood) =>
+            mood ? convertEmojiToImage(mood.title) : null
+          ),
+          borderColor: "green",
+          backgroundColor: "#D9FDED33",
+        },
+        {
+          label: "week before",
+          data: weekBeforeMoods.map((mood) =>
+            mood ? convertEmojiToNumber(mood.title) : null
+          ),
+          pointRadius: 10,
+          pointStyle: weekBeforeMoods.map((mood) =>
+            mood ? convertEmojiToImage(mood.title) : null
+          ),
           borderColor: "#D9FDED",
           backgroundColor: "#D9FDED33",
         },

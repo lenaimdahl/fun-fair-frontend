@@ -7,7 +7,7 @@ import AddText from "../component/AddText";
 import DayEntry from "../component/DayEntry";
 
 function DayView() {
-  const [events, setEvents] = useState([]);
+  const [meetings, setMeetings] = useState([]);
   const [entries, setEntries] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
 
@@ -17,10 +17,11 @@ function DayView() {
     const dateAtMidnight = new Date(date);
     dateAtMidnight.setHours(0, 0, 0, 0);
     setSelectedDate(dateAtMidnight);
-    const { allEvents, allEntries } = await backendAPIInstance.searchEvents(
+    const { allMeetings, allEntries } = await backendAPIInstance.searchMeetings(
       dateAtMidnight
     );
-    setEvents(allEvents);
+    console.log(allMeetings);
+    setMeetings(allMeetings);
     setEntries(allEntries);
   };
 
@@ -49,7 +50,7 @@ function DayView() {
               </p>
             ))
           ) : (
-            <p>No events to display</p>
+            <p>No meetings to display</p>
           )}
         </div>
         <div className="diary-box">

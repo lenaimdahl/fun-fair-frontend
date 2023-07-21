@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 import { BackendAPI } from "../api/BackendAPIHandler";
 
 function Points() {
-  const [events, setEvents] = useState([]);
+  const [meetings, setMeetings] = useState([]);
   const [weekPoints, setWeekPoints] = useState("");
   const [weeklyGoal, setWeeklyGoal] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const backendAPIInstance = new BackendAPI();
 
   useEffect(() => {
-    // Fetch events from your data source
-    const fetchEvents = async () => {
+    // Fetch meetings from your data source
+    const fetchMeetings = async () => {
       const currentDate = new Date();
       const currentDayOfWeek = currentDate.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
       const daysUntilMonday = currentDayOfWeek === 0 ? 6 : currentDayOfWeek - 1;
@@ -19,32 +19,32 @@ function Points() {
       const endDate = new Date(startDate);
       endDate.setDate(endDate.getDate() + 6); // End date (Sunday) of the week
 
-      // Make an API request or retrieve events from a local data store
-      const fetchedEvents = await backendAPIInstance.getEventsByUser();
-      const fetchedEventsArray = fetchedEvents.events;
+      // Make an API request or retrieve meetings from a local data store
+      const fetchedMeetings = await backendAPIInstance.getMeetingsByUser();
+      const fetchedMeetingsArray = fetchedMeetings.meetings;
 
-      console.log("fetched events by user", fetchedEvents);
+      console.log("fetched meetings by user", fetchedMeetings);
 
-      // Filter events for the week (Monday to Sunday)
-      const weekEvents = fetchedEventsArray.filter((event) => {
-        const eventDate = new Date(event.timestamp);
-        return eventDate >= startDate && eventDate <= endDate;
+      // Filter meetings for the week (Monday to Sunday)
+      const weekMeetings = fetchedMeetingsArray.filter((meeting) => {
+        const meetingDate = new Date(meeting.timestamp);
+        return meetingDate >= startDate && meetingDate <= endDate;
       });
 
-      console.log("week events by user", weekEvents);
+      console.log("week meetings by user", weekMeetings);
 
-      setEvents(weekEvents);
+      setMeetings(weekMeetings);
     };
 
-    fetchEvents();
+    fetchMeetings();
   }, []);
 
   useEffect(() => {
-    const weekPointsfromEvents = events.map((oneEvent) => {
-      return Number(oneEvent.points);
+    const weekPointsfromMeetings = meetings.map((oneMeeting) => {
+      return Number(oneMeeting.points);
     });
 
-    const sumOfPoints = weekPointsfromEvents.reduce(
+    const sumOfPoints = weekPointsfromMeetings.reduce(
       (accumulator, currentValue) => {
         return accumulator + currentValue;
       },
@@ -52,7 +52,7 @@ function Points() {
     );
 
     setWeekPoints(sumOfPoints);
-  }, [events]);
+  }, [meetings]);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -115,6 +115,7 @@ function Points() {
           </div>
         )}
       </div>
+
     </div>
   );
 }

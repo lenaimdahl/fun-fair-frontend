@@ -1,5 +1,6 @@
 import { BackendAPI } from "../api/BackendAPIHandler";
 import { useState, useEffect } from "react";
+import moment from "moment";
 
 function MoodSelection() {
   const [showMoodSelection, setShowMoodSelection] = useState(false);
@@ -9,7 +10,7 @@ function MoodSelection() {
   useEffect(() => {
     const checkExistingMood = async () => {
       try {
-        const currentDay = new Date().setHours(0, 0, 0, 0);
+        const currentDay = moment().format("YYYY-MM-DD");
         const mood = await backendAPIInstance.getMoodForDay(currentDay);
         console.log("Existing Mood:", mood);
         if (mood.moods.length === 0) {
@@ -23,7 +24,7 @@ function MoodSelection() {
   }, []);
 
   const handleMoodSelection = async (type) => {
-    const currentDay = new Date().setHours(0, 0, 0, 0);
+    const currentDay = moment().format("YYYY-MM-DD");
     try {
       await backendAPIInstance.saveMood(type, currentDay);
       setShowMoodSelection(false);

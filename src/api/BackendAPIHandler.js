@@ -71,6 +71,12 @@ export class BackendAPI {
     });
     return data;
   }
+
+  async getEventsInCalendar() {
+    const { data } = await this.api.get("/api/events-calendar");
+    return data;
+  }
+
   //saves existing event in a calendar of a given user
   async addEventToCal(eventToAdd) {
     const { data } = await this.api.post("/api/event", eventToAdd);
@@ -83,8 +89,8 @@ export class BackendAPI {
     return data;
   }
 
-  async getEventsByUser() {
-    const { data } = await this.api.get("/api/events-calendar");
+  async getMeetingsByUser() {
+    const { data } = await this.api.get("/api/meetings-calendar");
     return data;
   }
 
@@ -102,12 +108,12 @@ export class BackendAPI {
     return data;
   }
 
-  async searchEvents(startDate) {
+  async searchMeetings(startDate) {
     try {
       const { data } = await this.api.post(`/api/search`, { startDate });
       return data;
     } catch (err) {
-      console.error("ERROR while fetching all events from db:", err);
+      console.error("ERROR while fetching all meetings from db:", err);
       throw new Error("Internal Server Error");
     }
   }
