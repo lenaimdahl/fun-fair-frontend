@@ -43,8 +43,8 @@ function DayView() {
       <div className="events-and-diary">
         <div className="events-box">
           <h3>Your events</h3>
-          {events.length > 0 ? (
-            events.map((event) => (
+          {meetings.length > 0 ? (
+            meetings.map((event) => (
               <p key={event._id}>
                 {event.image} {event.title}
               </p>
@@ -73,8 +73,6 @@ function DayView() {
       </div>
 
       <div></div>
-
-      
     </div>
   );
 }
