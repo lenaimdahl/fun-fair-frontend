@@ -135,4 +135,13 @@ export class BackendAPI {
       throw new Error("Internal Server Error");
     }
   }
+
+  async updateGoal(weeklyGoal) {
+    try {
+      return this.api.patch(`/api/newGoal`, { weeklyGoal });
+    } catch (err) {
+      console.error("ERROR while fetching all events from db:", err);
+      throw new Error("Internal Server Error");
+    }
+  }
 }

@@ -25,16 +25,16 @@ function AddText() {
   };
 
   return (
-    <div>
+    <div className="new-text-container">
       {!showTextSection && (
         <button className="button-add" onClick={handleAddTextClick}>
-          <p>Add a new Text Entry for today</p>
+          + Add a new note
         </button>
       )}
       {showTextSection && (
         <div>
           <div>
-            <h2>Add your text</h2>
+            <h2>Your note</h2>
             <div className="new-text-container">
               <form onSubmit={handleAddText}>
                 <input
@@ -44,7 +44,7 @@ function AddText() {
                   onChange={handleText}
                 />
                 <button className="button-add" type="submit">
-                  Add!
+                  save
                 </button>
               </form>
             </div>

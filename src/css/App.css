@@ -20,15 +20,14 @@ body {
 
 .button-add {
   color: white;
-  margin-top: 20px;
   background-color: #fc7fb1;
   border: none;
   border-radius: 40px;
-  padding: 10px;
+  padding: 10px 20px;
   font-size: 12pt;
 }
 
-.button-delete {
+/* .button-delete {
   color: white;
   background-color: #fa2525;
   border: none;
@@ -36,9 +35,9 @@ body {
   padding: 10px;
   font-size: 10pt;
   margin: 10px;
-}
+} */
 
-.button-edit {
+/* .button-edit {
   color: white;
   background-color: #1616fe;
   border: none;
@@ -46,7 +45,7 @@ body {
   padding: 10px;
   font-size: 10pt;
   margin: 10px;
-}
+} */
 
 .calendar-flex {
   display: flex;
@@ -214,7 +213,6 @@ body {
 }
 
 .points-highlighter {
-  padding: 10px 0 0 0;
   font-size: 25px;
   margin: 0;
   color: white;
@@ -230,8 +228,8 @@ body {
 }
 
 .points-green {
-  padding: 10px 0 0 0;
   font-size: 25px;
+  text-align: center;
   margin: 0;
   color: white;
   text-shadow:
@@ -246,7 +244,7 @@ body {
 }
 
 .points-red {
-  padding: 10px 0 0 0;
+  text-align: center;
   font-size: 25px;
   margin: 0;
   color: white;
@@ -297,6 +295,8 @@ body {
   text-transform: uppercase;
 }
 
+.button-edit:hover,
+.button-add:hover,
 .button:hover,
 .add-text-box button:hover,
 .btn-show-form:hover,
@@ -373,6 +373,8 @@ body {
   border-radius: 10px;
 }
 
+.button-delete,
+.button-edit,
 .add-event-today-form button {
   font-size: 15px;
   height: 40px;
@@ -556,6 +558,7 @@ body {
   height: 200px;
   width: 300px;
   margin-right: 10px;
+  border: none;
 }
 
 footer {
@@ -587,27 +590,81 @@ footer p {
 }
 
 /* DayView */
-.day-view-container {
-  padding: 10px;
+.day-view-page {
+  width: 60vw;
+  margin: 40px auto 100px auto;
   color: black;
-  margin: 0 10px;
-  background-color: rgba(255, 255, 255, 0.571);
-  border-radius: 30px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.653),
-    0 6px 20px 0 rgba(0, 0, 0, 0.432);
-}
-
-.day-entries {
-  text-align: center;
-  border-top: 2px solid #fc7fb1;
 }
 
 .date-picker-div {
   margin: 20px 0;
   text-align: center;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.528);
 }
-.day-view-flex {
+
+.events-and-diary {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.diary-box,
+.events-box {
+  padding: 20px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.528);
+}
+
+.diary-box {
+  width: 60%;
+}
+
+.events-box {
+  width: 35%;
+}
+
+.diary-box h3,
+.events-box h3 {
   text-align: center;
+}
+
+.single-diary-entry li {
+  list-style: none;
+  /* background-color: white; */
+}
+
+.entry-text {
+  width: 60%;
+}
+
+.entry-edit-buttons {
+  width: 40%;
+}
+
+.button-delete:hover {
+  background-color: red;
+  cursor: pointer;
+}
+
+.button-edit {
+  font-size: 30px;
+}
+
+.single-entry-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.383);
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.entry-edit-buttons {
+  display: flex;
+  justify-content: end;
 }
 
 .flex-row {
@@ -618,4 +675,24 @@ footer p {
 
 .centered {
   text-align: center;
+}
+
+.goal-edit-btn {
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  font-size: 25px;
+}
+
+.goal-and-btn {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  align-items: center;
+}
+
+.point-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

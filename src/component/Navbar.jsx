@@ -38,7 +38,7 @@ function Navbar() {
                 navigate("/");
               }}
             >
-              Logout
+              Log out
             </Link>
           </li>
         ) : (

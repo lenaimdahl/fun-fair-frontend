@@ -31,20 +31,20 @@ function DayView() {
   }, []);
 
   return (
-    <div className="day-view-flex">
-      <div className="day-view-container">
-        <div className="date-picker-div">
-          <h3>Pick a date</h3>
-          <DatePicker
-            showIcon
-            selected={selectedDate}
-            onChange={handleDateChange}
-          />
-        </div>
-        <div className="day-entries">
-          <h3>Your meetings</h3>
-          {meetings.length > 0 ? (
-            meetings.map((event) => (
+    <div className="day-view-page">
+      <div className="date-picker-div">
+        <h3>Pick a date</h3>
+        <DatePicker
+          showIcon
+          selected={selectedDate}
+          onChange={handleDateChange}
+        />
+      </div>
+      <div className="events-and-diary">
+        <div className="events-box">
+          <h3>Your events</h3>
+          {events.length > 0 ? (
+            events.map((event) => (
               <p key={event._id}>
                 {event.image} {event.title}
               </p>
@@ -53,12 +53,12 @@ function DayView() {
             <p>No meetings to display</p>
           )}
         </div>
-        <div className="day-entries">
-          <h3>Your entries</h3>
+        <div className="diary-box">
+          <h3>Your diary</h3>
           {entries.length > 0 ? (
             <p>
               {entries.map((entry) => (
-                <div>
+                <div className="single-diary-entry">
                   <li key={entry._id}>
                     <DayEntry text={entry.text} id={entry._id} />
                   </li>
@@ -68,10 +68,13 @@ function DayView() {
           ) : (
             <p>No entries to display</p>
           )}
+          <AddText />
         </div>
-        <div></div>
       </div>
-      <AddText />
+
+      <div></div>
+
+      
     </div>
   );
 }
