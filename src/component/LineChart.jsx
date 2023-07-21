@@ -178,7 +178,7 @@ function WeekTable({ moods }) {
       labels: generateWeekDays().reverse(),
       datasets: [
         {
-          label: "Mood last week",
+          label: "Mood last 7 days",
           data: lastSevenMoods.map((mood) =>
             mood ? convertEmojiToNumber(mood.title) : null
           ),
@@ -186,11 +186,11 @@ function WeekTable({ moods }) {
           pointStyle: lastSevenMoods.map((mood) =>
             mood ? convertEmojiToImage(mood.title) : null
           ),
-          borderColor: "#D9FDED",
+          borderColor: "green",
           backgroundColor: "#D9FDED33",
         },
         {
-          label: "Mood before",
+          label: "week before",
           data: weekBeforeMoods.map((mood) =>
             mood ? convertEmojiToNumber(mood.title) : null
           ),
@@ -198,8 +198,8 @@ function WeekTable({ moods }) {
           pointStyle: weekBeforeMoods.map((mood) =>
             mood ? convertEmojiToImage(mood.title) : null
           ),
-          borderColor: "#FF0000",
-          backgroundColor: "#FF000033",
+          borderColor: "#D9FDED",
+          backgroundColor: "#D9FDED33",
         },
       ],
     });
