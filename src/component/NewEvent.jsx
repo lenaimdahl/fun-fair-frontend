@@ -4,12 +4,10 @@ import { BackendAPI } from "../api/BackendAPIHandler";
 function NewEvent() {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
-  const [points, setPoints] = useState("");
   const [showEventForm, setShowEventForm] = useState(false);
 
   const handleTitle = (event) => setTitle(event.target.value);
   const handleImage = (event) => setImage(event.target.value);
-  const handlePoints = (event) => setPoints(parseInt(event.target.value));
 
   const toggleForm = () => {
     if (showEventForm === true) {
@@ -30,14 +28,12 @@ function NewEvent() {
       const newEvent = {
         title,
         image,
-        points,
         timestamp: currentDay,
       };
 
       await backendAPIInstance.saveEvent(newEvent);
       setTitle("");
       setImage("");
-      setPoints("");
     } catch (error) {
       console.error(error);
     }
@@ -67,32 +63,9 @@ function NewEvent() {
             value={image}
             onChange={handleImage}
           />
-
-          <label>points</label>
-          <input
-            type="number"
-            name="points"
-            value={points}
-            onChange={handlePoints}
-          />
           <button type="submit">+</button>
         </form>
       ) : null}
-      {/* <form onSubmit={handleAddEvent} className="new-event-form">
-        <label>title</label>
-        <input type="text" name="title" value={title} onChange={handleTitle} />
-        <label>emoji</label>
-        <input type="text" name="image" value={image} onChange={handleImage} />
-
-        <label>points</label>
-        <input
-          type="number"
-          name="points"
-          value={points}
-          onChange={handlePoints}
-        />
-        <button type="submit">+</button>
-      </form> */}
     </div>
   );
 }

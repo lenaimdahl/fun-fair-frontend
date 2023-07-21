@@ -15,22 +15,21 @@ import { BackendAPI } from "../api/BackendAPIHandler";
 function Calendar() {
   const [data, setData] = useState([]);
   const [currentDate, setCurrentDate] = useState();
-
   const backendAPIInstance = new BackendAPI();
 
   useEffect(() => {
     (async () => {
-      const data = await backendAPIInstance.getEventsByUser();
-      const convertedData = data.events.map((event) => {
+      const data = await backendAPIInstance.getMeetingsByUser();
+      const convertedData = data.meetings.map((meeting, index) => {
         return {
-          id: event._id,
-          name: event.name,
-          title: event.image,
-          startDate: new Date(event.timestamp),
-          endDate: new Date(event.timestamp).setHours(0, 30, 0, 0),
+          id: index,
+          title: meeting.image,
+          startDate: new Date(meeting.timestamp),
+          endDate: new Date(new Date(meeting.timestamp).setHours(0, 30, 0, 0)),
         };
       });
       setData(convertedData);
+      console.log("data", convertedData);
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
