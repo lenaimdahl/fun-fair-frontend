@@ -21,31 +21,34 @@ function convertType(type) {
 }
 
 function WeeklyMood() {
-  const [moods, setMoods] = useState([]);
+  const [moods, setMoods] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   const backendAPIInstance = new BackendAPI();
 
   useEffect(() => {
-    const fetchMoods = async () => {
+    (async () => {
       try {
-        const data = await backendAPIInstance.getMoods();
-        const convertedData = data.moods.map((mood) => {
-          return {
-            id: mood._id,
-            title: convertType(mood.title),
-            startDate: new Date(mood.timestamp),
-            endDate: new Date(mood.timestamp).setHours(0, 30, 0, 0),
-          };
-        });
+        const { moods: data } = await backendAPIInstance.getMoods();
+        const convertedData = data
+          .map((mood) => {
+            return {
+              id: mood._id,
+              title: convertType(mood.title),
+              date: mood.timestamp,
+            };
+          })
+          .sort((moodA, moodB) => {
+            return new Date(moodA.date) - new Date(moodB.date);
+          });
+
         setMoods(convertedData);
       } catch (error) {
         console.log("Error fetching moods:", error);
       } finally {
         setIsLoading(false);
       }
-    };
-    fetchMoods();
+    })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
