@@ -51,9 +51,7 @@ export class BackendAPI {
 
   async getMoodForDay(timestamp) {
     try {
-      const { data } = await this.api.get("/api/moods", {
-        params: { timestamp },
-      });
+      const { data } = await this.api.get(`/api/mood/${timestamp}`);
       return data;
     } catch (error) {
       throw new Error(error.response.data.message);

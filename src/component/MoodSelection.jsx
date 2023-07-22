@@ -11,10 +11,11 @@ function MoodSelection() {
     const checkExistingMood = async () => {
       try {
         const currentDay = moment().format("YYYY-MM-DD");
-        const mood = await backendAPIInstance.getMoodForDay(currentDay);
-        if (mood.moods.length === 0) {
+        const { moods } = await backendAPIInstance.getMoodForDay(currentDay);
+        if (moods.length === 0) {
           setShowMoodSelection(true);
         }
+        console.log("moods", moods);
       } catch (error) {
         console.error(error);
       }
