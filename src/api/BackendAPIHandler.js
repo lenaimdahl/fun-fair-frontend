@@ -79,7 +79,7 @@ export class BackendAPI {
 
   //saves existing event in a calendar of a given user
   async addEventToCal(eventToAdd) {
-    const { data } = await this.api.post("/api/event", eventToAdd);
+    const { data } = await this.api.post("/api/meetings", eventToAdd);
     return data;
   }
 

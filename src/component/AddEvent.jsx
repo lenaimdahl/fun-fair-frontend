@@ -44,6 +44,11 @@ function AddEvent() {
         timestamp: selectedDateAdMidnight,
         friend: selectedFriend,
       };
+      if (selectedFriend) {
+        eventToAdd.friend = selectedFriend;
+      } else {
+        eventToAdd.friend = null; // Set friend to null when no friend is selected
+      }
       await backendAPIInstance.addEventToCal(eventToAdd);
       setSelectedFriend("");
       setCustomPoints(0);
@@ -100,7 +105,7 @@ function AddEvent() {
       <div>
         <label>Select Friend: </label>
         <select value={selectedFriend} onChange={handleFriendChange}>
-          <option value="">Select a friend</option>
+          <option value="">No friend</option>
           {friends.map((friend) => (
             <option key={friend._id} value={friend._id}>
               {friend.username}
