@@ -22,17 +22,11 @@ function Points() {
       // Make an API request or retrieve meetings from a local data store
       const fetchedMeetings = await backendAPIInstance.getMeetingsByUser();
       const fetchedMeetingsArray = fetchedMeetings.meetings;
-
-      console.log("fetched meetings by user", fetchedMeetings);
-
       // Filter meetings for the week (Monday to Sunday)
       const weekMeetings = fetchedMeetingsArray.filter((meeting) => {
         const meetingDate = new Date(meeting.timestamp);
         return meetingDate >= startDate && meetingDate <= endDate;
       });
-
-      console.log("week meetings by user", weekMeetings);
-
       setMeetings(weekMeetings);
     };
 
@@ -58,8 +52,6 @@ function Points() {
     const fetchUserData = async () => {
       const fetchedUser = await backendAPIInstance.getUserData();
       const usersWeeklyGoal = fetchedUser.user.weeklyGoal;
-      console.log("user point goal", usersWeeklyGoal);
-
       setWeeklyGoal(usersWeeklyGoal);
     };
 
@@ -92,7 +84,8 @@ function Points() {
       <div>
         {isEditing ? (
           <div className="point-section">
-            <p>Your weekly goal:</p><br></br>
+            <p>Your weekly goal:</p>
+            <br></br>
             <input type="text" value={weeklyGoal} onChange={handleChangeGoal} />
             <button className="goal-edit-btn" onClick={handleUpdateGoal}>
               ✅
@@ -100,7 +93,8 @@ function Points() {
           </div>
         ) : (
           <div className="point-section">
-            <p>Your weekly goal:</p><br></br>
+            <p>Your weekly goal:</p>
+            <br></br>
             <div className="goal-and-btn">
               <button
                 className="goal-edit-btn"
@@ -115,7 +109,6 @@ function Points() {
           </div>
         )}
       </div>
-
     </div>
   );
 }

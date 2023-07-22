@@ -12,7 +12,6 @@ function MoodSelection() {
       try {
         const currentDay = moment().format("YYYY-MM-DD");
         const mood = await backendAPIInstance.getMoodForDay(currentDay);
-        console.log("Existing Mood:", mood);
         if (mood.moods.length === 0) {
           setShowMoodSelection(true);
         }
