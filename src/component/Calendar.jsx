@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { GlobalContext } from "../context/global.context";
 import Paper from "@mui/material/Paper";
 import { ViewState } from "@devexpress/dx-react-scheduler";
 import {
@@ -9,31 +10,25 @@ import {
   MonthView,
   Appointments,
 } from "@devexpress/dx-react-scheduler-material-ui";
-import { BackendAPI } from "../api/BackendAPIHandler";
 
 function Calendar() {
+  const { meetings } = useContext(GlobalContext);
+
   const [data, setData] = useState([]);
   const [currentDate, setCurrentDate] = useState();
-  const backendAPIInstance = new BackendAPI();
-  console.log(data);
-  useEffect(() => {
-    (async () => {
-      const data = await backendAPIInstance.getMeetingsByUser();
-      const convertedData = data.meetings.map((meeting, index) => {
-        const combinedTitle = `${meeting.image} ${meeting.title}`;
-        return {
-          id: index,
-          title: combinedTitle,
-          startDate: new Date(meeting.timestamp),
-          endDate: new Date(new Date(meeting.timestamp).setHours(0, 30, 0, 0)),
-        };
-      });
 
-      setData(convertedData);
-      console.log("data", convertedData);
-    })();
+  useEffect(() => {
+    const convertedData = meetings.map((meeting, index) => {
+      return {
+        title: meeting.title,
+        id: index,
+        startDate: new Date(meeting.timestamp),
+        endDate: new Date(new Date(meeting.timestamp).setHours(0, 30, 0, 0)),
+      };
+    });
+    setData(convertedData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [meetings]);
 
   return (
     <div>
