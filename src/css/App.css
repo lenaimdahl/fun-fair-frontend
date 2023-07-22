@@ -16,7 +16,7 @@ body {
   border-radius: 40px;
   padding: 20px 40px;
   font-size: 12pt;
-} 
+}
 
 .button-add {
   color: white;
@@ -217,15 +217,9 @@ body {
   font-size: 25px;
   margin: 0;
   color: white;
-  text-shadow:
-        0 0 7px #961DE4,
-        0 0 10px #961DE4,
-        0 0 21px #961DE4,
-        0 0 42px #961DE4,
-        0 0 82px #961DE4,
-        0 0 92px #961DE4,
-        0 0 102px #961DE4,
-        0 0 151px #961DE4;
+  text-shadow: 0 0 7px #961de4, 0 0 10px #961de4, 0 0 21px #961de4,
+    0 0 42px #961de4, 0 0 82px #961de4, 0 0 92px #961de4, 0 0 102px #961de4,
+    0 0 151px #961de4;
 }
 
 .points-green {
@@ -233,15 +227,9 @@ body {
   text-align: center;
   margin: 0;
   color: white;
-  text-shadow:
-        0 0 7px #24e41d,
-        0 0 10px #24e41d,
-        0 0 21px #24e41d,
-        0 0 42px #24e41d,
-        0 0 82px #24e41d,
-        0 0 92px #24e41d,
-        0 0 102px #24e41d,
-        0 0 151px #24e41d;
+  text-shadow: 0 0 7px #24e41d, 0 0 10px #24e41d, 0 0 21px #24e41d,
+    0 0 42px #24e41d, 0 0 82px #24e41d, 0 0 92px #24e41d, 0 0 102px #24e41d,
+    0 0 151px #24e41d;
 }
 
 .points-red {
@@ -249,16 +237,9 @@ body {
   font-size: 25px;
   margin: 0;
   color: white;
-  text-shadow:
-        0 0 7px #ed6ea0,
-        0 0 10px #ed6ea0,
-        0 0 21px #ed6ea0,
-        0 0 42px #ed6ea0,
-        0 0 82px #ed6ea0,
-        0 0 92px #ed6ea0,
-        0 0 102px #ed6ea0,
-        0 0 151px #ed6ea0;
-
+  text-shadow: 0 0 7px #ed6ea0, 0 0 10px #ed6ea0, 0 0 21px #ed6ea0,
+    0 0 42px #ed6ea0, 0 0 82px #ed6ea0, 0 0 92px #ed6ea0, 0 0 102px #ed6ea0,
+    0 0 151px #ed6ea0;
 }
 
 .add-text-box {
@@ -417,7 +398,7 @@ body {
 .add-event-box input {
   border-radius: 20px;
   border: none;
-  padding: 5px 10px; 
+  padding: 5px 10px;
   margin-bottom: 5px;
 }
 
@@ -443,7 +424,7 @@ body {
 
 .add-event-flex-row-item-2 {
   width: 65%;
-} 
+}
 
 .new-event-form {
   display: flex;
@@ -492,8 +473,8 @@ body {
   background-color: rgba(255, 255, 255, 0.528);
 }
 
-.friend-zone-box{
- padding: 0 10px 10px 10px;
+.friend-zone-box {
+  padding: 0 10px 10px 10px;
 }
 
 .weekly-mood-box h2 {
@@ -642,6 +623,10 @@ footer p {
 /* calendar */
 .css-3nejl.Appointment-appointment {
   background-color: transparent !important;
+}
+.HorizontalAppointment-title {
+  color: black;
+  font-size: 8pt;
 }
 
 /* DayView */

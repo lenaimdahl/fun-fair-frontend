@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Paper from "@mui/material/Paper";
-import { Link } from "react-router-dom";
 import { ViewState } from "@devexpress/dx-react-scheduler";
 import {
   Toolbar,
@@ -16,18 +15,20 @@ function Calendar() {
   const [data, setData] = useState([]);
   const [currentDate, setCurrentDate] = useState();
   const backendAPIInstance = new BackendAPI();
-
+  console.log(data);
   useEffect(() => {
     (async () => {
       const data = await backendAPIInstance.getMeetingsByUser();
       const convertedData = data.meetings.map((meeting, index) => {
+        const combinedTitle = `${meeting.image} ${meeting.title}`;
         return {
           id: index,
-          title: meeting.image,
+          title: combinedTitle,
           startDate: new Date(meeting.timestamp),
           endDate: new Date(new Date(meeting.timestamp).setHours(0, 30, 0, 0)),
         };
       });
+
       setData(convertedData);
       console.log("data", convertedData);
     })();
