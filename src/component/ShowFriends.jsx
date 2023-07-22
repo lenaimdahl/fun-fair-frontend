@@ -1,21 +1,4 @@
-import { useEffect, useState } from "react";
-import { BackendAPI } from "../api/BackendAPIHandler";
-
-function ShowFriends() {
-  const [friends, setFriends] = useState([]);
-
-  const backendAPIInstance = new BackendAPI();
-
-  const fetchFriends = async () => {
-    const { friends } = await backendAPIInstance.getFriends();
-    setFriends(friends);
-  };
-
-  useEffect(() => {
-    fetchFriends();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+function ShowFriends({ friends }) {
   return (
     <div>
       <div className="friends-list-box">

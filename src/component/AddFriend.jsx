@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { BackendAPI } from "../api/BackendAPIHandler";
 
-function AddFriend() {
+function AddFriend({ fetchFriends }) {
   const [allUsers, setAllUsers] = useState([]);
 
   const backendAPIInstance = new BackendAPI();
@@ -22,14 +22,16 @@ function AddFriend() {
     const userId = selectEl.id;
     try {
       await backendAPIInstance.addFriendToUser(userId);
+      await fetchFriends();
+      await fetchAllUser();
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <div >
-      <div >
+    <div>
+      <div>
         <form onSubmit={handleAddFriends} className="add-friend-form">
           <label>add a friend: </label>
           <select id="user" name="user">

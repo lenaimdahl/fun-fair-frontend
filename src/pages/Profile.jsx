@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import AddEvent from "../component/AddEvent";
@@ -8,9 +8,23 @@ import NewEvent from "../component/NewEvent";
 import AddFriend from "../component/AddFriend";
 import ShowFriends from "../component/ShowFriends";
 import Points from "../component/Points";
+import { BackendAPI } from "../api/BackendAPIHandler";
 
 function Profile() {
   const { user } = useContext(AuthContext);
+  const [friends, setFriends] = useState([]);
+
+  const backendAPIInstance = new BackendAPI();
+
+  const fetchFriends = async () => {
+    const { friends } = await backendAPIInstance.getFriends();
+    setFriends(friends);
+  };
+
+  useEffect(() => {
+    fetchFriends();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="profile-page">
@@ -31,8 +45,8 @@ function Profile() {
           <div className="combo-pannel">
             <h2>Friend Zone</h2>
             <div className="friend-zone-box">
-              <AddFriend />
-              <ShowFriends />
+              <AddFriend friends={friends} fetchFriends={fetchFriends} />
+              <ShowFriends friends={friends} />
             </div>
           </div>
           <div className="centered">
