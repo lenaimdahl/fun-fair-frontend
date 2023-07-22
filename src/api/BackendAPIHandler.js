@@ -66,7 +66,7 @@ export class BackendAPI {
   }
 
   async saveActivity(activity) {
-    const { data } = await this.api.post("/api/activity", {
+    const { data } = await this.api.post("/activity", {
       title: activity,
     });
     return data;
