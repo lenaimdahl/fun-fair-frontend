@@ -296,6 +296,7 @@ body {
   text-transform: uppercase;
 }
 
+.add-friend-form button:hover,
 #add-event-btn:hover,
 .button-edit:hover,
 .button-add:hover,
@@ -374,6 +375,7 @@ body {
   font-size: 20px;
 }
 
+.add-friend-form select,
 .add-event-flex-row select {
   border: none;
   padding: 5px 10px;
@@ -383,7 +385,7 @@ body {
 
 .button-delete,
 .button-edit,
-.add-event-today-form button {
+.add-friend-form button {
   font-size: 15px;
   height: 40px;
   width: 40px;
@@ -427,7 +429,7 @@ body {
   border-radius: 40px;
   width: 40px;
   height: 40px;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .add-event-flex-row {
@@ -446,6 +448,7 @@ body {
 .new-event-form {
   display: flex;
   flex-direction: column;
+  padding-bottom: 10px;
 }
 
 .new-event-form label {
@@ -468,6 +471,16 @@ body {
   width: 50px;
   height: 50px;
   font-size: 20px;
+}
+
+.friends-list-box h3 {
+  text-align: center;
+}
+
+.friends-list-box li {
+  list-style: none;
+  margin-left: 35%;
+  font-size: 17px;
 }
 
 .weekly-mood-box {
