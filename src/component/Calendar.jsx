@@ -34,7 +34,7 @@ function Calendar() {
     <div>
       <div className="calendar-container">
         <Paper>
-          <Scheduler data={data} height={500}>
+          <Scheduler data={data} height={500} width={500}>
             <ViewState
               currentDate={currentDate}
               onCurrentDateChange={(newDate) => setCurrentDate(newDate)}

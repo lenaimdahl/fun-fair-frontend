@@ -39,7 +39,7 @@ function Profile() {
         <div className="right-side-menu">
           <MoodSelection />
           <div className="combo-pannel">
-            <AddEvent />
+            <AddEvent friends={friends} />
             <NewEvent />
           </div>
           <div className="combo-pannel">

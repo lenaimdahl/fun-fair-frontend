@@ -22,6 +22,7 @@ const GlobalContextWrapper = ({ children }) => {
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <GlobalContext.Provider value={{ meetings, setMeetings }}>
       {children}
