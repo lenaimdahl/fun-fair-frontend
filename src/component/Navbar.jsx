@@ -9,6 +9,11 @@ function Navbar() {
   const { isLoggedIn, logOutUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  const handleLogout = async () => {
+    await logOutUser();
+    navigate("/");
+  };
+
   return (
     <nav className="menu">
       <ol>
@@ -35,13 +40,7 @@ function Navbar() {
         )}
         {isLoggedIn ? (
           <li className="menu-item">
-            <Link
-              to="#"
-              onClick={() => {
-                logOutUser();
-                navigate("/");
-              }}
-            >
+            <Link to="#" onClick={handleLogout}>
               Log out
             </Link>
           </li>
