@@ -70,7 +70,7 @@ function DayView() {
           ) : (
             <p>No entries to display</p>
           )}
-          <AddText />
+          <AddText handleDateChange={handleDateChange} />
         </div>
       </div>
 
