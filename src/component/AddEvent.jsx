@@ -21,7 +21,6 @@ function AddEvent() {
       },
       []
     );
-
     setAllEvents(fetchedEventsArray);
   };
 
@@ -109,7 +108,11 @@ function AddEvent() {
         {/* Friend Selector */}
         <div className="add-event-flex-row">
           <label className="add-event-flex-row-item-1">with: </label>
-          <select className="add-event-flex-row-item-2" value={selectedFriend} onChange={handleFriendChange}>
+          <select
+            className="add-event-flex-row-item-2"
+            value={selectedFriend}
+            onChange={handleFriendChange}
+          >
             <option value="">Select a friend</option>
             {friends.map((friend) => (
               <option key={friend._id} value={friend._id}>
@@ -122,22 +125,26 @@ function AddEvent() {
         {/* Event Selector */}
         <form onSubmit={handleAddToCalendar} className="">
           <div className="add-event-flex-row">
-          <label className="add-event-flex-row-item-1">events: </label>
-          {/* these need to be populated from our database */}
-          <select className="add-event-flex-row-item-2" id="event" name="event">
-            {allEvents.map((oneEvent) => {
-              return (
-                <option
-                  key={oneEvent._id}
-                  value={oneEvent.value}
-                  title={oneEvent.title}
-                  image={oneEvent.image}
-                >
-                  {oneEvent.image} {oneEvent.title}
-                </option>
-              );
-            })}
-          </select>
+            <label className="add-event-flex-row-item-1">events: </label>
+            {/* these need to be populated from our database */}
+            <select
+              className="add-event-flex-row-item-2"
+              id="event"
+              name="event"
+            >
+              {allEvents.map((oneEvent) => {
+                return (
+                  <option
+                    key={oneEvent._id}
+                    value={oneEvent.value}
+                    title={oneEvent.title}
+                    image={oneEvent.image}
+                  >
+                    {oneEvent.image} {oneEvent.title}
+                  </option>
+                );
+              })}
+            </select>
           </div>
           <br></br>
           <button id="add-event-btn" type="submit">

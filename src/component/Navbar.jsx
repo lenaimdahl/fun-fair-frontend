@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-
 import "../css/navbar.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { Fragment, useContext } from "react";
