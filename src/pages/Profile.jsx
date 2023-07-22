@@ -30,17 +30,16 @@ function Profile() {
           </div>
           <div className="combo-pannel">
             <h2>Friend Zone</h2>
-            <div className="flex-row">
-              <ShowFriends />
+            <div className="friend-zone-box">
               <AddFriend />
+              <ShowFriends />
             </div>
           </div>
           <div className="centered">
-          <Link to={"/day-view"}>
-            <button className="button">Add a text for today</button>
-          </Link>
+            <Link to={"/day-view"}>
+              <button className="button">Add a text for today</button>
+            </Link>
           </div>
-         
         </div>
       </div>
     </div>
