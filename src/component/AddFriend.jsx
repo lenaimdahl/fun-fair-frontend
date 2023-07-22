@@ -28,8 +28,8 @@ function AddFriend() {
   };
 
   return (
-    <div>
-      <div className="">
+    <div >
+      <div >
         <form onSubmit={handleAddFriends} className="add-event-today-form">
           <label>Add a friend: </label>
           <select id="user" name="user">

@@ -68,9 +68,10 @@ body {
 .right-side-menu {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 20px;
+  justify-content: start;
+  /* gap: 20px; */
   margin-bottom: 100px;
+  /* background-color: #24e41d; */
 }
 
 .activity-container {
@@ -347,19 +348,24 @@ body {
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
-  padding: 20px;
+  /* padding: 20px; */
   background-color: rgba(255, 255, 255, 0.516);
   border-radius: 20px;
+  margin-bottom: 20px;
 }
 
 .add-event-box {
   display: flex;
   flex-direction: column;
-  align-items: center;
   flex-wrap: wrap;
   padding: 20px;
   /* background-color: rgba(255, 255, 255, 0.516); */
   border-radius: 20px;
+  width: 90%;
+}
+
+.add-event-box h2 {
+  text-align: center;
 }
 
 .mood-container span {
@@ -367,10 +373,11 @@ body {
   font-size: 20px;
 }
 
-.add-event-today-form select {
+.add-event-flex-row select {
   border: none;
   padding: 5px 10px;
-  border-radius: 10px;
+  border-radius: 20px;
+  margin-bottom: 5px;
 }
 
 .button-delete,
@@ -403,6 +410,31 @@ body {
   background-color: #fc7fb1;
   color: white;
 }
+
+.add-event-box input {
+  border-radius: 20px;
+  border: none;
+  padding: 5px 10px; 
+  margin-bottom: 5px;
+}
+
+#add-event-btn {
+  margin-top: 15px;
+  margin-left: 45%;
+}
+
+.add-event-flex-row {
+  display: flex;
+  align-items: center;
+}
+
+.add-event-flex-row-item-1 {
+  width: 30%;
+}
+
+.add-event-flex-row-item-2 {
+  width: 100%;
+} 
 
 .new-event-form {
   display: flex;
@@ -439,6 +471,10 @@ body {
   margin: 40px auto 100px auto;
   border-radius: 20px;
   background-color: rgba(255, 255, 255, 0.528);
+}
+
+.friend-zone-box{
+ padding: 0 10px 10px 10px;
 }
 
 .weekly-mood-box h2 {

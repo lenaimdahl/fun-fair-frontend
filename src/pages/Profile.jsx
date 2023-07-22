@@ -30,7 +30,7 @@ function Profile() {
           </div>
           <div className="combo-pannel">
             <h2>Friend Zone</h2>
-            <div className="flex-row">
+            <div className="flex-row friend-zone-box">
               <ShowFriends />
               <AddFriend />
             </div>
