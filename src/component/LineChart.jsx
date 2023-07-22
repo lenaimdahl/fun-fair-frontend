@@ -186,7 +186,7 @@ function WeekTable({ moods }) {
           pointStyle: lastSevenMoods.map((mood) =>
             mood ? convertEmojiToImage(mood.title) : null
           ),
-          borderColor: "green",
+          borderColor: "#C82567",
           backgroundColor: "#D9FDED33",
         },
         {
