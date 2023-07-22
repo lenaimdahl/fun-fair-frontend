@@ -296,6 +296,7 @@ body {
   text-transform: uppercase;
 }
 
+#add-event-btn:hover,
 .button-edit:hover,
 .button-add:hover,
 .button:hover,
@@ -419,8 +420,14 @@ body {
 }
 
 #add-event-btn {
-  margin-top: 15px;
   margin-left: 45%;
+  color: white;
+  background-color: #fc7fb1;
+  border: none;
+  border-radius: 40px;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
 }
 
 .add-event-flex-row {
@@ -452,7 +459,6 @@ body {
   padding: 10px 20px;
 }
 
-.add-text-box button,
 .new-event-form button {
   color: white;
   margin: 20px auto 0 auto;
