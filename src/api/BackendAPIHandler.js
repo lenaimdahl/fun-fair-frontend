@@ -136,6 +136,15 @@ export class BackendAPI {
     }
   }
 
+  async deleteMeeting(id) {
+    try {
+      return this.api.delete(`/api/meeting/${id}`);
+    } catch (err) {
+      console.error("ERROR while deleting meeting from db:", err);
+      throw new Error("Internal Server Error");
+    }
+  }
+
   async updateGoal(weeklyGoal) {
     try {
       return this.api.patch(`/api/newGoal`, { weeklyGoal });

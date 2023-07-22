@@ -20,6 +20,7 @@ function MoodSelection() {
       }
     };
     checkExistingMood();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleMoodSelection = async (type) => {
