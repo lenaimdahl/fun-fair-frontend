@@ -44,6 +44,11 @@ function AddEvent() {
         timestamp: selectedDateAdMidnight,
         friend: selectedFriend,
       };
+      if (selectedFriend) {
+        eventToAdd.friend = selectedFriend;
+      } else {
+        eventToAdd.friend = null; // Set friend to null when no friend is selected
+      }
       await backendAPIInstance.addEventToCal(eventToAdd);
       setSelectedFriend("");
       setCustomPoints(0);

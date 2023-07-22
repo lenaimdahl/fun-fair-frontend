@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { BackendAPI } from "../api/BackendAPIHandler";
 
 function DayEntry(props) {
@@ -54,7 +54,7 @@ function DayEntry(props) {
               ✎
             </button>
             <button className="button-delete" onClick={handleDeleteText}>
-            ✖️
+              ✖️
             </button>
           </div>
         </div>

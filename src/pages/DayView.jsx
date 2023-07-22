@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { BackendAPI } from "../api/BackendAPIHandler";
 import AddText from "../component/AddText";
 import DayEntry from "../component/DayEntry";
+import DeleteMeetings from "../component/DeleteMeetings";
 
 function DayView() {
   const [meetings, setMeetings] = useState([]);
@@ -47,6 +48,7 @@ function DayView() {
             meetings.map((event) => (
               <p key={event._id}>
                 {event.image} {event.title}
+                <DeleteMeetings id={event._id} />
               </p>
             ))
           ) : (
@@ -68,7 +70,7 @@ function DayView() {
           ) : (
             <p>No entries to display</p>
           )}
-          <AddText />
+          <AddText handleDateChange={handleDateChange} />
         </div>
       </div>
 

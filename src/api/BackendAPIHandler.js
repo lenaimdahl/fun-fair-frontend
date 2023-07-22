@@ -66,7 +66,7 @@ export class BackendAPI {
   }
 
   async saveActivity(activity) {
-    const { data } = await this.api.post("/api/activity", {
+    const { data } = await this.api.post("/activity", {
       title: activity,
     });
     return data;
@@ -79,7 +79,7 @@ export class BackendAPI {
 
   //saves existing event in a calendar of a given user
   async addEventToCal(eventToAdd) {
-    const { data } = await this.api.post("/api/event", eventToAdd);
+    const { data } = await this.api.post("/api/meetings", eventToAdd);
     return data;
   }
 
@@ -132,6 +132,15 @@ export class BackendAPI {
       return this.api.patch(`/api/text/${id}`, { text });
     } catch (err) {
       console.error("ERROR while fetching all events from db:", err);
+      throw new Error("Internal Server Error");
+    }
+  }
+
+  async deleteMeeting(id) {
+    try {
+      return this.api.delete(`/api/meeting/${id}`);
+    } catch (err) {
+      console.error("ERROR while deleting meeting from db:", err);
       throw new Error("Internal Server Error");
     }
   }
