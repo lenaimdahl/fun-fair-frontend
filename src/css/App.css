@@ -363,7 +363,7 @@ body {
   padding: 20px;
   /* background-color: rgba(255, 255, 255, 0.516); */
   border-radius: 20px;
-  width: 90%;
+  /* width: 90%; */
 }
 
 .add-event-box h2 {
@@ -438,11 +438,11 @@ body {
 }
 
 .add-event-flex-row-item-1 {
-  width: 30%;
+  width: 35%;
 }
 
 .add-event-flex-row-item-2 {
-  width: 100%;
+  width: 65%;
 } 
 
 .new-event-form {
