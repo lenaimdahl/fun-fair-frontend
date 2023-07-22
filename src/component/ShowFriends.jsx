@@ -18,19 +18,16 @@ function ShowFriends() {
 
   return (
     <div>
-      <div className="">
-        <form className="add-event-today-form">
-          <label>Your friends: </label>
-          <select id="friend" name="friend">
-            {friends.map((friend) => {
-              return (
-                <option id={friend._id} key={friend._id}>
-                  {friend.username}
-                </option>
-              );
-            })}
-          </select>
-        </form>
+      <div className="friends-list-box">
+        <h3>Your friends: </h3>
+
+        {friends.map((friend) => {
+          return (
+            <li id={friend._id} key={friend._id}>
+              🥰 {friend.username}
+            </li>
+          );
+        })}
       </div>
     </div>
   );

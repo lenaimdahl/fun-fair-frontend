@@ -28,10 +28,10 @@ function AddFriend() {
   };
 
   return (
-    <div>
-      <div className="">
-        <form onSubmit={handleAddFriends} className="add-event-today-form">
-          <label>Add a friend: </label>
+    <div >
+      <div >
+        <form onSubmit={handleAddFriends} className="add-friend-form">
+          <label>add a friend: </label>
           <select id="user" name="user">
             {allUsers.map((user) => {
               return (
