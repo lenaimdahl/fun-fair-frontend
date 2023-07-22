@@ -62,7 +62,9 @@ function HomePage() {
             <h1>Activity tip of the day:</h1>
             <h2>"{activity}"</h2>
           </div>
-          <button className="signup-button">Sign up!</button>
+          <button className="signup-button">
+            <Link to={"/signup"}>Sign up!</Link>
+          </button>
           <p>Already have an account?</p>
           <button className="signup-button">
             <Link to={"/login"} className="signup-page-link">
