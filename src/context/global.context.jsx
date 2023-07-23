@@ -7,17 +7,6 @@ const GlobalContextWrapper = ({ children }) => {
   const [meetings, setMeetings] = useState([]);
   const backendAPIInstance = new BackendAPI();
 
-  backendAPIInstance.api.interceptors.response.use(
-    (response) => response,
-    (error) => {
-      if (error.response.status === 401) {
-        window.util.logout();
-      } else {
-        throw error;
-      }
-    }
-  );
-
   const fetchMeetings = async () => {
     try {
       const data = await backendAPIInstance.getMeetingsByUser();

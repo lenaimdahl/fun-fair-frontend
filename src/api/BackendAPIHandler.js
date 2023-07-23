@@ -6,6 +6,7 @@ export class BackendAPI {
     this.api = axios.create({
       baseURL: API_URL,
     });
+
     this.api.interceptors.request.use((config) => {
       const storedToken = localStorage.getItem("authToken");
       if (storedToken) {
@@ -13,125 +14,226 @@ export class BackendAPI {
       }
       return config;
     });
+
+    this.api.interceptors.response.use(
+      (response) => response,
+      (error) => {
+        // checks if the user is logged in
+        if (error.response.status === 401) {
+          window.util.logout();
+        } else {
+          throw error;
+        }
+      }
+    );
   }
 
   async login(loginData) {
-    const { data } = await this.api.post("/auth/login", loginData);
-    return data;
+    try {
+      const { data } = await this.api.post("/auth/login", loginData);
+      return data;
+    } catch (error) {
+      console.error("Error while logging in:", error);
+    }
   }
 
   async getUserData() {
-    const { data } = await this.api.get("/api/user");
-    return data;
+    try {
+      const { data } = await this.api.get("/api/user");
+      return data;
+    } catch (error) {
+      console.error("Error while :", error);
+    }
   }
 
   async getNonFriends() {
-    const { data } = await this.api.get("/api/nonfriends");
-    return data;
+    try {
+      const { data } = await this.api.get("/api/nonfriends");
+      return data;
+    } catch (error) {
+      console.error("Error while :", error);
+    }
   }
 
   async getFriends() {
-    const { data } = await this.api.get("/api/friends");
-    return data;
+    try {
+      const { data } = await this.api.get("/api/friends");
+      return data;
+    } catch (error) {
+      console.error("Error while :", error);
+    }
   }
 
   async addFriendToUser(userId) {
-    const { data } = await this.api.post("/api/addFriend", {
-      userId,
-    });
-    return data;
+    try {
+      const { data } = await this.api.post("/api/addFriend", {
+        userId,
+      });
+      return data;
+    } catch (error) {
+      console.error("Error while :", error);
+    }
   }
 
   async saveMood(type, timestamp) {
-    const { data } = await this.api.post("/api/mood", {
-      title: type,
-      timestamp: timestamp,
-    });
-    return data;
+    try {
+      const { data } = await this.api.post("/api/mood", {
+        title: type,
+        timestamp: timestamp,
+      });
+      return data;
+    } catch (error) {
+      console.error("Error while :", error);
+    }
   }
 
   async getMoodForDay(timestamp) {
-    const { data } = await this.api.get(`/api/mood/${timestamp}`);
-    return data;
+    try {
+      const { data } = await this.api.get(`/api/mood/${timestamp}`);
+      return data;
+    } catch (error) {
+      console.error("Error while :", error);
+    }
   }
 
   async getMoods() {
-    const { data } = await this.api.get("/api/moods");
-    return data;
+    try {
+      const { data } = await this.api.get("/api/moods");
+      return data;
+    } catch (error) {
+      console.error("Error while :", error);
+    }
   }
 
   async saveActivity(activity) {
-    const { data } = await this.api.post("/activity", {
-      title: activity,
-    });
-    return data;
+    try {
+      const { data } = await this.api.post("/activity", {
+        title: activity,
+      });
+      return data;
+    } catch (error) {
+      console.error("Error while :", error);
+    }
   }
 
   async getEventsInCalendar() {
-    const { data } = await this.api.get("/api/events-calendar");
-    return data;
+    try {
+      const { data } = await this.api.get("/api/events-calendar");
+      return data;
+    } catch (error) {
+      console.error("Error while :", error);
+    }
   }
 
   //saves existing event in a calendar of a given user
   async addEventToCalendar(eventToAdd) {
-    const { data } = await this.api.post("/api/meeting", eventToAdd);
-    return data;
+    try {
+      const { data } = await this.api.post("/api/meeting", eventToAdd);
+      return data;
+    } catch (error) {
+      console.error("Error while :", error);
+    }
   }
 
   //fetches all the events from DB to populate select menu
   async getEvents() {
-    const { data } = await this.api.get("/api/events");
-    return data;
+    try {
+      const { data } = await this.api.get("/api/events");
+      return data;
+    } catch (error) {
+      console.error("Error while :", error);
+    }
   }
 
   async getMeetingsByUser() {
-    const { data } = await this.api.get("/api/meetings-calendar");
-    return data;
+    try {
+      const { data } = await this.api.get("/api/meetings-calendar");
+      return data;
+    } catch (error) {
+      console.error("Error while :", error);
+    }
   }
 
   //saves a new event from new event form in general events DB
   async saveEvent(newEvent) {
-    const { data } = await this.api.post("/api/new-event", newEvent);
-    return data;
+    try {
+      const { data } = await this.api.post("/api/new-event", newEvent);
+      return data;
+    } catch (error) {
+      console.error("ERROR while saving meetings from db:", error);
+      throw error;
+    }
   }
 
   async saveEntry(entryText, currentDay) {
-    const { data } = await this.api.post("/api/entry", {
-      text: entryText,
-      timestamp: currentDay,
-    });
-    return data;
+    try {
+      const { data } = await this.api.post("/api/entry", {
+        text: entryText,
+        timestamp: currentDay,
+      });
+      return data;
+    } catch (error) {
+      console.error("Error while saving entry:", error);
+    }
   }
 
   async searchEntries(startDate) {
-    const { data } = await this.api.post("/api/entry/search", { startDate });
-    return data;
+    try {
+      const { data } = await this.api.post("/api/entry/search", { startDate });
+      return data;
+    } catch (error) {
+      console.error("Error while searching entries:", error);
+    }
   }
 
   async deleteEntry(id) {
-    return this.api.delete(`/api/entry/${id}`);
+    try {
+      await this.api.delete(`/api/entry/${id}`);
+    } catch (error) {
+      console.error("Error while deleting entries:", error);
+    }
   }
 
   async updateEntry(id, entryText) {
-    return this.api.patch(`/api/entry/${id}`, { text: entryText });
+    try {
+      await this.api.patch(`/api/entry/${id}`, { text: entryText });
+    } catch (error) {
+      console.error("Error while updating entry:", error);
+    }
   }
 
   async deleteMeeting(id) {
-    return this.api.delete(`/api/meeting/${id}`);
+    try {
+      await this.api.delete(`/api/meeting/${id}`);
+    } catch (error) {
+      console.error("Error while deleting meeting:", error);
+    }
   }
 
   async updateGoal(weeklyGoal) {
-    return this.api.patch(`/api/newGoal`, { weeklyGoal });
+    try {
+      await this.api.patch(`/api/newGoal`, { weeklyGoal });
+    } catch (error) {
+      console.error("Error while updating goal:", error);
+    }
   }
 
   async verifyUser(token) {
-    const { data } = await this.api.get("/auth/verify", {
-      headers: { authorization: `Bearer ${token}` },
-    });
-    return data;
+    try {
+      const { data } = await this.api.get("/auth/verify", {
+        headers: { authorization: `Bearer ${token}` },
+      });
+      return data;
+    } catch (error) {
+      console.error("Error while verifying user:", error);
+    }
   }
 
   async signup(requestBody) {
-    await this.api.post("/auth/signup", requestBody);
+    try {
+      await this.api.post("/auth/signup", requestBody);
+    } catch (error) {
+      console.error("Error while signing up:", error);
+    }
   }
 }
