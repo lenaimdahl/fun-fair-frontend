@@ -74,7 +74,11 @@ function DayView() {
               {entries.map((entry) => (
                 <div className="single-diary-entry">
                   <li key={entry._id}>
-                    <DayEntry text={entry.text} id={entry._id} />
+                    <DayEntry
+                      fetchEntriesByDate={fetchEntriesByDate}
+                      text={entry.text}
+                      id={entry._id}
+                    />
                   </li>
                 </div>
               ))}
