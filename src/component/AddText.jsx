@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
-import { APIContext } from "../context/api.context";
+import { GlobalContext } from "../context/global.context";
 
 function AddText({ fetchEntriesByDate, selectedDate }) {
-  const { backendAPIInstance } = useContext(APIContext);
+  const { backendAPIInstance } = useContext(GlobalContext);
   const [showTextSection, setShowTextSection] = useState(false);
   const [text, setText] = useState("");
 

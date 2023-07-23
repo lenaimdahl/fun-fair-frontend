@@ -1,9 +1,9 @@
 import moment from "moment";
 import { useContext, useEffect, useState } from "react";
-import { APIContext } from "../context/api.context";
+import { GlobalContext } from "../context/global.context";
 
 function MoodSelection() {
-  const { backendAPIInstance } = useContext(APIContext);
+  const { backendAPIInstance } = useContext(GlobalContext);
   const [showMoodSelection, setShowMoodSelection] = useState(false);
 
   useEffect(() => {
@@ -14,7 +14,6 @@ function MoodSelection() {
         if (moods.length === 0) {
           setShowMoodSelection(true);
         }
-        console.log("moods", moods);
       } catch (error) {
         console.error(error);
       }

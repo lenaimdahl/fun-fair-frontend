@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
-import { APIContext } from "../context/api.context";
+import { GlobalContext } from "../context/global.context";
 
 function Points() {
-  const { backendAPIInstance } = useContext(APIContext);
+  const { backendAPIInstance } = useContext(GlobalContext);
   const [meetings, setMeetings] = useState([]);
   const [weekPoints, setWeekPoints] = useState("");
   const [weeklyGoal, setWeeklyGoal] = useState("");

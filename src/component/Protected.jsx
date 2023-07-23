@@ -1,10 +1,9 @@
-import {useContext} from 'react';
-import {Navigate} from 'react-router-dom';
-import {GlobalContext} from '../context/global.context';
+import { useContext } from "react";
+import { Navigate } from "react-router-dom";
+import { AuthContext } from "../context/auth.context";
 
-const Protected = ({children}) => {
-  const context = useContext(GlobalContext);
-  const isLoggedIn = !!context.isLoggedIn;
+const Protected = ({ children }) => {
+  const { isLoggedIn } = useContext(AuthContext);
   return isLoggedIn ? children : <Navigate replace to="/login" />;
 };
 

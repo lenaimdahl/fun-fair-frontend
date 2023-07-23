@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
-import { APIContext } from "../context/api.context";
+import { GlobalContext } from "../context/global.context";
 
 function NewEvent() {
-  const { backendAPIInstance } = useContext(APIContext);
+  const { backendAPIInstance } = useContext(GlobalContext);
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [showEventForm, setShowEventForm] = useState(false);

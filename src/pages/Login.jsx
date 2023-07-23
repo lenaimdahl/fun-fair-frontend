@@ -1,10 +1,10 @@
-import axios from "axios";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
-import { API_URL } from "../config/config.index";
+import { GlobalContext } from "../context/global.context";
 
 function Login() {
+  const { backendAPIInstance } = useContext(GlobalContext);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
@@ -18,9 +18,8 @@ function Login() {
     event.preventDefault();
     try {
       const userToLogin = { email, password };
-      const { data } = await axios.post(`${API_URL}/auth/login`, userToLogin);
-      const actualToken = data.authToken;
-      setToken(actualToken);
+      const { authToken } = await backendAPIInstance.login(userToLogin);
+      setToken(authToken);
       authenticateUser();
       setIsLoggedIn(true);
       navigate("/profile");

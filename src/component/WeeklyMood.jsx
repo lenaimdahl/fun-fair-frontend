@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import LineChart from "./LineChart";
-import { APIContext } from "../context/api.context";
+import { GlobalContext } from "../context/global.context";
 import DoughnutChart from "./DoughnutChart";
 
 function convertType(type) {
@@ -21,7 +21,7 @@ function convertType(type) {
 }
 
 function WeeklyMood() {
-  const { backendAPIInstance } = useContext(APIContext);
+  const { backendAPIInstance } = useContext(GlobalContext);
   const [moods, setMoods] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -43,7 +43,7 @@ function WeeklyMood() {
 
         setMoods(convertedData);
       } catch (error) {
-        console.log("Error fetching moods:", error);
+        console.error("Error fetching moods:", error);
       } finally {
         setIsLoading(false);
       }

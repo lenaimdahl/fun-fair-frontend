@@ -1,36 +1,49 @@
-import { createContext, useContext, useState, useEffect } from "react";
-import { AuthContext } from "../context/auth.context";
-import { APIContext } from "../context/api.context";
+import { createContext, useEffect, useState } from "react";
+import { BackendAPI } from "../api/BackendAPIHandler";
 
 const GlobalContext = createContext();
 
 const GlobalContextWrapper = ({ children }) => {
-  const { backendAPIInstance } = useContext(APIContext);
   const [meetings, setMeetings] = useState([]);
-  const { isLoggedIn } = useContext(AuthContext);
+  const backendAPIInstance = new BackendAPI();
+
+  backendAPIInstance.api.interceptors.response.use(
+    (response) => response,
+    (error) => {
+      if (error.response.status === 401) {
+        window.util.logout();
+      } else {
+        throw error;
+      }
+    }
+  );
 
   const fetchMeetings = async () => {
-    const data = await backendAPIInstance.getMeetingsByUser();
-    const convertedData = data.meetings.map((meeting) => {
-      const combinedTitle = `${meeting.image} ${meeting.title}`;
-      return {
-        id: meeting._id,
-        title: combinedTitle,
-        timestamp: meeting.timestamp,
-      };
-    });
-    setMeetings(convertedData);
+    try {
+      const data = await backendAPIInstance.getMeetingsByUser();
+      const convertedData = data.meetings.map((meeting) => {
+        const combinedTitle = `${meeting.image} ${meeting.title}`;
+        return {
+          id: meeting._id,
+          title: combinedTitle,
+          timestamp: meeting.timestamp,
+        };
+      });
+      setMeetings(convertedData);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
-    if (isLoggedIn) {
-      fetchMeetings();
-    }
+    fetchMeetings();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoggedIn]);
+  }, []);
 
   return (
-    <GlobalContext.Provider value={{ meetings, setMeetings, fetchMeetings }}>
+    <GlobalContext.Provider
+      value={{ backendAPIInstance, meetings, setMeetings, fetchMeetings }}
+    >
       {children}
     </GlobalContext.Provider>
   );

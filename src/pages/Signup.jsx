@@ -1,10 +1,10 @@
-import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { API_URL } from "../config/config.index";
+import { GlobalContext } from "../context/global.context";
 
 function Signup() {
+  const { backendAPIInstance } = useContext(GlobalContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -21,15 +21,15 @@ function Signup() {
     event.preventDefault();
     const requestBody = { username, password, email, weeklyGoal };
 
-    axios
-      .post(`${API_URL}/auth/signup`, requestBody)
-      .then(() => {
+    (async () => {
+      try {
+        await backendAPIInstance.signup(requestBody);
         navigate("/login");
-      })
-      .catch((error) => {
+      } catch (error) {
         const errorDescription = error.response.data.message;
         setErrorMessage(errorDescription);
-      });
+      }
+    })();
   };
 
   return (

@@ -5,11 +5,10 @@ import AddText from "../component/AddText";
 import DayEntry from "../component/DayEntry";
 import DeleteMeetings from "../component/DeleteMeetings";
 import { GlobalContext } from "../context/global.context";
-import { APIContext } from "../context/api.context";
 
 function DayView() {
   const { meetings } = useContext(GlobalContext);
-  const { backendAPIInstance } = useContext(APIContext);
+  const { backendAPIInstance } = useContext(GlobalContext);
   const [entries, setEntries] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [filteredMeetings, setFilteredMeetings] = useState(meetings);
@@ -19,13 +18,16 @@ function DayView() {
   };
 
   const fetchEntriesByDate = async () => {
-    console.log("fetchEntriesByDate", { selectedDate });
-    const dateAtMidnight = new Date(selectedDate);
-    dateAtMidnight.setHours(0, 0, 0, 0);
-    const { allEntries } = await backendAPIInstance.searchEntries(
-      dateAtMidnight
-    );
-    setEntries(allEntries);
+    try {
+      const dateAtMidnight = new Date(selectedDate);
+      dateAtMidnight.setHours(0, 0, 0, 0);
+      const { allEntries } = await backendAPIInstance.searchEntries(
+        dateAtMidnight
+      );
+      setEntries(allEntries);
+    } catch (error) {
+      console.error("Error fetching entries:", error);
+    }
   };
 
   useEffect(() => {

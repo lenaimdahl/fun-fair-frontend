@@ -15,6 +15,11 @@ export class BackendAPI {
     });
   }
 
+  async login(loginData) {
+    const { data } = await this.api.post("/auth/login", loginData);
+    return data;
+  }
+
   async getUserData() {
     const { data } = await this.api.get("/api/user");
     return data;
@@ -38,24 +43,16 @@ export class BackendAPI {
   }
 
   async saveMood(type, timestamp) {
-    try {
-      const { data } = await this.api.post("/api/mood", {
-        title: type,
-        timestamp: timestamp,
-      });
-      return data;
-    } catch (error) {
-      throw new Error(error.response.data.message);
-    }
+    const { data } = await this.api.post("/api/mood", {
+      title: type,
+      timestamp: timestamp,
+    });
+    return data;
   }
 
   async getMoodForDay(timestamp) {
-    try {
-      const { data } = await this.api.get(`/api/mood/${timestamp}`);
-      return data;
-    } catch (error) {
-      throw new Error(error.response.data.message);
-    }
+    const { data } = await this.api.get(`/api/mood/${timestamp}`);
+    return data;
   }
 
   async getMoods() {
@@ -99,73 +96,42 @@ export class BackendAPI {
   }
 
   async saveEntry(entryText, currentDay) {
-    try {
-      const { data } = await this.api.post("/api/entry", {
-        text: entryText,
-        timestamp: currentDay,
-      });
-      return data;
-    } catch (err) {
-      console.error("ERROR while saving entry to db:", err);
-      throw new Error("Internal Server Error");
-    }
+    const { data } = await this.api.post("/api/entry", {
+      text: entryText,
+      timestamp: currentDay,
+    });
+    return data;
   }
 
   async searchEntries(startDate) {
-    try {
-      const { data } = await this.api.post("/api/entry/search", { startDate });
-      return data;
-    } catch (err) {
-      console.error("ERROR while fetching all meetings from db:", err);
-      throw new Error("Internal Server Error");
-    }
+    const { data } = await this.api.post("/api/entry/search", { startDate });
+    return data;
   }
 
   async deleteEntry(id) {
-    try {
-      return this.api.delete(`/api/entry/${id}`);
-    } catch (err) {
-      console.error("ERROR while deleting entry from db:", err);
-      throw new Error("Internal Server Error");
-    }
+    return this.api.delete(`/api/entry/${id}`);
   }
 
   async updateEntry(id, entryText) {
-    try {
-      return this.api.patch(`/api/entry/${id}`, { text: entryText });
-    } catch (err) {
-      console.error("ERROR while updating entry in db:", err);
-      throw new Error("Internal Server Error");
-    }
+    return this.api.patch(`/api/entry/${id}`, { text: entryText });
   }
 
   async deleteMeeting(id) {
-    try {
-      return this.api.delete(`/api/meeting/${id}`);
-    } catch (err) {
-      console.error("ERROR while deleting meeting from db:", err);
-      throw new Error("Internal Server Error");
-    }
+    return this.api.delete(`/api/meeting/${id}`);
   }
 
   async updateGoal(weeklyGoal) {
-    try {
-      return this.api.patch(`/api/newGoal`, { weeklyGoal });
-    } catch (err) {
-      console.error("ERROR while fetching all events from db:", err);
-      throw new Error("Internal Server Error");
-    }
+    return this.api.patch(`/api/newGoal`, { weeklyGoal });
   }
 
   async verifyUser(token) {
-    try {
-      const { data } = await this.api.get("/auth/verify", {
-        headers: { authorization: `Bearer ${token}` },
-      });
-      return data;
-    } catch (err) {
-      console.error("ERROR while fetching all events from db:", err);
-      throw new Error("Internal Server Error");
-    }
+    const { data } = await this.api.get("/auth/verify", {
+      headers: { authorization: `Bearer ${token}` },
+    });
+    return data;
+  }
+
+  async signup(requestBody) {
+    await this.api.post("/auth/signup", requestBody);
   }
 }

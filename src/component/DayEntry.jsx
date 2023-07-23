@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
-import { APIContext } from "../context/api.context";
+import { GlobalContext } from "../context/global.context";
 
 function DayEntry(props) {
-  const { backendAPIInstance } = useContext(APIContext);
+  const { backendAPIInstance } = useContext(GlobalContext);
   const [isEditing, setIsEditing] = useState(false);
   const [text, setText] = useState(props.text);
 
