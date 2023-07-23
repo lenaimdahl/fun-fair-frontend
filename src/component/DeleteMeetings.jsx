@@ -1,11 +1,15 @@
+import { useContext } from "react";
 import { BackendAPI } from "../api/BackendAPIHandler";
+import { GlobalContext } from "../context/global.context";
 
-function DeleteMeetings(props) {
+function DeleteMeetings({ id }) {
   const backendAPIInstance = new BackendAPI();
+  const { fetchMeetings } = useContext(GlobalContext);
 
   const handleDeleteMeeting = async () => {
     try {
-      await backendAPIInstance.deleteMeeting(props.id);
+      await backendAPIInstance.deleteMeeting(id);
+      await fetchMeetings();
     } catch (error) {
       console.error(error);
     }

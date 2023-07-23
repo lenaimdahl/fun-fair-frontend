@@ -98,17 +98,22 @@ export class BackendAPI {
     return data;
   }
 
-  async saveText(text, currentDay) {
-    const { data } = await this.api.post("/api/text", {
-      text,
-      timestamp: currentDay,
-    });
-    return data;
+  async saveEntry(entryText, currentDay) {
+    try {
+      const { data } = await this.api.post("/api/entry", {
+        text: entryText,
+        timestamp: currentDay,
+      });
+      return data;
+    } catch (err) {
+      console.error("ERROR while saving entry to db:", err);
+      throw new Error("Internal Server Error");
+    }
   }
 
-  async searchMeetings(startDate) {
+  async searchEntries(startDate) {
     try {
-      const { data } = await this.api.post(`/api/search`, { startDate });
+      const { data } = await this.api.post("/api/entry/search", { startDate });
       return data;
     } catch (err) {
       console.error("ERROR while fetching all meetings from db:", err);
@@ -118,18 +123,18 @@ export class BackendAPI {
 
   async deleteEntry(id) {
     try {
-      return this.api.delete(`/api/text/${id}`);
+      return this.api.delete(`/api/entry/${id}`);
     } catch (err) {
-      console.error("ERROR while fetching all events from db:", err);
+      console.error("ERROR while deleting entry from db:", err);
       throw new Error("Internal Server Error");
     }
   }
 
-  async updateEntry(id, text) {
+  async updateEntry(id, entryText) {
     try {
-      return this.api.patch(`/api/text/${id}`, { text });
+      return this.api.patch(`/api/entry/${id}`, { text: entryText });
     } catch (err) {
-      console.error("ERROR while fetching all events from db:", err);
+      console.error("ERROR while updating entry in db:", err);
       throw new Error("Internal Server Error");
     }
   }

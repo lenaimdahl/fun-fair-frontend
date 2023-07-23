@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BackendAPI } from "../api/BackendAPIHandler";
 
-function AddText() {
+function AddText({ fetchEntriesByDate }) {
   const [showTextSection, setShowTextSection] = useState(false);
   const [text, setText] = useState("");
   const backendAPIInstance = new BackendAPI();
@@ -16,9 +16,10 @@ function AddText() {
     event.preventDefault();
     const currentDay = new Date().setHours(0, 0, 0, 0);
     try {
-      await backendAPIInstance.saveText(text, currentDay);
+      await backendAPIInstance.saveEntry(text, currentDay);
       setText("");
       setShowTextSection(false);
+      await fetchEntriesByDate();
     } catch (error) {
       console.error(error);
     }
