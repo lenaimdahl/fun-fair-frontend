@@ -20,6 +20,7 @@ function DayView() {
   };
 
   const fetchEntriesByDate = async () => {
+    console.log("fetchEntriesByDate", { selectedDate });
     const dateAtMidnight = new Date(selectedDate);
     dateAtMidnight.setHours(0, 0, 0, 0);
     const { allEntries } = await backendAPIInstance.searchEntries(
@@ -81,7 +82,10 @@ function DayView() {
           ) : (
             <p>No entries to display</p>
           )}
-          <AddText fetchEntriesByDate={fetchEntriesByDate} />
+          <AddText
+            selectedDate={selectedDate}
+            fetchEntriesByDate={fetchEntriesByDate}
+          />
         </div>
       </div>
 
