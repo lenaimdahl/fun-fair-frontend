@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react";
 import { BoredAPI } from "../api/BoredAPIHandler";
-import { BackendAPI } from "../api/BackendAPIHandler";
 import { Link } from "react-router-dom";
 import CalenderPreview from "../assets/calendar-example.png";
 
 function HomePage() {
   const [activity, setActivity] = useState("");
-
   const boredAPIInstance = new BoredAPI();
-  const backendAPIInstance = new BackendAPI();
 
   useEffect(() => {
     const storedActivity = localStorage.getItem("activity");
@@ -36,15 +33,6 @@ function HomePage() {
     setActivity(activity);
     localStorage.setItem("activity", activity);
     localStorage.setItem("date", new Date().toString());
-    sendActivityToBackend(activity);
-  };
-
-  const sendActivityToBackend = async (activity) => {
-    try {
-      await backendAPIInstance.saveActivity(activity);
-    } catch (error) {
-      console.error(error);
-    }
   };
 
   return (

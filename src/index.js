@@ -10,13 +10,13 @@ import { GlobalContextWrapper } from "./context/global.context";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <GlobalContextWrapper>
-      <AuthContextWrapper>
+    <AuthContextWrapper>
+      <GlobalContextWrapper>
         <Router>
           <App />
         </Router>
-      </AuthContextWrapper>
-    </GlobalContextWrapper>
+      </GlobalContextWrapper>
+    </AuthContextWrapper>
   </React.StrictMode>
 );
 

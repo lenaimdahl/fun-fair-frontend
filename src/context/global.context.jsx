@@ -1,10 +1,12 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import { BackendAPI } from "../api/BackendAPIHandler";
+import { AuthContext } from "../context/auth.context";
 
 const GlobalContext = createContext();
 
 const GlobalContextWrapper = ({ children }) => {
   const [meetings, setMeetings] = useState([]);
+  const { isLoggedIn } = useContext(AuthContext);
 
   const backendAPIInstance = new BackendAPI();
 
@@ -22,9 +24,11 @@ const GlobalContextWrapper = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchMeetings();
+    if (isLoggedIn) {
+      fetchMeetings();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isLoggedIn]);
 
   return (
     <GlobalContext.Provider value={{ meetings, setMeetings, fetchMeetings }}>

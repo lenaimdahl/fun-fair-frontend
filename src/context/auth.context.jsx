@@ -1,6 +1,6 @@
-import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 import { loadAuthToken, saveAuthToken, removeToken } from "../util";
+import { BackendAPI } from "../api/BackendAPIHandler";
 
 const AuthContext = createContext();
 
@@ -8,6 +8,7 @@ const AuthContextWrapper = (props) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const backendAPIInstance = new BackendAPI();
 
   const setToken = (token) => {
     saveAuthToken(token);
@@ -17,31 +18,29 @@ const AuthContextWrapper = (props) => {
     const gotToken = loadAuthToken();
     if (gotToken) {
       try {
-        const { data } = await axios.get("http://localhost:5005/auth/verify", {
-          headers: { authorization: `Bearer ${gotToken}` },
-        });
-        setUser(data.user);
+        const user = await backendAPIInstance.verifyUser(gotToken);
+        setUser(user);
         setIsLoading(false);
         setIsLoggedIn(true);
       } catch (err) {
-        setUser(null);
         setIsLoading(false);
-        setIsLoggedIn(false);
+        logOutUser();
       }
     } else {
-      setUser(null);
       setIsLoading(false);
-      setIsLoggedIn(false);
+      logOutUser();
     }
   };
 
   const logOutUser = () => {
+    setUser(null);
+    setIsLoggedIn(false);
     removeToken();
-    authenticateUser();
   };
 
   useEffect(() => {
     authenticateUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

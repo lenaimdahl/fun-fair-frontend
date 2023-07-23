@@ -156,4 +156,16 @@ export class BackendAPI {
       throw new Error("Internal Server Error");
     }
   }
+
+  async verifyUser(token) {
+    try {
+      const { data } = await this.api.get("/auth/verify", {
+        headers: { authorization: `Bearer ${token}` },
+      });
+      return data;
+    } catch (err) {
+      console.error("ERROR while fetching all events from db:", err);
+      throw new Error("Internal Server Error");
+    }
+  }
 }
