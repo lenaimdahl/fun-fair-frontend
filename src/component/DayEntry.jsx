@@ -1,66 +1,57 @@
 import { useContext, useState } from "react";
 import { GlobalContext } from "../context/global.context";
 
-function DayEntry(props) {
+function DayEntry({ fetchEntriesByDate, id, text }) {
   const { backendAPIInstance } = useContext(GlobalContext);
   const [isEditing, setIsEditing] = useState(false);
-  const [text, setText] = useState(props.text);
+  const [newText, setNewText] = useState(text);
 
   const handleUpdateEntry = async () => {
     try {
-      await backendAPIInstance.updateEntry(props.id, text);
-      await props.fetchEntriesByDate();
+      await backendAPIInstance.updateEntry(id, newText);
+      await fetchEntriesByDate();
       setIsEditing(false);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const handleChangeText = (event) => {
-    setText(event.target.value);
-  };
-
   const handleDeleteText = async () => {
     try {
-      await backendAPIInstance.deleteEntry(props.id);
-      await props.fetchEntriesByDate();
+      await backendAPIInstance.deleteEntry(id);
+      await fetchEntriesByDate();
     } catch (error) {
       console.error(error);
     }
   };
 
   function handleCancelEditing() {
-    setText(props.text);
+    setNewText(text);
     setIsEditing(false);
   }
 
-  return (
+  return isEditing ? (
     <>
-      {isEditing ? (
-        <>
-          <input type="text" value={text} onChange={handleChangeText} />
-          <button onClick={handleUpdateEntry}>ok</button>
-          <button onClick={handleCancelEditing}>cancel</button>
-        </>
-      ) : (
-        <div className="single-entry-box">
-          <div className="entry-text">{text}</div>
-          <div className="entry-edit-buttons">
-            <button
-              className="button-edit"
-              onClick={() => {
-                setIsEditing(true);
-              }}
-            >
-              ✎
-            </button>
-            <button className="button-delete" onClick={handleDeleteText}>
-              ✖️
-            </button>
-          </div>
-        </div>
-      )}
+      <input
+        type="text"
+        value={text}
+        onChange={(event) => setNewText(event.target.value)}
+      />
+      <button onClick={handleUpdateEntry}>ok</button>
+      <button onClick={handleCancelEditing}>cancel</button>
     </>
+  ) : (
+    <div className="single-entry-box">
+      <div className="entry-text">{text}</div>
+      <div className="entry-edit-buttons">
+        <button className="button-edit" onClick={() => setIsEditing(true)}>
+          ✎
+        </button>
+        <button className="button-delete" onClick={handleDeleteText}>
+          ✖️
+        </button>
+      </div>
+    </div>
   );
 }
 

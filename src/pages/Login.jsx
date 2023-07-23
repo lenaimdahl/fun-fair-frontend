@@ -10,8 +10,6 @@ function Login() {
   const [errorMessage, setErrorMessage] = useState(undefined);
   const { setToken, authenticateUser, setIsLoggedIn } = useContext(AuthContext);
 
-  const handleEmail = (event) => setEmail(event.target.value);
-  const handlePassword = (event) => setPassword(event.target.value);
   const navigate = useNavigate();
 
   const handleLoginSubmit = async (event) => {
@@ -38,7 +36,7 @@ function Login() {
           name="email"
           value={email}
           autoComplete="email"
-          onChange={handleEmail}
+          onChange={(event) => setEmail(event.target.value)}
         />
         <label>password</label>
         <input
@@ -46,7 +44,7 @@ function Login() {
           name="password"
           value={password}
           autoComplete="current-password"
-          onChange={handlePassword}
+          onChange={(event) => setPassword(event.target.value)}
         />
         <button type="submit">Log in</button>
       </form>

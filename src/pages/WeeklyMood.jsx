@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import LineChart from "./LineChart";
+import LineChart from "../component/LineChart";
 import { GlobalContext } from "../context/global.context";
-import DoughnutChart from "./DoughnutChart";
+import DoughnutChart from "../component/DoughnutChart";
 
 function convertType(type) {
   switch (type) {

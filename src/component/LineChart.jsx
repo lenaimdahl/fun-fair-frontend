@@ -1,7 +1,5 @@
-import "../css/App.css";
 import { useEffect, useState } from "react";
 import moment from "moment";
-
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -12,9 +10,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-
 import { Line } from "react-chartjs-2";
-
 import imgHappy from "../assets/moods/happy.png";
 import imgInLove from "../assets/moods/inLove.png";
 import imgSleepy from "../assets/moods/sleepy.png";
@@ -46,7 +42,7 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
+const options = {
   spanGaps: true,
   responsive: true,
   plugins: {
@@ -152,11 +148,11 @@ function WeekTable({ moods }) {
   }
 
   useEffect(() => {
-    if (!moods) return;
+    if (!moods) {
+      return;
+    }
     const moodsCopy = moods.slice();
-
     const moodDataWithGaps = [];
-
     for (const date of generateLast14Days()) {
       const moodEntry = moodsCopy.find((mood) => mood.date === date);
       if (moodEntry) {

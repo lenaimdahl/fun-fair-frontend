@@ -11,17 +11,14 @@ function AddEvent({ friends }) {
   const [customPoints, setCustomPoints] = useState(0);
 
   const fetchAllEvents = async () => {
-    const fetchedEvents = await backendAPIInstance.getEvents();
-    const fetchedEventsArray = fetchedEvents.allEvents.reduce(
-      (result, event) => {
-        if (!result.find((ev) => ev.title === event.title)) {
-          result.push(event);
-        }
-        return result;
-      },
-      []
-    );
-    setAllEvents(fetchedEventsArray);
+    const { allEvents } = await backendAPIInstance.getEvents();
+    const uniqueEvents = allEvents.reduce((result, event) => {
+      if (!result.find((ev) => ev.title === event.title)) {
+        result.push(event);
+      }
+      return result;
+    }, []);
+    setAllEvents(uniqueEvents);
   };
 
   const handleAddToCalendar = async (event) => {
@@ -37,13 +34,8 @@ function AddEvent({ friends }) {
         image: selectElement.getAttribute("image"),
         points: customPoints,
         timestamp: selectedDateAdMidnight,
-        friend: selectedFriend,
+        friend: selectedFriend || null,
       };
-      if (selectedFriend) {
-        eventToAdd.friend = selectedFriend;
-      } else {
-        eventToAdd.friend = null; // Set friend to null when no friend is selected
-      }
       const { newMeeting } = await backendAPIInstance.addEventToCalendar(
         eventToAdd
       );
@@ -55,14 +47,6 @@ function AddEvent({ friends }) {
     } catch (error) {
       console.error(error);
     }
-  };
-
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-  };
-
-  const handleFriendChange = (event) => {
-    setSelectedFriend(event.target.value);
   };
 
   const handleCustomPointsChange = (event) => {
@@ -78,8 +62,6 @@ function AddEvent({ friends }) {
   return (
     <div className="add-event-box">
       <h2>Add an Event</h2>
-
-      {/* Date Picker */}
       <div className="add-event-box">
         <div className="add-event-flex-row">
           <label className="add-event-flex-row-item-1">date: </label>
@@ -87,11 +69,10 @@ function AddEvent({ friends }) {
             className="add-event-flex-row-item-2"
             type="date"
             value={selectedDate.toISOString().slice(0, 10)} // Convert the date to a string in "YYYY-MM-DD" format
-            onChange={(event) => handleDateChange(new Date(event.target.value))}
+            onChange={(event) => setSelectedDate(new Date(event.target.value))}
           />
         </div>
 
-        {/* Add custom points input */}
         <div className="add-event-flex-row">
           <label className="add-event-flex-row-item-1">points: </label>
           <input
@@ -103,13 +84,12 @@ function AddEvent({ friends }) {
           />
         </div>
 
-        {/* Friend Selector */}
         <div className="add-event-flex-row">
           <label className="add-event-flex-row-item-1">with: </label>
           <select
             className="add-event-flex-row-item-2"
             value={selectedFriend}
-            onChange={handleFriendChange}
+            onChange={(event) => setSelectedFriend(event.target.value)}
           >
             <option value="">Select a friend</option>
             {friends.map((friend) => (
@@ -120,8 +100,7 @@ function AddEvent({ friends }) {
           </select>
         </div>
 
-        {/* Event Selector */}
-        <form onSubmit={handleAddToCalendar} className="">
+        <form onSubmit={handleAddToCalendar}>
           <div className="add-event-flex-row">
             <label className="add-event-flex-row-item-1">events: </label>
             {/* these need to be populated from our database */}
@@ -130,18 +109,16 @@ function AddEvent({ friends }) {
               id="event"
               name="event"
             >
-              {allEvents.map((oneEvent) => {
-                return (
-                  <option
-                    key={oneEvent._id}
-                    value={oneEvent.value}
-                    title={oneEvent.title}
-                    image={oneEvent.image}
-                  >
-                    {oneEvent.image} {oneEvent.title}
-                  </option>
-                );
-              })}
+              {allEvents.map((oneEvent) => (
+                <option
+                  key={oneEvent._id}
+                  value={oneEvent.value}
+                  title={oneEvent.title}
+                  image={oneEvent.image}
+                >
+                  {oneEvent.image} {oneEvent.title}
+                </option>
+              ))}
             </select>
           </div>
           <br></br>

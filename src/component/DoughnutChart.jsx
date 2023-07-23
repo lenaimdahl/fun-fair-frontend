@@ -1,4 +1,3 @@
-import "../css/App.css";
 import { useEffect, useState } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
@@ -27,11 +26,12 @@ export const options = {
 };
 
 function DoughnutChart({ moods }) {
-  const [isLoading, setIsLoading] = useState(true);
   const [chart, setChart] = useState();
 
   useEffect(() => {
-    if (!moods) return;
+    if (!moods) {
+      return;
+    }
 
     const moodsCopy = moods.slice().reverse().slice(0, 28);
     const moodCount = {
@@ -43,7 +43,7 @@ function DoughnutChart({ moods }) {
     };
 
     // Count the occurrences of each mood
-    moodsCopy.forEach((mood) => {
+    for (const mood of moodsCopy) {
       switch (mood.title) {
         case "😊":
           moodCount.happy++;
@@ -63,14 +63,14 @@ function DoughnutChart({ moods }) {
         default:
           break;
       }
-    });
+    }
 
     const totalMoods = moodsCopy.length;
-    const percentages = Object.entries(moodCount).map(([key, count]) => {
+    const percentages = Object.entries(moodCount).map(([label, count]) => {
       const percentage =
         count > 0 ? ((count / totalMoods) * 100).toFixed(2) : 0;
       return {
-        label: key,
+        label,
         percentage,
       };
     });
@@ -106,21 +106,13 @@ function DoughnutChart({ moods }) {
         },
       ],
     });
-
-    setIsLoading(false);
   }, [moods]);
 
-  if (isLoading) {
-    // return <Spinner />;
-  } else {
-    return (
-      <div>
-        <div className="doughnut-container">
-          {chart && <Doughnut options={options} data={chart} />}
-        </div>
-      </div>
-    );
-  }
+  return (
+    <div className="doughnut-container">
+      {chart && <Doughnut options={options} data={chart} />}
+    </div>
+  );
 }
 
 export default DoughnutChart;
