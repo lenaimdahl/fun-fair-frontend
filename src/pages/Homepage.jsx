@@ -10,7 +10,6 @@ function HomePage() {
   useEffect(() => {
     const storedActivity = localStorage.getItem("activity");
     const storedDate = localStorage.getItem("date");
-
     // Check if stored activity exists and if it was stored within the last 24 hours
     if (storedActivity && storedDate && isWithinLast24Hours(storedDate)) {
       setActivity(storedActivity);
@@ -36,30 +35,25 @@ function HomePage() {
   };
 
   return (
-    <div>
-      <div className="calendar-flex">
-        <img
-          className="calendar-container"
-          src={CalenderPreview}
-          alt="Calender preview"
-          style={{ width: "600px" }}
-        />
-
-        <div className="activity-container">
-          <div>
-            <h1>Activity tip of the day:</h1>
-            <h2>"{activity}"</h2>
-          </div>
-          <button className="signup-button">
-            <Link to={"/signup"}>Sign up!</Link>
-          </button>
-          <p>Already have an account?</p>
-          <button className="signup-button">
-            <Link to={"/login"} className="signup-page-link">
-              Log in
-            </Link>
-          </button>
-        </div>
+    <div className="calendar-flex">
+      <img
+        className="calendar-container"
+        src={CalenderPreview}
+        alt="Calender preview"
+        style={{ width: "600px" }}
+      />
+      <div className="activity-container">
+        <h1>Activity tip of the day:</h1>
+        <h2>"{activity}"</h2>
+        <button className="signup-button">
+          <Link to={"/signup"}>Sign up!</Link>
+        </button>
+        <p>Already have an account?</p>
+        <button className="signup-button">
+          <Link to={"/login"} className="signup-page-link">
+            Log in
+          </Link>
+        </button>
       </div>
     </div>
   );

@@ -12,10 +12,6 @@ function Signup() {
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
-  const handleUsername = (event) => setUsername(event.target.value);
-  const handleEmail = (event) => setEmail(event.target.value);
-  const handlePassword = (event) => setPassword(event.target.value);
-  const handlePoints = (event) => setWeeklyGoal(event.target.value);
 
   const handleSignup = (event) => {
     event.preventDefault();
@@ -41,23 +37,28 @@ function Signup() {
           type="username"
           name="username"
           value={username}
-          onChange={handleUsername}
+          onChange={(event) => setUsername(event.target.value)}
         />
         <label>email</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
+        <input
+          type="email"
+          name="email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+        />
         <label>password</label>
         <input
           type="password"
           name="password"
           value={password}
-          onChange={handlePassword}
+          onChange={(event) => setPassword(event.target.value)}
         />
         <label>weekly points goal</label>
         <input
           type="text"
           name="weeklyGoal"
           value={weeklyGoal}
-          onChange={handlePoints}
+          onChange={(event) => setWeeklyGoal(event.target.value)}
         />
         <button type="submit">Sign up!</button>
       </form>

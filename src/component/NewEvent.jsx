@@ -7,20 +7,8 @@ function NewEvent() {
   const [image, setImage] = useState("");
   const [showEventForm, setShowEventForm] = useState(false);
 
-  const handleTitle = (event) => setTitle(event.target.value);
-  const handleImage = (event) => setImage(event.target.value);
-
-  const toggleForm = () => {
-    if (showEventForm === true) {
-      setShowEventForm(false);
-    } else {
-      setShowEventForm(true);
-    }
-  };
-
-  const handleAddEvent = async (e) => {
-    e.preventDefault();
-
+  const handleAddEvent = async (event) => {
+    event.preventDefault();
     const currentDay = new Date().setHours(0, 0, 0, 0);
 
     try {
@@ -29,7 +17,6 @@ function NewEvent() {
         image,
         timestamp: currentDay,
       };
-
       await backendAPIInstance.saveEvent(newEvent);
       setTitle("");
       setImage("");
@@ -42,29 +29,32 @@ function NewEvent() {
     <div className="new-event-box">
       <div className="event-form-head">
         <h2>Create a new Event</h2>
-        <button onClick={toggleForm} className="btn-show-form">
+        <button
+          onClick={() => setShowEventForm(!showEventForm)}
+          className="btn-show-form"
+        >
           V
         </button>
       </div>
-      {showEventForm ? (
+      {showEventForm && (
         <form onSubmit={handleAddEvent} className="new-event-form">
           <label>title</label>
           <input
             type="text"
             name="title"
             value={title}
-            onChange={handleTitle}
+            onChange={(event) => setTitle(event.target.value)}
           />
           <label>emoji</label>
           <input
             type="text"
             name="image"
             value={image}
-            onChange={handleImage}
+            onChange={(event) => setImage(event.target.value)}
           />
           <button type="submit">+</button>
         </form>
-      ) : null}
+      )}
     </div>
   );
 }

@@ -7,7 +7,7 @@ function MoodSelection() {
   const [showMoodSelection, setShowMoodSelection] = useState(false);
 
   useEffect(() => {
-    const checkExistingMood = async () => {
+    (async () => {
       try {
         const currentDay = moment().format("YYYY-MM-DD");
         const { moods } = await backendAPIInstance.getMoodForDay(currentDay);
@@ -17,8 +17,7 @@ function MoodSelection() {
       } catch (error) {
         console.error(error);
       }
-    };
-    checkExistingMood();
+    })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -33,35 +32,33 @@ function MoodSelection() {
   };
 
   return (
-    <div>
-      {showMoodSelection && (
-        <div id="mood-selection">
-          <h2>Select your mood</h2>
-          <div className="mood-container">
-            <button onClick={() => handleMoodSelection("happy")}>
-              <h4>😊</h4>
-              <p>happy</p>
-            </button>
-            <button onClick={() => handleMoodSelection("sad")}>
-              <h4>😔</h4>
-              <p>sad</p>
-            </button>
-            <button onClick={() => handleMoodSelection("angry")}>
-              <h4>😡</h4>
-              <p>angry</p>
-            </button>
-            <button onClick={() => handleMoodSelection("in love")}>
-              <h4>😍</h4>
-              <p>in love</p>
-            </button>
-            <button onClick={() => handleMoodSelection("sleepy")}>
-              <h4>😴</h4>
-              <p>sleepy</p>
-            </button>
-          </div>
+    showMoodSelection && (
+      <div id="mood-selection">
+        <h2>Select your mood</h2>
+        <div className="mood-container">
+          <button onClick={() => handleMoodSelection("happy")}>
+            <h4>😊</h4>
+            <p>happy</p>
+          </button>
+          <button onClick={() => handleMoodSelection("sad")}>
+            <h4>😔</h4>
+            <p>sad</p>
+          </button>
+          <button onClick={() => handleMoodSelection("angry")}>
+            <h4>😡</h4>
+            <p>angry</p>
+          </button>
+          <button onClick={() => handleMoodSelection("in love")}>
+            <h4>😍</h4>
+            <p>in love</p>
+          </button>
+          <button onClick={() => handleMoodSelection("sleepy")}>
+            <h4>😴</h4>
+            <p>sleepy</p>
+          </button>
         </div>
-      )}
-    </div>
+      </div>
+    )
   );
 }
 

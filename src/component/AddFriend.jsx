@@ -5,13 +5,13 @@ function AddFriend({ fetchFriends }) {
   const { backendAPIInstance } = useContext(GlobalContext);
   const [allUsers, setAllUsers] = useState([]);
 
-  const fetchAllUser = async () => {
+  const fetchAllUsers = async () => {
     const { users } = await backendAPIInstance.getNonFriends();
     setAllUsers(users);
   };
 
   useEffect(() => {
-    fetchAllUser();
+    fetchAllUsers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -22,7 +22,7 @@ function AddFriend({ fetchFriends }) {
     try {
       await backendAPIInstance.addFriendToUser(userId);
       await fetchFriends();
-      await fetchAllUser();
+      await fetchAllUsers();
     } catch (error) {
       console.error(error);
     }
@@ -30,21 +30,17 @@ function AddFriend({ fetchFriends }) {
 
   return (
     <div>
-      <div>
-        <form onSubmit={handleAddFriends} className="add-friend-form">
-          <label>add a friend: </label>
-          <select id="user" name="user">
-            {allUsers.map((user) => {
-              return (
-                <option id={user._id} key={user._id}>
-                  {user.username}
-                </option>
-              );
-            })}
-          </select>
-          <button type="submit">+</button>
-        </form>
-      </div>
+      <form onSubmit={handleAddFriends} className="add-friend-form">
+        <label>add a friend: </label>
+        <select id="user" name="user">
+          {allUsers.map((user) => (
+            <option id={user._id} key={user._id}>
+              {user.username}
+            </option>
+          ))}
+        </select>
+        <button type="submit">+</button>
+      </form>
     </div>
   );
 }

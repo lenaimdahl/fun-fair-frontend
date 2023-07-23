@@ -57,8 +57,7 @@ body {
 .calendar-container {
   color: black;
   margin: 0 10px;
-  width: 600px;
-  height: auto;
+  width: 700px;
   background-color: rgba(255, 255, 255, 0.571);
   border-radius: 30px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.653),
@@ -616,11 +615,6 @@ footer p {
   text-transform: uppercase;
 }
 
-/* calendar */
-/* .VerticalAppointment-time {
-  background-color: #fc7fb1;
-} */
-/* calendar */
 .css-3nejl.Appointment-appointment {
   background-color: transparent !important;
 }
@@ -629,7 +623,6 @@ footer p {
   font-size: 8pt;
 }
 
-/* DayView */
 .day-view-page {
   width: 60vw;
   margin: 40px auto 100px auto;

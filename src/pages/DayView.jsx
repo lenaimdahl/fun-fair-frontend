@@ -7,15 +7,10 @@ import DeleteMeetings from "../component/DeleteMeetings";
 import { GlobalContext } from "../context/global.context";
 
 function DayView() {
-  const { meetings } = useContext(GlobalContext);
-  const { backendAPIInstance } = useContext(GlobalContext);
+  const { meetings, backendAPIInstance } = useContext(GlobalContext);
   const [entries, setEntries] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [filteredMeetings, setFilteredMeetings] = useState(meetings);
-
-  const handleDateChange = (newDate) => {
-    setSelectedDate(newDate);
-  };
 
   const fetchEntriesByDate = async () => {
     try {
@@ -51,7 +46,7 @@ function DayView() {
         <DatePicker
           showIcon
           selected={selectedDate}
-          onChange={handleDateChange}
+          onChange={(newDate) => setSelectedDate(newDate)}
         />
       </div>
       <div className="events-and-diary">
@@ -71,10 +66,10 @@ function DayView() {
         <div className="diary-box">
           <h3>Your diary</h3>
           {entries.length > 0 ? (
-            <p>
+            <div>
               {entries.map((entry) => (
-                <div className="single-diary-entry">
-                  <li key={entry._id}>
+                <div key={entry._id} className="single-diary-entry">
+                  <li>
                     <DayEntry
                       fetchEntriesByDate={fetchEntriesByDate}
                       text={entry.text}
@@ -83,7 +78,7 @@ function DayView() {
                   </li>
                 </div>
               ))}
-            </p>
+            </div>
           ) : (
             <p>No entries to display</p>
           )}
@@ -93,8 +88,6 @@ function DayView() {
           />
         </div>
       </div>
-
-      <div></div>
     </div>
   );
 }

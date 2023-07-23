@@ -105,17 +105,6 @@ export class BackendAPI {
     }
   }
 
-  async saveActivity(activity) {
-    try {
-      const { data } = await this.api.post("/activity", {
-        title: activity,
-      });
-      return data;
-    } catch (error) {
-      console.error("Error while saving activity:", error);
-    }
-  }
-
   async getEventsInCalendar() {
     try {
       const { data } = await this.api.get("/api/events-calendar");

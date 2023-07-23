@@ -9,7 +9,7 @@ import Profile from "./pages/Profile";
 import DayView from "./pages/DayView";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import WeeklyMoodPage from "./pages/WeeklyMoodPage";
+import WeeklyMood from "./pages/WeeklyMood";
 import Protected from "./component/Protected";
 
 function App() {
@@ -39,7 +39,7 @@ function App() {
           path="/weekly-mood"
           element={
             <Protected>
-              <WeeklyMoodPage />
+              <WeeklyMood />
             </Protected>
           }
         />

@@ -18,7 +18,6 @@ function Points() {
       startDate.setDate(startDate.getDate() - daysUntilMonday); // Start date (Monday) of the week
       const endDate = new Date(startDate);
       endDate.setDate(endDate.getDate() + 6); // End date (Sunday) of the week
-
       try {
         // Make an API request or retrieve meetings from a local data store
         const fetchedMeetings = await backendAPIInstance.getMeetingsByUser();
@@ -33,7 +32,6 @@ function Points() {
         console.error(error);
       }
     };
-
     fetchMeetings();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -42,14 +40,10 @@ function Points() {
     const weekPointsfromMeetings = meetings.map((oneMeeting) => {
       return Number(oneMeeting.points);
     });
-
     const sumOfPoints = weekPointsfromMeetings.reduce(
-      (accumulator, currentValue) => {
-        return accumulator + currentValue;
-      },
+      (accumulator, currentValue) => accumulator + currentValue,
       0
     );
-
     setWeekPoints(sumOfPoints);
   }, [meetings]);
 
@@ -59,14 +53,9 @@ function Points() {
       const usersWeeklyGoal = fetchedUser.user.weeklyGoal;
       setWeeklyGoal(usersWeeklyGoal);
     };
-
     fetchUserData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const handleChangeGoal = (event) => {
-    setWeeklyGoal(event.target.value);
-  };
 
   const handleUpdateGoal = async () => {
     try {
@@ -86,13 +75,16 @@ function Points() {
           {weekPoints}
         </h3>
       </div>
-
       <div>
         {isEditing ? (
           <div className="point-section">
             <p>Your weekly goal:</p>
             <br></br>
-            <input type="text" value={weeklyGoal} onChange={handleChangeGoal} />
+            <input
+              type="text"
+              value={weeklyGoal}
+              onChange={(event) => setWeeklyGoal(event.target.value)}
+            />
             <button className="goal-edit-btn" onClick={handleUpdateGoal}>
               ✅
             </button>
@@ -104,9 +96,7 @@ function Points() {
             <div className="goal-and-btn">
               <button
                 className="goal-edit-btn"
-                onClick={() => {
-                  setIsEditing(true);
-                }}
+                onClick={() => setIsEditing(true)}
               >
                 ✎
               </button>

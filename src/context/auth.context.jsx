@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { loadAuthToken, saveAuthToken, removeToken } from "../util";
+import { loadAuthToken, saveAuthToken, removeToken } from "../localStorage";
 import { GlobalContext } from "./global.context";
 
 const AuthContext = createContext();

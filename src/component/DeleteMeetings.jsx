@@ -15,11 +15,9 @@ function DeleteMeetings({ id }) {
   };
 
   return (
-    <div>
-      <button className="button-delete" onClick={handleDeleteMeeting}>
-        ✖️
-      </button>
-    </div>
+    <button className="button-delete" onClick={handleDeleteMeeting}>
+      ✖️
+    </button>
   );
 }
 

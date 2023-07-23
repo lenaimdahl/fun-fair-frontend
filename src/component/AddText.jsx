@@ -6,12 +6,6 @@ function AddText({ fetchEntriesByDate, selectedDate }) {
   const [showTextSection, setShowTextSection] = useState(false);
   const [text, setText] = useState("");
 
-  const handleAddTextClick = () => {
-    setShowTextSection(true);
-  };
-
-  const handleText = (event) => setText(event.target.value);
-
   const handleAddText = async (event) => {
     event.preventDefault();
     const currentDay = new Date(selectedDate).setHours(0, 0, 0, 0);
@@ -28,27 +22,25 @@ function AddText({ fetchEntriesByDate, selectedDate }) {
   return (
     <div className="new-text-container">
       {!showTextSection && (
-        <button className="button-add" onClick={handleAddTextClick}>
+        <button className="button-add" onClick={() => setShowTextSection(true)}>
           + Add a new note
         </button>
       )}
       {showTextSection && (
         <div>
-          <div>
-            <h2>Your note</h2>
-            <div className="new-text-container">
-              <form onSubmit={handleAddText}>
-                <input
-                  type="text"
-                  name="text"
-                  value={text}
-                  onChange={handleText}
-                />
-                <button className="button-add" type="submit">
-                  save
-                </button>
-              </form>
-            </div>
+          <h2>Your note</h2>
+          <div className="new-text-container">
+            <form onSubmit={handleAddText}>
+              <input
+                type="text"
+                name="text"
+                value={text}
+                onChange={(event) => setText(event.target.value)}
+              />
+              <button className="button-add" type="submit">
+                save
+              </button>
+            </form>
           </div>
         </div>
       )}
