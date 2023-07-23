@@ -10,6 +10,7 @@ function DayEntry(props) {
   const handleUpdateEntry = async () => {
     try {
       await backendAPIInstance.updateEntry(props.id, text);
+      await props.fetchEntriesByDate();
       setIsEditing(false);
     } catch (error) {
       console.error(error);
@@ -23,13 +24,14 @@ function DayEntry(props) {
   const handleDeleteText = async () => {
     try {
       await backendAPIInstance.deleteEntry(props.id);
-      setIsEditing(false);
+      await props.fetchEntriesByDate();
     } catch (error) {
       console.error(error);
     }
   };
 
   function handleCancelEditing() {
+    setText(props.text);
     setIsEditing(false);
   }
 

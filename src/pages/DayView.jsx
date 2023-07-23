@@ -1,35 +1,47 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { BackendAPI } from "../api/BackendAPIHandler";
 import AddText from "../component/AddText";
 import DayEntry from "../component/DayEntry";
 import DeleteMeetings from "../component/DeleteMeetings";
+import { GlobalContext } from "../context/global.context";
 
 function DayView() {
-  const [meetings, setMeetings] = useState([]);
+  const { meetings } = useContext(GlobalContext);
   const [entries, setEntries] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [filteredMeetings, setFilteredMeetings] = useState(meetings);
 
   const backendAPIInstance = new BackendAPI();
 
-  const handleDateChange = async (date) => {
-    const dateAtMidnight = new Date(date);
+  const handleDateChange = (newDate) => {
+    setSelectedDate(newDate);
+  };
+
+  const fetchEntriesByDate = async () => {
+    console.log("fetchEntriesByDate", { selectedDate });
+    const dateAtMidnight = new Date(selectedDate);
     dateAtMidnight.setHours(0, 0, 0, 0);
-    setSelectedDate(dateAtMidnight);
-    const { allMeetings, allEntries } = await backendAPIInstance.searchMeetings(
+    const { allEntries } = await backendAPIInstance.searchEntries(
       dateAtMidnight
     );
-    console.log(allMeetings);
-    setMeetings(allMeetings);
     setEntries(allEntries);
   };
 
   useEffect(() => {
-    handleDateChange(selectedDate);
+    const dateAtMidnight = new Date(selectedDate);
+    dateAtMidnight.setHours(0, 0, 0, 0);
+    const meetingsByDay = meetings.filter((meeting) => {
+      return new Date(meeting.timestamp).getTime() === dateAtMidnight.getTime();
+    });
+    setFilteredMeetings(meetingsByDay);
+  }, [meetings, selectedDate]);
+
+  useEffect(() => {
+    fetchEntriesByDate();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [selectedDate]);
 
   return (
     <div className="day-view-page">
@@ -44,11 +56,11 @@ function DayView() {
       <div className="events-and-diary">
         <div className="events-box">
           <h3>Your events</h3>
-          {meetings.length > 0 ? (
-            meetings.map((event) => (
-              <p key={event._id}>
-                {event.image} {event.title}
-                <DeleteMeetings id={event._id} />
+          {filteredMeetings.length > 0 ? (
+            filteredMeetings.map((meeting) => (
+              <p key={meeting.id}>
+                {meeting.image} {meeting.title}
+                <DeleteMeetings id={meeting.id} />
               </p>
             ))
           ) : (
@@ -62,7 +74,11 @@ function DayView() {
               {entries.map((entry) => (
                 <div className="single-diary-entry">
                   <li key={entry._id}>
-                    <DayEntry text={entry.text} id={entry._id} />
+                    <DayEntry
+                      fetchEntriesByDate={fetchEntriesByDate}
+                      text={entry.text}
+                      id={entry._id}
+                    />
                   </li>
                 </div>
               ))}
@@ -70,7 +86,10 @@ function DayView() {
           ) : (
             <p>No entries to display</p>
           )}
-          <AddText handleDateChange={handleDateChange} />
+          <AddText
+            selectedDate={selectedDate}
+            fetchEntriesByDate={fetchEntriesByDate}
+          />
         </div>
       </div>
 

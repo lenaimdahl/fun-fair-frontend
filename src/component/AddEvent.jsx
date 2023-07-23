@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { GlobalContext } from "../context/global.context";
 import { BackendAPI } from "../api/BackendAPIHandler";
 
-function AddEvent() {
+function AddEvent({ friends }) {
+  const { meetings, setMeetings } = useContext(GlobalContext);
+
   const [allEvents, setAllEvents] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedFriend, setSelectedFriend] = useState("");
   const [customPoints, setCustomPoints] = useState(0);
-  const [friends, setFriends] = useState([]);
 
   const backendAPIInstance = new BackendAPI();
 
@@ -24,21 +26,17 @@ function AddEvent() {
     setAllEvents(fetchedEventsArray);
   };
 
-  const fetchFriends = async () => {
-    const { friends } = await backendAPIInstance.getFriends();
-    setFriends(friends);
-  };
-
   const handleAddToCalendar = async (event) => {
     event.preventDefault();
     const selectedDateAdMidnight = new Date(selectedDate).setHours(0, 0, 0, 0);
 
-    const selectEl = event.target[0].options[event.target[0].selectedIndex];
+    const selectElement =
+      event.target[0].options[event.target[0].selectedIndex];
 
     try {
       const eventToAdd = {
-        title: selectEl.getAttribute("title"),
-        image: selectEl.getAttribute("image"),
+        title: selectElement.getAttribute("title"),
+        image: selectElement.getAttribute("image"),
         points: customPoints,
         timestamp: selectedDateAdMidnight,
         friend: selectedFriend,
@@ -48,10 +46,14 @@ function AddEvent() {
       } else {
         eventToAdd.friend = null; // Set friend to null when no friend is selected
       }
-      await backendAPIInstance.addEventToCal(eventToAdd);
+      const { newMeeting } = await backendAPIInstance.addEventToCalendar(
+        eventToAdd
+      );
+      newMeeting.title = `${newMeeting.image} ${newMeeting.title}`;
       setSelectedFriend("");
       setCustomPoints(0);
       setSelectedDate(new Date());
+      setMeetings([...meetings, newMeeting]);
     } catch (error) {
       console.error(error);
     }
@@ -73,7 +75,6 @@ function AddEvent() {
 
   useEffect(() => {
     fetchAllEvents();
-    fetchFriends();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
