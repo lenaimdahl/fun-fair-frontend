@@ -45,15 +45,18 @@ function HomePage() {
       <div className="activity-container">
         <h1>Activity tip of the day:</h1>
         <h2>"{activity}"</h2>
-        <button className="signup-button">
-          <Link to={"/signup"}>Sign up!</Link>
-        </button>
+        <br />
+        <br />
+        <Link className="signup-button" to={"/signup"}>
+          Sign up!
+        </Link>
+        <br />
+        <br />
         <p>Already have an account?</p>
-        <button className="signup-button">
-          <Link to={"/login"} className="signup-page-link">
-            Log in
-          </Link>
-        </button>
+        <br />
+        <Link className="signup-button" to={"/login"}>
+          Log in
+        </Link>
       </div>
     </div>
   );
