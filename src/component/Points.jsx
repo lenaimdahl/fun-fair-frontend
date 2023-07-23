@@ -31,6 +31,7 @@ function Points() {
     };
 
     fetchMeetings();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -56,6 +57,7 @@ function Points() {
     };
 
     fetchUserData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleChangeGoal = (event) => {
