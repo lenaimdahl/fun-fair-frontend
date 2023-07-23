@@ -49,6 +49,7 @@ function AddEvent({ friends }) {
       const { newMeeting } = await backendAPIInstance.addEventToCalendar(
         eventToAdd
       );
+      newMeeting.title = `${newMeeting.image} ${newMeeting.title}`;
       setSelectedFriend("");
       setCustomPoints(0);
       setSelectedDate(new Date());
