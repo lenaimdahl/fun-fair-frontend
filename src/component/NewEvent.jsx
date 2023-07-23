@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { GlobalContext } from "../context/global.context";
 
-function NewEvent() {
+function NewEvent({ fetchAllEvents }) {
   const { backendAPIInstance } = useContext(GlobalContext);
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
@@ -18,6 +18,7 @@ function NewEvent() {
         timestamp: currentDay,
       };
       await backendAPIInstance.saveEvent(newEvent);
+      await fetchAllEvents();
       setTitle("");
       setImage("");
     } catch (error) {

@@ -1,25 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../context/global.context";
 
-function AddEvent({ friends }) {
+function AddEvent({ friends, fetchAllEvents, allEvents }) {
   const { backendAPIInstance, meetings, setMeetings } =
     useContext(GlobalContext);
 
-  const [allEvents, setAllEvents] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedFriend, setSelectedFriend] = useState("");
   const [customPoints, setCustomPoints] = useState(0);
-
-  const fetchAllEvents = async () => {
-    const { allEvents } = await backendAPIInstance.getEvents();
-    const uniqueEvents = allEvents.reduce((result, event) => {
-      if (!result.find((ev) => ev.title === event.title)) {
-        result.push(event);
-      }
-      return result;
-    }, []);
-    setAllEvents(uniqueEvents);
-  };
 
   const handleAddToCalendar = async (event) => {
     event.preventDefault();

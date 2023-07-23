@@ -11,13 +11,26 @@ import Points from "../component/Points";
 import { GlobalContext } from "../context/global.context";
 
 function Profile() {
-  const { user } = useContext(AuthContext);
   const { backendAPIInstance } = useContext(GlobalContext);
+  const { user } = useContext(AuthContext);
+
+  const [allEvents, setAllEvents] = useState([]);
   const [friends, setFriends] = useState([]);
 
   const fetchFriends = async () => {
     const { friends } = await backendAPIInstance.getFriends();
     setFriends(friends);
+  };
+
+  const fetchAllEvents = async () => {
+    const { allEvents } = await backendAPIInstance.getEvents();
+    const uniqueEvents = allEvents.reduce((result, event) => {
+      if (!result.find((ev) => ev.title === event.title)) {
+        result.push(event);
+      }
+      return result;
+    }, []);
+    setAllEvents(uniqueEvents);
   };
 
   useEffect(() => {
@@ -38,8 +51,12 @@ function Profile() {
         <div className="right-side-menu">
           <MoodSelection />
           <div className="combo-pannel">
-            <AddEvent friends={friends} />
-            <NewEvent />
+            <AddEvent
+              allEvents={allEvents}
+              fetchAllEvents={fetchAllEvents}
+              friends={friends}
+            />
+            <NewEvent fetchAllEvents={fetchAllEvents} />
           </div>
           <div className="combo-pannel">
             <h2>Friend Zone</h2>
