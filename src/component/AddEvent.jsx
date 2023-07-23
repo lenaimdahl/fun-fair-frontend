@@ -1,16 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../context/global.context";
-import { BackendAPI } from "../api/BackendAPIHandler";
+import { APIContext } from "../context/api.context";
 
 function AddEvent({ friends }) {
   const { meetings, setMeetings } = useContext(GlobalContext);
+  const { backendAPIInstance } = useContext(APIContext);
 
   const [allEvents, setAllEvents] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedFriend, setSelectedFriend] = useState("");
   const [customPoints, setCustomPoints] = useState(0);
-
-  const backendAPIInstance = new BackendAPI();
 
   const fetchAllEvents = async () => {
     const fetchedEvents = await backendAPIInstance.getEvents();

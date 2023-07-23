@@ -1,14 +1,13 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { BackendAPI } from "../api/BackendAPIHandler";
 import { AuthContext } from "../context/auth.context";
+import { APIContext } from "../context/api.context";
 
 const GlobalContext = createContext();
 
 const GlobalContextWrapper = ({ children }) => {
+  const { backendAPIInstance } = useContext(APIContext);
   const [meetings, setMeetings] = useState([]);
   const { isLoggedIn } = useContext(AuthContext);
-
-  const backendAPIInstance = new BackendAPI();
 
   const fetchMeetings = async () => {
     const data = await backendAPIInstance.getMeetingsByUser();

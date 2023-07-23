@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { BackendAPI } from "../api/BackendAPIHandler";
+import React, { useContext, useEffect, useState } from "react";
+import { APIContext } from "../context/api.context";
 
 function Points() {
+  const { backendAPIInstance } = useContext(APIContext);
   const [meetings, setMeetings] = useState([]);
   const [weekPoints, setWeekPoints] = useState("");
   const [weeklyGoal, setWeeklyGoal] = useState("");
   const [isEditing, setIsEditing] = useState(false);
-  const backendAPIInstance = new BackendAPI();
 
   useEffect(() => {
     // Fetch meetings from your data source
@@ -19,15 +19,19 @@ function Points() {
       const endDate = new Date(startDate);
       endDate.setDate(endDate.getDate() + 6); // End date (Sunday) of the week
 
-      // Make an API request or retrieve meetings from a local data store
-      const fetchedMeetings = await backendAPIInstance.getMeetingsByUser();
-      const fetchedMeetingsArray = fetchedMeetings.meetings;
-      // Filter meetings for the week (Monday to Sunday)
-      const weekMeetings = fetchedMeetingsArray.filter((meeting) => {
-        const meetingDate = new Date(meeting.timestamp);
-        return meetingDate >= startDate && meetingDate <= endDate;
-      });
-      setMeetings(weekMeetings);
+      try {
+        // Make an API request or retrieve meetings from a local data store
+        const fetchedMeetings = await backendAPIInstance.getMeetingsByUser();
+        const fetchedMeetingsArray = fetchedMeetings.meetings;
+        // Filter meetings for the week (Monday to Sunday)
+        const weekMeetings = fetchedMeetingsArray.filter((meeting) => {
+          const meetingDate = new Date(meeting.timestamp);
+          return meetingDate >= startDate && meetingDate <= endDate;
+        });
+        setMeetings(weekMeetings);
+      } catch (error) {
+        console.error(error);
+      }
     };
 
     fetchMeetings();

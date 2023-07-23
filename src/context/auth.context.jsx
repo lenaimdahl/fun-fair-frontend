@@ -1,17 +1,32 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { loadAuthToken, saveAuthToken, removeToken } from "../util";
-import { BackendAPI } from "../api/BackendAPIHandler";
+import { APIContext } from "./api.context";
 
 const AuthContext = createContext();
 
 const AuthContextWrapper = (props) => {
+  const { backendAPIInstance, setBackendAPIInstance } = useContext(APIContext);
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const backendAPIInstance = new BackendAPI();
+
+  backendAPIInstance.api.interceptors.response.use(null, (error) => {
+    if (error.response.status === 401) {
+      logOutUser();
+    }
+    throw error;
+  });
+
+  setBackendAPIInstance(backendAPIInstance);
 
   const setToken = (token) => {
     saveAuthToken(token);
+  };
+
+  const logOutUser = () => {
+    setUser(null);
+    setIsLoggedIn(false);
+    removeToken();
   };
 
   const authenticateUser = async () => {
@@ -30,12 +45,6 @@ const AuthContextWrapper = (props) => {
       setIsLoading(false);
       logOutUser();
     }
-  };
-
-  const logOutUser = () => {
-    setUser(null);
-    setIsLoggedIn(false);
-    removeToken();
   };
 
   useEffect(() => {

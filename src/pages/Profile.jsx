@@ -8,13 +8,12 @@ import NewEvent from "../component/NewEvent";
 import AddFriend from "../component/AddFriend";
 import ShowFriends from "../component/ShowFriends";
 import Points from "../component/Points";
-import { BackendAPI } from "../api/BackendAPIHandler";
+import { APIContext } from "../context/api.context";
 
 function Profile() {
   const { user } = useContext(AuthContext);
+  const { backendAPIInstance } = useContext(APIContext);
   const [friends, setFriends] = useState([]);
-
-  const backendAPIInstance = new BackendAPI();
 
   const fetchFriends = async () => {
     const { friends } = await backendAPIInstance.getFriends();

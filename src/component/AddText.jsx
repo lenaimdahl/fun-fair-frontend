@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { BackendAPI } from "../api/BackendAPIHandler";
+import { useContext, useState } from "react";
+import { APIContext } from "../context/api.context";
 
 function AddText({ fetchEntriesByDate, selectedDate }) {
+  const { backendAPIInstance } = useContext(APIContext);
   const [showTextSection, setShowTextSection] = useState(false);
   const [text, setText] = useState("");
-  const backendAPIInstance = new BackendAPI();
 
   const handleAddTextClick = () => {
     setShowTextSection(true);

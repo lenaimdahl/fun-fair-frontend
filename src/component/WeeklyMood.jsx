@@ -1,6 +1,6 @@
+import { useContext, useEffect, useState } from "react";
 import LineChart from "./LineChart";
-import { useEffect, useState } from "react";
-import { BackendAPI } from "../api/BackendAPIHandler";
+import { APIContext } from "../context/api.context";
 import DoughnutChart from "./DoughnutChart";
 
 function convertType(type) {
@@ -21,10 +21,9 @@ function convertType(type) {
 }
 
 function WeeklyMood() {
+  const { backendAPIInstance } = useContext(APIContext);
   const [moods, setMoods] = useState();
   const [isLoading, setIsLoading] = useState(true);
-
-  const backendAPIInstance = new BackendAPI();
 
   useEffect(() => {
     (async () => {

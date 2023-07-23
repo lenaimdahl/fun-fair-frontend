@@ -1,11 +1,10 @@
-import { BackendAPI } from "../api/BackendAPIHandler";
-import { useState, useEffect } from "react";
 import moment from "moment";
+import { useContext, useEffect, useState } from "react";
+import { APIContext } from "../context/api.context";
 
 function MoodSelection() {
+  const { backendAPIInstance } = useContext(APIContext);
   const [showMoodSelection, setShowMoodSelection] = useState(false);
-
-  const backendAPIInstance = new BackendAPI();
 
   useEffect(() => {
     const checkExistingMood = async () => {

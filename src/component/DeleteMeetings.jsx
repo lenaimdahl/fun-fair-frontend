@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { BackendAPI } from "../api/BackendAPIHandler";
 import { GlobalContext } from "../context/global.context";
+import { APIContext } from "../context/api.context";
 
 function DeleteMeetings({ id }) {
-  const backendAPIInstance = new BackendAPI();
+  const { backendAPIInstance } = useContext(APIContext);
   const { fetchMeetings } = useContext(GlobalContext);
 
   const handleDeleteMeeting = async () => {

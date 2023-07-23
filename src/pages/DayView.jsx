@@ -1,19 +1,18 @@
 import { useContext, useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { BackendAPI } from "../api/BackendAPIHandler";
 import AddText from "../component/AddText";
 import DayEntry from "../component/DayEntry";
 import DeleteMeetings from "../component/DeleteMeetings";
 import { GlobalContext } from "../context/global.context";
+import { APIContext } from "../context/api.context";
 
 function DayView() {
   const { meetings } = useContext(GlobalContext);
+  const { backendAPIInstance } = useContext(APIContext);
   const [entries, setEntries] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [filteredMeetings, setFilteredMeetings] = useState(meetings);
-
-  const backendAPIInstance = new BackendAPI();
 
   const handleDateChange = (newDate) => {
     setSelectedDate(newDate);
