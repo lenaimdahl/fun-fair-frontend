@@ -42,7 +42,7 @@ export class BackendAPI {
       const { data } = await this.api.get("/api/user");
       return data;
     } catch (error) {
-      console.error("Error while :", error);
+      console.error("Error while getting user data:", error);
     }
   }
 
@@ -51,7 +51,7 @@ export class BackendAPI {
       const { data } = await this.api.get("/api/nonfriends");
       return data;
     } catch (error) {
-      console.error("Error while :", error);
+      console.error("Error while getting nonfriends:", error);
     }
   }
 
@@ -60,7 +60,7 @@ export class BackendAPI {
       const { data } = await this.api.get("/api/friends");
       return data;
     } catch (error) {
-      console.error("Error while :", error);
+      console.error("Error while getting friends:", error);
     }
   }
 
@@ -71,7 +71,7 @@ export class BackendAPI {
       });
       return data;
     } catch (error) {
-      console.error("Error while :", error);
+      console.error("Error while adding friend to user:", error);
     }
   }
 
@@ -83,7 +83,7 @@ export class BackendAPI {
       });
       return data;
     } catch (error) {
-      console.error("Error while :", error);
+      console.error("Error while saving mood:", error);
     }
   }
 
@@ -92,7 +92,7 @@ export class BackendAPI {
       const { data } = await this.api.get(`/api/mood/${timestamp}`);
       return data;
     } catch (error) {
-      console.error("Error while :", error);
+      console.error("Error while getting mood for day:", error);
     }
   }
 
@@ -101,7 +101,7 @@ export class BackendAPI {
       const { data } = await this.api.get("/api/moods");
       return data;
     } catch (error) {
-      console.error("Error while :", error);
+      console.error("Error while getting moods:", error);
     }
   }
 
@@ -112,7 +112,7 @@ export class BackendAPI {
       });
       return data;
     } catch (error) {
-      console.error("Error while :", error);
+      console.error("Error while saving activity:", error);
     }
   }
 
@@ -121,7 +121,7 @@ export class BackendAPI {
       const { data } = await this.api.get("/api/events-calendar");
       return data;
     } catch (error) {
-      console.error("Error while :", error);
+      console.error("Error while getting events in calendar:", error);
     }
   }
 
@@ -131,7 +131,7 @@ export class BackendAPI {
       const { data } = await this.api.post("/api/meeting", eventToAdd);
       return data;
     } catch (error) {
-      console.error("Error while :", error);
+      console.error("Error while adding event to calendar:", error);
     }
   }
 
@@ -141,7 +141,7 @@ export class BackendAPI {
       const { data } = await this.api.get("/api/events");
       return data;
     } catch (error) {
-      console.error("Error while :", error);
+      console.error("Error while getting events:", error);
     }
   }
 
@@ -150,7 +150,7 @@ export class BackendAPI {
       const { data } = await this.api.get("/api/meetings-calendar");
       return data;
     } catch (error) {
-      console.error("Error while :", error);
+      console.error("Error while getting meetings by user:", error);
     }
   }
 
@@ -160,7 +160,7 @@ export class BackendAPI {
       const { data } = await this.api.post("/api/new-event", newEvent);
       return data;
     } catch (error) {
-      console.error("ERROR while saving meetings from db:", error);
+      console.error("Error while saving events:", error);
       throw error;
     }
   }
