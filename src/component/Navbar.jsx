@@ -15,7 +15,7 @@ function Navbar() {
   return (
     <nav className="menu">
       <ol>
-        {isLoggedIn ? null : (
+        {!isLoggedIn && (
           <li className="menu-item">
             <Link to={"/"}>Home</Link>
           </li>
@@ -23,7 +23,7 @@ function Navbar() {
         <li className="menu-item">
           <Link to={"/about"}>About</Link>
         </li>
-        {!isLoggedIn ? null : (
+        {isLoggedIn && (
           <li className="menu-item">
             <Link to={"/profile"}>Profile</Link>
             <ol className="sub-menu">

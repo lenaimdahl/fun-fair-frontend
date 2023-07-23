@@ -168,11 +168,6 @@ function WeekTable({ moods }) {
 
     const lastSevenMoods = moodDataWithGaps.slice(0, 7);
     const weekBeforeMoods = moodDataWithGaps.slice(7, 14);
-    console.log({
-      generateLast14Days: generateLast14Days(),
-      lastSevenMoods,
-      weekBeforeMoods,
-    });
 
     setChart({
       labels: generateWeekDays().reverse(),

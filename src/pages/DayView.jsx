@@ -1,7 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { BackendAPI } from "../api/BackendAPIHandler";
 import AddText from "../component/AddText";
 import DayEntry from "../component/DayEntry";
 import DeleteMeetings from "../component/DeleteMeetings";
@@ -9,24 +8,26 @@ import { GlobalContext } from "../context/global.context";
 
 function DayView() {
   const { meetings } = useContext(GlobalContext);
+  const { backendAPIInstance } = useContext(GlobalContext);
   const [entries, setEntries] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [filteredMeetings, setFilteredMeetings] = useState(meetings);
-
-  const backendAPIInstance = new BackendAPI();
 
   const handleDateChange = (newDate) => {
     setSelectedDate(newDate);
   };
 
   const fetchEntriesByDate = async () => {
-    console.log("fetchEntriesByDate", { selectedDate });
-    const dateAtMidnight = new Date(selectedDate);
-    dateAtMidnight.setHours(0, 0, 0, 0);
-    const { allEntries } = await backendAPIInstance.searchEntries(
-      dateAtMidnight
-    );
-    setEntries(allEntries);
+    try {
+      const dateAtMidnight = new Date(selectedDate);
+      dateAtMidnight.setHours(0, 0, 0, 0);
+      const { allEntries } = await backendAPIInstance.searchEntries(
+        dateAtMidnight
+      );
+      setEntries(allEntries);
+    } catch (error) {
+      console.error("Error fetching entries:", error);
+    }
   };
 
   useEffect(() => {

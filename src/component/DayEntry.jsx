@@ -1,11 +1,10 @@
-import { useState } from "react";
-import { BackendAPI } from "../api/BackendAPIHandler";
+import { useContext, useState } from "react";
+import { GlobalContext } from "../context/global.context";
 
 function DayEntry(props) {
+  const { backendAPIInstance } = useContext(GlobalContext);
   const [isEditing, setIsEditing] = useState(false);
   const [text, setText] = useState(props.text);
-
-  const backendAPIInstance = new BackendAPI();
 
   const handleUpdateEntry = async () => {
     try {

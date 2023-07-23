@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
-import { BackendAPI } from "../api/BackendAPIHandler";
+import { useContext, useEffect, useState } from "react";
+import { GlobalContext } from "../context/global.context";
 
 function AddFriend({ fetchFriends }) {
+  const { backendAPIInstance } = useContext(GlobalContext);
   const [allUsers, setAllUsers] = useState([]);
-
-  const backendAPIInstance = new BackendAPI();
 
   const fetchAllUser = async () => {
     const { users } = await backendAPIInstance.getNonFriends();

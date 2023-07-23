@@ -1,16 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../context/global.context";
-import { BackendAPI } from "../api/BackendAPIHandler";
 
 function AddEvent({ friends }) {
-  const { meetings, setMeetings } = useContext(GlobalContext);
+  const { backendAPIInstance, meetings, setMeetings } =
+    useContext(GlobalContext);
 
   const [allEvents, setAllEvents] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedFriend, setSelectedFriend] = useState("");
   const [customPoints, setCustomPoints] = useState(0);
-
-  const backendAPIInstance = new BackendAPI();
 
   const fetchAllEvents = async () => {
     const fetchedEvents = await backendAPIInstance.getEvents();
@@ -68,7 +66,6 @@ function AddEvent({ friends }) {
   };
 
   const handleCustomPointsChange = (event) => {
-    console.log(event.target.value);
     const points = parseInt(event.target.value);
     setCustomPoints(points);
   };

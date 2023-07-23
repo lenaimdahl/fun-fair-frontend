@@ -1,11 +1,10 @@
-import { BackendAPI } from "../api/BackendAPIHandler";
-import { useState, useEffect } from "react";
 import moment from "moment";
+import { useContext, useEffect, useState } from "react";
+import { GlobalContext } from "../context/global.context";
 
 function MoodSelection() {
+  const { backendAPIInstance } = useContext(GlobalContext);
   const [showMoodSelection, setShowMoodSelection] = useState(false);
-
-  const backendAPIInstance = new BackendAPI();
 
   useEffect(() => {
     const checkExistingMood = async () => {
@@ -15,7 +14,6 @@ function MoodSelection() {
         if (moods.length === 0) {
           setShowMoodSelection(true);
         }
-        console.log("moods", moods);
       } catch (error) {
         console.error(error);
       }

@@ -6,6 +6,7 @@ export class BackendAPI {
     this.api = axios.create({
       baseURL: API_URL,
     });
+
     this.api.interceptors.request.use((config) => {
       const storedToken = localStorage.getItem("authToken");
       if (storedToken) {
@@ -13,28 +14,65 @@ export class BackendAPI {
       }
       return config;
     });
+
+    this.api.interceptors.response.use(
+      (response) => response,
+      (error) => {
+        // checks if the user is logged in
+        if (error.response.status === 401) {
+          window.util.logout();
+        } else {
+          throw error;
+        }
+      }
+    );
+  }
+
+  async login(loginData) {
+    try {
+      const { data } = await this.api.post("/auth/login", loginData);
+      return data;
+    } catch (error) {
+      console.error("Error while logging in:", error);
+    }
   }
 
   async getUserData() {
-    const { data } = await this.api.get("/api/user");
-    return data;
+    try {
+      const { data } = await this.api.get("/api/user");
+      return data;
+    } catch (error) {
+      console.error("Error while getting user data:", error);
+    }
   }
 
   async getNonFriends() {
-    const { data } = await this.api.get("/api/nonfriends");
-    return data;
+    try {
+      const { data } = await this.api.get("/api/nonfriends");
+      return data;
+    } catch (error) {
+      console.error("Error while getting nonfriends:", error);
+    }
   }
 
   async getFriends() {
-    const { data } = await this.api.get("/api/friends");
-    return data;
+    try {
+      const { data } = await this.api.get("/api/friends");
+      return data;
+    } catch (error) {
+      console.error("Error while getting friends:", error);
+    }
   }
 
   async addFriendToUser(userId) {
-    const { data } = await this.api.post("/api/addFriend", {
-      userId,
-    });
-    return data;
+    try {
+      const { data } = await this.api.post("/api/addFriend", {
+        userId,
+      });
+      return data;
+    } catch (error) {
+      console.error("Error while adding friend to user:", error);
+    }
   }
 
   async saveMood(type, timestamp) {
@@ -45,7 +83,7 @@ export class BackendAPI {
       });
       return data;
     } catch (error) {
-      throw new Error(error.response.data.message);
+      console.error("Error while saving mood:", error);
     }
   }
 
@@ -54,48 +92,77 @@ export class BackendAPI {
       const { data } = await this.api.get(`/api/mood/${timestamp}`);
       return data;
     } catch (error) {
-      throw new Error(error.response.data.message);
+      console.error("Error while getting mood for day:", error);
     }
   }
 
   async getMoods() {
-    const { data } = await this.api.get("/api/moods");
-    return data;
+    try {
+      const { data } = await this.api.get("/api/moods");
+      return data;
+    } catch (error) {
+      console.error("Error while getting moods:", error);
+    }
   }
 
   async saveActivity(activity) {
-    const { data } = await this.api.post("/activity", {
-      title: activity,
-    });
-    return data;
+    try {
+      const { data } = await this.api.post("/activity", {
+        title: activity,
+      });
+      return data;
+    } catch (error) {
+      console.error("Error while saving activity:", error);
+    }
   }
 
   async getEventsInCalendar() {
-    const { data } = await this.api.get("/api/events-calendar");
-    return data;
+    try {
+      const { data } = await this.api.get("/api/events-calendar");
+      return data;
+    } catch (error) {
+      console.error("Error while getting events in calendar:", error);
+    }
   }
 
   //saves existing event in a calendar of a given user
   async addEventToCalendar(eventToAdd) {
-    const { data } = await this.api.post("/api/meeting", eventToAdd);
-    return data;
+    try {
+      const { data } = await this.api.post("/api/meeting", eventToAdd);
+      return data;
+    } catch (error) {
+      console.error("Error while adding event to calendar:", error);
+    }
   }
 
   //fetches all the events from DB to populate select menu
   async getEvents() {
-    const { data } = await this.api.get("/api/events");
-    return data;
+    try {
+      const { data } = await this.api.get("/api/events");
+      return data;
+    } catch (error) {
+      console.error("Error while getting events:", error);
+    }
   }
 
   async getMeetingsByUser() {
-    const { data } = await this.api.get("/api/meetings-calendar");
-    return data;
+    try {
+      const { data } = await this.api.get("/api/meetings-calendar");
+      return data;
+    } catch (error) {
+      console.error("Error while getting meetings by user:", error);
+    }
   }
 
   //saves a new event from new event form in general events DB
   async saveEvent(newEvent) {
-    const { data } = await this.api.post("/api/new-event", newEvent);
-    return data;
+    try {
+      const { data } = await this.api.post("/api/new-event", newEvent);
+      return data;
+    } catch (error) {
+      console.error("Error while saving events:", error);
+      throw error;
+    }
   }
 
   async saveEntry(entryText, currentDay) {
@@ -105,9 +172,8 @@ export class BackendAPI {
         timestamp: currentDay,
       });
       return data;
-    } catch (err) {
-      console.error("ERROR while saving entry to db:", err);
-      throw new Error("Internal Server Error");
+    } catch (error) {
+      console.error("Error while saving entry:", error);
     }
   }
 
@@ -115,45 +181,59 @@ export class BackendAPI {
     try {
       const { data } = await this.api.post("/api/entry/search", { startDate });
       return data;
-    } catch (err) {
-      console.error("ERROR while fetching all meetings from db:", err);
-      throw new Error("Internal Server Error");
+    } catch (error) {
+      console.error("Error while searching entries:", error);
     }
   }
 
   async deleteEntry(id) {
     try {
-      return this.api.delete(`/api/entry/${id}`);
-    } catch (err) {
-      console.error("ERROR while deleting entry from db:", err);
-      throw new Error("Internal Server Error");
+      await this.api.delete(`/api/entry/${id}`);
+    } catch (error) {
+      console.error("Error while deleting entries:", error);
     }
   }
 
   async updateEntry(id, entryText) {
     try {
-      return this.api.patch(`/api/entry/${id}`, { text: entryText });
-    } catch (err) {
-      console.error("ERROR while updating entry in db:", err);
-      throw new Error("Internal Server Error");
+      await this.api.patch(`/api/entry/${id}`, { text: entryText });
+    } catch (error) {
+      console.error("Error while updating entry:", error);
     }
   }
 
   async deleteMeeting(id) {
     try {
-      return this.api.delete(`/api/meeting/${id}`);
-    } catch (err) {
-      console.error("ERROR while deleting meeting from db:", err);
-      throw new Error("Internal Server Error");
+      await this.api.delete(`/api/meeting/${id}`);
+    } catch (error) {
+      console.error("Error while deleting meeting:", error);
     }
   }
 
   async updateGoal(weeklyGoal) {
     try {
-      return this.api.patch(`/api/newGoal`, { weeklyGoal });
-    } catch (err) {
-      console.error("ERROR while fetching all events from db:", err);
-      throw new Error("Internal Server Error");
+      await this.api.patch(`/api/newGoal`, { weeklyGoal });
+    } catch (error) {
+      console.error("Error while updating goal:", error);
+    }
+  }
+
+  async verifyUser(token) {
+    try {
+      const { data } = await this.api.get("/auth/verify", {
+        headers: { authorization: `Bearer ${token}` },
+      });
+      return data;
+    } catch (error) {
+      console.error("Error while verifying user:", error);
+    }
+  }
+
+  async signup(requestBody) {
+    try {
+      await this.api.post("/auth/signup", requestBody);
+    } catch (error) {
+      console.error("Error while signing up:", error);
     }
   }
 }

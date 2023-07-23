@@ -10,6 +10,7 @@ import DayView from "./pages/DayView";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import WeeklyMoodPage from "./pages/WeeklyMoodPage";
+import Protected from "./component/Protected";
 
 function App() {
   return (
@@ -18,9 +19,30 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/about" element={<About />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/day-view" element={<DayView />} />
-        <Route path="/weekly-mood" element={<WeeklyMoodPage />} />
+        <Route
+          path="/profile"
+          element={
+            <Protected>
+              <Profile />
+            </Protected>
+          }
+        />
+        <Route
+          path="/day-view"
+          element={
+            <Protected>
+              <DayView />
+            </Protected>
+          }
+        />
+        <Route
+          path="/weekly-mood"
+          element={
+            <Protected>
+              <WeeklyMoodPage />
+            </Protected>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<NotFound />} />

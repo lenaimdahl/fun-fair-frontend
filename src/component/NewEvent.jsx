@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { BackendAPI } from "../api/BackendAPIHandler";
+import { useContext, useState } from "react";
+import { GlobalContext } from "../context/global.context";
 
 function NewEvent() {
+  const { backendAPIInstance } = useContext(GlobalContext);
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [showEventForm, setShowEventForm] = useState(false);
@@ -16,8 +17,6 @@ function NewEvent() {
       setShowEventForm(true);
     }
   };
-
-  const backendAPIInstance = new BackendAPI();
 
   const handleAddEvent = async (e) => {
     e.preventDefault();
