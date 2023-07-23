@@ -11,7 +11,7 @@ import Points from "../component/Points";
 import { GlobalContext } from "../context/global.context";
 
 function Profile() {
-  const { backendAPIInstance } = useContext(GlobalContext);
+  const { backendAPIInstance, fetchMeetings } = useContext(GlobalContext);
   const { user } = useContext(AuthContext);
 
   const [allEvents, setAllEvents] = useState([]);
@@ -35,6 +35,7 @@ function Profile() {
 
   useEffect(() => {
     fetchFriends();
+    fetchMeetings();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
