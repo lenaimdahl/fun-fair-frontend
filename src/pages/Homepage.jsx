@@ -43,20 +43,21 @@ function HomePage() {
         style={{ width: "600px" }}
       />
       <div className="activity-container">
+        <div className="activity-container-top">
         <h1>Activity tip of the day:</h1>
         <h2>"{activity}"</h2>
-        <br />
-        <br />
         <Link className="signup-button" to={"/signup"}>
           Sign up!
         </Link>
-        <br />
-        <br />
+        </div>
+        <div className="activity-container-bottom">
         <p>Already have an account?</p>
-        <br />
         <Link className="signup-button" to={"/login"}>
           Log in
         </Link>
+        </div>
+        
+        
       </div>
     </div>
   );

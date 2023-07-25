@@ -77,9 +77,10 @@ function Points() {
       </div>
       <div>
         {isEditing ? (
-          <div className="point-section">
+          <div className="">
             <p>Your weekly goal:</p>
             <br></br>
+            <div className="points-edit">
             <input
               type="text"
               value={weeklyGoal}
@@ -88,6 +89,9 @@ function Points() {
             <button className="goal-edit-btn" onClick={handleUpdateGoal}>
               ✅
             </button>
+
+            </div>
+            
           </div>
         ) : (
           <div className="point-section">

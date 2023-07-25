@@ -52,6 +52,7 @@ body {
   /* flex-wrap: wrap; */
   justify-content: center;
   gap: 30px;
+  margin-top: 100px;
 }
 
 .calendar-container {
@@ -83,6 +84,9 @@ body {
   border-radius: 20px;
   padding: 20px;
   font-weight: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .activity-container h1 {
@@ -95,7 +99,7 @@ body {
 }
 
 .activity-container p {
-  padding: 0 100px;
+  margin-top: 50px;
 }
 
 .signup-button {
@@ -104,7 +108,9 @@ body {
   border: none;
   border-radius: 40px;
   padding: 20px 40px;
-  font-size: 1.3vw;
+  font-size: 15px;
+  text-decoration: none;
+  color: white;
 }
 
 .signup-page button:hover,
@@ -172,7 +178,7 @@ body {
 }
 
 .profile-page {
-  margin: 0px 4vw;
+  margin: 0px 4vw 100px 4vw;
 }
 
 .top-bar-profile {
@@ -296,6 +302,7 @@ body {
 
 #mood-selection {
   margin-bottom: 20px;
+  padding: 0 10px 10px 10px;
 }
 
 .mood-container {
@@ -339,8 +346,8 @@ body {
 .add-event-box {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  padding: 20px;
+  /* flex-wrap: wrap; */
+  padding: 20px 20px 0px 20px;
   /* background-color: rgba(255, 255, 255, 0.516); */
   border-radius: 20px;
   /* width: 90%; */
@@ -728,4 +735,9 @@ footer p {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.points-edit {
+  display: flex;
+  align-items: center;
 }
