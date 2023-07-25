@@ -13,7 +13,6 @@ import { GlobalContext } from "../context/global.context";
 function Profile() {
   const { backendAPIInstance, fetchMeetings } = useContext(GlobalContext);
   const { user } = useContext(AuthContext);
-  console.log({ user });
   const [allEvents, setAllEvents] = useState([]);
   const [friends, setFriends] = useState([]);
 
