@@ -44,20 +44,22 @@ function HomePage() {
       />
       <div className="activity-container">
         <div className="activity-container-top">
-        <h1>Activity tip of the day:</h1>
-        <h2>"{activity}"</h2>
-        <Link className="signup-button" to={"/signup"}>
-          Sign up!
-        </Link>
+          <h1>Activity tip of the day:</h1>
+          <h2>{activity}</h2>
+          <button className="signup-button">
+          <Link to={"/signup"}>
+            Sign up!
+          </Link>
+          </button>
         </div>
         <div className="activity-container-bottom">
-        <p>Already have an account?</p>
-        <Link className="signup-button" to={"/login"}>
-          Log in
-        </Link>
+          <p>Already have an account?</p>
+          <button className="signup-button">
+          <Link to={"/login"}>
+            Log in
+          </Link>
+          </button>
         </div>
-        
-        
       </div>
     </div>
   );

@@ -16,7 +16,7 @@ import NewNav from "./component/NewNav";
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      {/* <Navbar /> */}
       <NewNav />
       <Routes>
         <Route path="/" element={<Homepage />} />
