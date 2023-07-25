@@ -1,49 +1,27 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import moment from "moment";
 import { GlobalContext } from "../context/global.context";
 
 function Points() {
-  const { backendAPIInstance } = useContext(GlobalContext);
-  const [meetings, setMeetings] = useState([]);
-  const [weekPoints, setWeekPoints] = useState("");
-  const [weeklyGoal, setWeeklyGoal] = useState("");
+  const { meetings, backendAPIInstance } = useContext(GlobalContext);
+  const [weekPoints, setWeekPoints] = useState(0);
+  const [weeklyGoal, setWeeklyGoal] = useState(0);
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
-    // Fetch meetings from your data source
-    const fetchMeetings = async () => {
-      const currentDate = new Date();
-      const currentDayOfWeek = currentDate.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
-      const daysUntilMonday = currentDayOfWeek === 0 ? 6 : currentDayOfWeek - 1;
-      const startDate = new Date(currentDate);
-      startDate.setDate(startDate.getDate() - daysUntilMonday); // Start date (Monday) of the week
-      const endDate = new Date(startDate);
-      endDate.setDate(endDate.getDate() + 6); // End date (Sunday) of the week
-      try {
-        // Make an API request or retrieve meetings from a local data store
-        const fetchedMeetings = await backendAPIInstance.getMeetingsByUser();
-        const fetchedMeetingsArray = fetchedMeetings.meetings;
-        // Filter meetings for the week (Monday to Sunday)
-        const weekMeetings = fetchedMeetingsArray.filter((meeting) => {
-          const meetingDate = new Date(meeting.timestamp);
-          return meetingDate >= startDate && meetingDate <= endDate;
-        });
-        setMeetings(weekMeetings);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchMeetings();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    const monday = moment().startOf("isoWeek");
+    const sunday = moment().endOf("isoWeek");
 
-  useEffect(() => {
-    const weekPointsfromMeetings = meetings.map((oneMeeting) => {
-      return Number(oneMeeting.points);
+    // Filter meetings for the week (Monday to Sunday)
+    const weekMeetings = meetings.filter((meeting) => {
+      const meetingDate = moment(meeting.timestamp);
+      return meetingDate.isBetween(monday, sunday);
     });
-    const sumOfPoints = weekPointsfromMeetings.reduce(
-      (accumulator, currentValue) => accumulator + currentValue,
-      0
-    );
+
+    const sumOfPoints = weekMeetings
+      .map((meeting) => meeting.points)
+      .reduce((result, points) => result + points, 0);
+
     setWeekPoints(sumOfPoints);
   }, [meetings]);
 
