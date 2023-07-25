@@ -33,7 +33,7 @@ function Calendar() {
   return (
     <div className="calendar-container">
       <Paper className="cal-profile-paper">
-        <Scheduler data={data} height={700}>
+        <Scheduler data={data} className="scheduler">
           <ViewState
             currentDate={currentDate}
             onCurrentDateChange={(newDate) => setCurrentDate(newDate)}
