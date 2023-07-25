@@ -40,7 +40,7 @@ function HomePage() {
         className="calendar-image-home"
         src={CalenderPreview}
         alt="Calender preview"
-        style={{ width: "600px" }}
+        // style={{ width: "600px" }}
       />
       <div className="activity-container">
         <div className="activity-container-top">
