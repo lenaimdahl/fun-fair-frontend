@@ -14,6 +14,7 @@ const GlobalContextWrapper = ({ children }) => {
         const combinedTitle = `${meeting.image} ${meeting.title}`;
         return {
           id: meeting._id,
+          points: meeting.points,
           title: combinedTitle,
           timestamp: meeting.timestamp,
         };
