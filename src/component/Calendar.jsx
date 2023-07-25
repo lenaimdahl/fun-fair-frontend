@@ -32,7 +32,7 @@ function Calendar() {
 
   return (
     <div className="calendar-container">
-      <Paper>
+      <Paper className="cal-profile-paper">
         <Scheduler data={data} height={700}>
           <ViewState
             currentDate={currentDate}

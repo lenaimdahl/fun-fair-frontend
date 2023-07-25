@@ -35,9 +35,9 @@ function HomePage() {
   };
 
   return (
-    <div className="calendar-flex">
+    <div className="home-page">
       <img
-        className="calendar-container"
+        className="calendar-image-home"
         src={CalenderPreview}
         alt="Calender preview"
         style={{ width: "600px" }}

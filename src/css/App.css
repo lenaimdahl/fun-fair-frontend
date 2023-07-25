@@ -5,7 +5,7 @@ body {
   /* background-repeat: no-repeat; */
   color: white;
   /* margin: 0 !important; */
-  margin-bottom: 100px;
+  /* margin-bottom: 100px; */
 }
 
 .button {
@@ -47,17 +47,34 @@ body {
   margin: 10px;
 } */
 
+.home-page {
+ display: flex;
+ justify-content: center;
+ width: 60vw;
+ margin: 50px auto 50px auto;
+ gap: 40px;
+}
+
+.calendar-image-home {
+  /* margin: 0 auto; */
+  background-color: rgba(255, 255, 255, 0.571);
+  border-radius: 30px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.653),
+    0 6px 20px 0 rgba(0, 0, 0, 0.432);
+}
+
 .calendar-flex {
   display: flex;
   /* flex-wrap: wrap; */
   justify-content: center;
   gap: 30px;
-  margin-top: 100px;
+  /* margin-top: 100px; */
 }
 
 .calendar-container {
   color: black;
-  margin: 0 10px;
+  /* margin: 0 10px; */
+  margin: 0 auto;
   width: 700px;
   background-color: rgba(255, 255, 255, 0.571);
   border-radius: 30px;
@@ -65,12 +82,16 @@ body {
     0 6px 20px 0 rgba(0, 0, 0, 0.432);
 }
 
+.cal-profile-paper {
+  margin: 0 auto;
+}
+
 .right-side-menu {
   display: flex;
   flex-direction: column;
   justify-content: start;
   /* gap: 20px; */
-  margin-bottom: 100px;
+  /* margin-bottom: 100px; */
   /* background-color: #24e41d; */
 }
 
@@ -178,15 +199,16 @@ body {
 }
 
 .profile-page {
-  margin: 0px 4vw 100px 4vw;
+  width: 90vw;
+  margin: 40px auto 100px auto;
 }
 
-.top-bar-profile {
+/* .top-bar-profile {
   display: flex;
   margin-bottom: 30px;
   gap: 30px;
   justify-content: space-evenly;
-}
+} */
 
 .welcome-box {
   display: flex;
@@ -198,7 +220,9 @@ body {
 .welcome-box h2 {
   padding: 0px;
   font-size: 30px;
-  height: 35px;
+  /* height: 35px; */
+  margin-top: 0px;
+  margin-bottom: 40px;
 }
 
 .points-box {
@@ -384,6 +408,10 @@ body {
   margin-left: 5px;
 }
 
+.new-event-box {
+  padding: 0px 20px 0px 20px;
+}
+
 .event-form-head {
   display: flex;
   gap: 20px;
@@ -480,7 +508,7 @@ body {
 }
 
 .friend-zone-box {
-  padding: 0 10px 10px 10px;
+  padding: 0 10px 20px 10px;
 }
 
 .weekly-mood-box h2 {
@@ -609,17 +637,28 @@ footer {
   display: flex;
   justify-content: space-between;
   text-align: center;
-  bottom: 20px;
+  /* bottom: 20px; */
   padding: 0 20px;
   width: 90%;
-  margin: 0 20px;
+  margin: 0px auto 30px auto;
   border-radius: 10px;
-  position: fixed;
+  /* position: fixed; */
 }
 
 footer p {
   font-size: 15px;
-  text-transform: uppercase;
+}
+
+footer a {
+  text-decoration: none;
+  color: white;
+}
+
+footer a:hover {
+  text-shadow: 0 0 7px #961de4, 0 0 10px #961de4, 0 0 21px #961de4,
+    0 0 42px #961de4, 0 0 82px #961de4, 0 0 92px #961de4, 0 0 102px #961de4,
+    0 0 151px #961de4;
+    transition: 0.3s;
 }
 
 .css-3nejl.Appointment-appointment {
@@ -741,3 +780,11 @@ footer p {
   display: flex;
   align-items: center;
 }
+
+@media (max-width: 800px) {
+  .calendar-flex {
+    flex-direction: column;
+    
+  }
+}
+ 
