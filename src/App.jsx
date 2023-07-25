@@ -11,11 +11,13 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import WeeklyMood from "./pages/WeeklyMood";
 import Protected from "./component/Protected";
+import NewNav from "./component/NewNav";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
+      <NewNav />
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/about" element={<About />} />

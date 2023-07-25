@@ -8,6 +8,48 @@ body {
   /* margin-bottom: 100px; */
 }
 
+.navbar {
+  width: 90%;
+  background-image: linear-gradient(to right, #ed6ea0, #ec8c69);
+  /* display: flex; */
+  /* text-align: center; */
+  /* bottom: 20px; */
+  padding: 0 20px;
+  margin: 50px auto 30px auto;
+  border-radius: 10px;
+  /* position: fixed; */
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+.navbar ul li {
+  list-style: none;
+  text-decoration: none;
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1 1 0px;
+  text-align: center;
+}
+
+.navbar ul li:hover {
+  background-color: rgba(255, 255, 255, 0.528);
+  transition: 1s;
+  text-shadow: 0 0 7px #961de4, 0 0 10px #961de4, 0 0 21px #961de4,
+    0 0 42px #961de4, 0 0 82px #961de4, 0 0 92px #961de4, 0 0 102px #961de4,
+    0 0 151px #961de4;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  text-transform: uppercase;
+  padding: 40px;
+}
+
 .button {
   color: white;
   margin-top: 10px;

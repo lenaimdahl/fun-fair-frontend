@@ -1,9 +1,23 @@
+import { Link } from "react-router-dom";
+
 function NewNav() {
     return (
-      <footer>
-        <p>creators: <Link to={"https://github.com/lenaimdahl"}>Lena</Link> & <Link to={"https://github.com/olga321go"}>Olga</Link></p>
-        {/* <p>contact us</p> */}
-      </footer>
+      <nav className="navbar">
+        <ul>
+            <li>
+            <Link to={"/"}>Home</Link>
+            </li>
+            <li>
+            <Link to={"/about"}>About</Link>
+            </li>
+            <li>
+            <Link to={"/login"}>Log in</Link>
+            </li>
+            <li>
+            <Link to={"/signup"}>Sign up</Link>
+            </li>
+        </ul>
+      </nav>
     );
   }
   
