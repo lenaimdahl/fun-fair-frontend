@@ -13,7 +13,7 @@ import { GlobalContext } from "../context/global.context";
 function Profile() {
   const { backendAPIInstance, fetchMeetings } = useContext(GlobalContext);
   const { user } = useContext(AuthContext);
-
+  console.log({ user });
   const [allEvents, setAllEvents] = useState([]);
   const [friends, setFriends] = useState([]);
 
@@ -42,7 +42,7 @@ function Profile() {
   return (
     <div className="profile-page">
       <div className="welcome-box">
-        <h2>Welcome {user && user.username}</h2>
+        <h2>Welcome {user && user.user.username}</h2>
       </div>
       <div className="calendar-flex">
         <div className="left-side">

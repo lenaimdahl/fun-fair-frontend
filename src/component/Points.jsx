@@ -9,8 +9,8 @@ function Points() {
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
-    const monday = moment().startOf("week");
-    const sunday = moment().endOf("week");
+    const monday = moment().startOf("isoWeek");
+    const sunday = moment().endOf("isoWeek");
 
     // Filter meetings for the week (Monday to Sunday)
     const weekMeetings = meetings.filter((meeting) => {
