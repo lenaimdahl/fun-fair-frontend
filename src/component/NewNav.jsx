@@ -25,19 +25,19 @@ function NewNav() {
         {isLoggedIn ? (
           <ul>
             <li>
-              <Link to={"/about"}>About</Link>
+              <Link to={"/about"} onClick={showNavbar}>About</Link>
             </li>
             <li>
-              <Link to={"/profile"}>Calendar</Link>
+              <Link to={"/profile"} onClick={showNavbar}>Calendar</Link>
             </li>
             <li>
-              <Link to={"/day-view"}>Day View</Link>
+              <Link to={"/day-view"} onClick={showNavbar}>Day View</Link>
             </li>
             <li>
-              <Link to={"/weekly-mood"}>Weekly mood</Link>
+              <Link to={"/weekly-mood"} onClick={showNavbar}>Weekly mood</Link>
             </li>
             <li>
-              <Link to="#" onClick={handleLogout}>
+              <Link to="#" onClick={handleLogout} >
                 Log out
               </Link>
             </li>
@@ -45,16 +45,16 @@ function NewNav() {
         ) : (
           <ul>
             <li>
-              <Link to={"/"}>Home</Link>
+              <Link to={"/"} onClick={showNavbar}>Home</Link>
             </li>
             <li>
-              <Link to={"/about"}>About</Link>
+              <Link to={"/about"} onClick={showNavbar}>About</Link>
             </li>
             <li>
-              <Link to={"/login"}>Login</Link>
+              <Link to={"/login"} onClick={showNavbar}>Login</Link>
             </li>
             <li>
-              <Link to={"/signup"}>Signup</Link>
+              <Link to={"/signup"} onClick={showNavbar}>Signup</Link>
             </li>
           </ul>
         )}
@@ -63,7 +63,7 @@ function NewNav() {
         </button>
       </nav>
       <button onClick={showNavbar} className="nav-btn nav-btn-bars">
-        <FaBars />
+        <FaBars className="btn-bars-icon"/>
       </button>
     </header>
   );

@@ -67,7 +67,11 @@ header .nav-btn-bars {
     background-color: #ed6ea0;
     height: 50px;
     width: 50px;
-    border-radius: 50%;
+    border-radius: 10px;
+}
+
+header .btn-bars-icon {
+  margin-top: 5px;
 }
 
 @media (max-width: 800px) {
