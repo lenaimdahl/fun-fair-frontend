@@ -98,8 +98,9 @@ header .nav-btn-bars {
     width: 100%;
     /* display: flex; */
     transition: 1s;
-    transform: translateY(-100%);
+    transform: translateX(-100%);
     z-index: 10;
+    margin: 0;
    }
 
    header nav ul {
@@ -107,6 +108,7 @@ header .nav-btn-bars {
     align-items:center ;
     justify-content: center;
     gap: 1.5 rem;
+    margin-top: 100px;
   }
 
    header .responsive_nav {

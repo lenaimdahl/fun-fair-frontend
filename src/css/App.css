@@ -48,11 +48,11 @@ body {
 } */
 
 .home-page {
- display: flex;
- justify-content: center;
- width: 80vw;
- margin: 50px auto 15vh auto;
- gap: 40px;
+  display: flex;
+  justify-content: center;
+  width: 80vw;
+  margin: 50px auto 15vh auto;
+  gap: 40px;
 }
 
 .calendar-image-home {
@@ -364,7 +364,7 @@ body {
 }
 
 .mood-container h4 {
-  font-size: 3vw;
+  font-size: 20px;
   margin: 0;
 }
 
@@ -559,7 +559,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 500px;
-  margin: 50px auto 16vh auto;
+  margin: 50px auto 50px auto;
   align-items: center;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.516);
@@ -671,7 +671,7 @@ footer a:hover {
   text-shadow: 0 0 7px #961de4, 0 0 10px #961de4, 0 0 21px #961de4,
     0 0 42px #961de4, 0 0 82px #961de4, 0 0 92px #961de4, 0 0 102px #961de4,
     0 0 151px #961de4;
-    transition: 0.3s;
+  transition: 0.3s;
 }
 
 .css-3nejl.Appointment-appointment {
@@ -795,7 +795,6 @@ footer a:hover {
 }
 
 @media (max-width: 800px) {
-  
   .calendar-flex {
     flex-direction: column;
   }
@@ -803,11 +802,83 @@ footer a:hover {
   .home-page {
     flex-direction: column;
     justify-content: center;
-    align-items: center ;
-  }  
+    align-items: center;
+  }
 
   .scheduler {
     width: 400px;
     height: auto;
+  }
+}
+
+@media (max-width: 400px) {
+  .home-page {
+    margin-top: 80px;
+    margin-bottom: 10px;
+  }
+
+  .home-page img {
+    display: none;
+  }
+
+  .signup-page,
+  .login-page {
+    margin-top: 80px;
+    width: 300px;
+  }
+
+  .signup-page form,
+  .login-page form {
+    width: 300px;
+    margin-bottom: 50px;
+  }
+
+  .about-page {
+    margin-top: 80px;
+  }
+
+  .profile-page {
+    margin-top: 80px;
+  }
+
+  .calendar-container {
+    width: 350px;
+  }
+
+  #mood-selection {
+    color: black;
+  }
+
+  .combo-pannel {
+    color: black;
+  }
+
+  .day-view-page {
+    margin: 80px auto 100px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+  }
+
+  .date-picker-div {
+    width: 100%;
+  }
+
+  .events-and-diary {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+
+  .diary-box,
+  .events-box {
+    width: 100%;
+  }
+
+  footer {
+    width: 300px;
+    margin-bottom: 100px;
   }
 }
