@@ -1,7 +1,10 @@
+import Slider from "../component/Slider";
+
 function About() {
   return (
     <div className="about-page">
-      <div className="preview-container">
+      <Slider />
+      {/* <div className="preview-container">
         <div className="preview-features-container">
           <span>
             <p id="preview-emoji">🙍‍♀️🙍‍♂️</p>
@@ -45,9 +48,8 @@ function About() {
               date you picked.
             </p>
           </span>
-        </div>
+        </div> */}
       </div>
-    </div>
   );
 }
 

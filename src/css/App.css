@@ -32,14 +32,17 @@ body {
   border-radius: 10px;
   flex: 1 1 0px;
   text-align: center;
+  opacity: 0.6;
 }
 
 .navbar ul li:hover {
-  background-color: rgba(255, 255, 255, 0.528);
+  /* background-color: rgba(255, 255, 255, 0.246); */
+  background-color: rgba(0, 0, 0, 0.117);
   transition: 1s;
   text-shadow: 0 0 7px #961de4, 0 0 10px #961de4, 0 0 21px #961de4,
     0 0 42px #961de4, 0 0 82px #961de4, 0 0 92px #961de4, 0 0 102px #961de4,
     0 0 151px #961de4;
+    opacity: 1;
 }
 
 .navbar ul li a {
