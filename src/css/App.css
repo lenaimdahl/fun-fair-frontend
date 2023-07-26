@@ -543,6 +543,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin: 20px 40px;
 }
 
@@ -871,11 +872,38 @@ footer a:hover {
     width: 100%;
   }
 
-
   .diary-box,
   .events-box {
     width: 100%;
   }
+
+  .weekly-mood-page {
+    margin-top: 80px;
+    color: black;
+  }
+
+  .all-charts-box,
+  .weekly-mood-box {
+    width: 80%;
+  }
+
+  .chart-container,
+  .chart-flex {
+    width: 300px;
+    height: 150px;
+    margin: 0 auto;
+    
+  }
+
+  .doughnut-container {
+    margin: 0 auto;
+  }
+
+  .doughnut-container canvas {
+    color: black;
+  }
+
+
 
   footer {
     width: 300px;
