@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import "./css/App.css";
 import Homepage from "./pages/Homepage";
 import About from "./pages/About";
-import Navbar from "./component/Navbar";
 import Footer from "./component/Footer";
 import NotFound from "./component/NotFound";
 import Profile from "./pages/Profile";
@@ -16,7 +15,6 @@ import NewNav from "./component/NewNav";
 function App() {
   return (
     <div className="App">
-      {/* <Navbar /> */}
       <NewNav />
       <Routes>
         <Route path="/" element={<Homepage />} />

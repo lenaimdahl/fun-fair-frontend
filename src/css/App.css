@@ -8,54 +8,6 @@ body {
   /* margin-bottom: 100px; */
 }
 
-.navbar {
-  width: 90%;
-  background-image: linear-gradient(to right, #ed6ea0, #ec8c69);
-  /* display: flex; */
-  /* text-align: center; */
-  /* bottom: 20px; */
-  /* padding: 0 20px; */
-  margin: 20px auto 30px auto;
-  border-radius: 10px;
-  /* position: fixed; */
-}
-
-.navbar ul {
-  display: flex;
-  justify-content: space-between;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar ul li {
-  list-style: none;
-  text-decoration: none;
-  padding: 20px;
-  border-radius: 10px;
-  /* flex: 1 1 0px; */
-  text-align: center;
-  opacity: 0.6;
-}
-
-.navbar ul li:hover {
-  /* background-color: rgba(255, 255, 255, 0.246); */
-  background-color: rgba(0, 0, 0, 0.117);
-  transition: 1s;
-  text-shadow: 0 0 7px #961de4, 0 0 10px #961de4, 0 0 21px #961de4,
-    0 0 42px #961de4, 0 0 82px #961de4, 0 0 92px #961de4, 0 0 102px #961de4,
-    0 0 151px #961de4;
-    opacity: 1;
-}
-
-.navbar ul li a {
-  text-decoration: none;
-  color: white;
-  font-size: 18px;
-  text-transform: uppercase;
-  padding: 40px;
-  white-space: nowrap;
-}
-
 .button {
   color: white;
   margin-top: 10px;
@@ -844,16 +796,6 @@ footer a:hover {
 
 @media (max-width: 800px) {
   
-  .navbar ul li {
-    padding: 10px;
-  }
-  
-  .navbar ul li a {
-    font-size: 15px;
-    padding: 0;
-    padding: 10px;
-  }
-
   .calendar-flex {
     flex-direction: column;
   }
@@ -869,13 +811,3 @@ footer a:hover {
     height: auto;
   }
 }
-
-@media (max-width: 400px) {
-  .navbar {
-    display: none;
-  }
-
-
-
-}
- 
