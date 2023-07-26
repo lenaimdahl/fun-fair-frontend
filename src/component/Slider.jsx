@@ -43,7 +43,13 @@ function Slider() {
             <h2>Welcome to FunFair 🥳</h2>
             <p>
             FunFair is an innovative and delightful application designed to encourage you to appreciate and embrace the small joys that can often be overlooked in the midst of busy routines, calories counting, and constant pressure for self-improvement. 
-            <br></br><br></br>
+            </p>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="slider-card">
+            <h2>Welcome to FunFair 🥳</h2>
+            <p>
             In a world that often emphasizes achievement and productivity, FunFair aims to remind you that life's true essence lies in the simple pleasures and moments of happiness that can be found in the everyday.
             <br></br><br></br>
             Go to the next slide for a short demo fo how to use this application.
