@@ -51,7 +51,7 @@ body {
   display: flex;
   justify-content: center;
   width: 80vw;
-  margin: 50px auto 15vh auto;
+  margin: 50px auto 50px auto;
   gap: 40px;
 }
 
@@ -207,6 +207,10 @@ body {
   gap: 20px;
 }
 
+.about-page {
+  margin-bottom: 30px;
+}
+
 .preview-features-container h4 {
   text-align: center;
 }
@@ -347,7 +351,7 @@ body {
   gap: 10px;
 }
 .mood-container button {
-  width: 5vw;
+  width: 70px;
   padding: 5px;
   border: none;
   background: none;
@@ -364,7 +368,7 @@ body {
 }
 
 .mood-container h4 {
-  font-size: 20px;
+  font-size: 50px;
   margin: 0;
 }
 
@@ -392,11 +396,6 @@ body {
 
 .add-event-box h2 {
   text-align: center;
-}
-
-.mood-container span {
-  padding: 10px;
-  font-size: 20px;
 }
 
 .add-friend-form select,
@@ -654,7 +653,7 @@ footer {
   /* bottom: 20px; */
   padding: 0 20px;
   width: 90%;
-  margin: 50px auto 30px auto;
+  margin: 0 auto 30px auto;
   border-radius: 10px;
   /* position: fixed; */
 }
@@ -810,6 +809,18 @@ footer a:hover {
     width: 400px;
     height: auto;
   }
+  #mood-selection h2,
+  .combo-pannel {
+    color:black;
+  }
+
+  .points-box p {
+    font-size: 18px;
+  }
+
+  .points-box h3 {
+    font-size: 40px;
+  }
 }
 
 @media (max-width: 400px) {
@@ -839,7 +850,11 @@ footer a:hover {
   }
 
   .profile-page {
-    margin-top: 80px;
+    margin-top: 40px;
+  }
+
+  .points-box h3 {
+    font-size: 30px;
   }
 
   .calendar-container {
@@ -855,7 +870,7 @@ footer a:hover {
   }
 
   .day-view-page {
-    margin: 80px auto 100px auto;
+    margin: 20px auto 40px auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -878,7 +893,7 @@ footer a:hover {
   }
 
   .weekly-mood-page {
-    margin-top: 80px;
+    margin-top: 40px;
     color: black;
   }
 
@@ -892,7 +907,6 @@ footer a:hover {
     width: 300px;
     height: 150px;
     margin: 0 auto;
-    
   }
 
   .doughnut-container {
@@ -903,10 +917,12 @@ footer a:hover {
     color: black;
   }
 
-
+  .mood-container button {
+    width: 60px;
+  }
 
   footer {
     width: 300px;
-    margin-bottom: 100px;
+    margin-bottom: 30px;
   }
 }
