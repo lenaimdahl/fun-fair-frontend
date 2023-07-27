@@ -21,7 +21,7 @@ function ShowFriends({ friends, fetchFriends }) {
           <li id={friend._id} key={friend._id}>
             🥰 {friend.username}
             <button
-              className="button-delete"
+              className="button-delete-friend"
               onClick={() => handleDeleteFriend(friend._id)}
             >
               ✖️
