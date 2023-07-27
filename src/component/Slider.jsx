@@ -52,7 +52,7 @@ function Slider() {
             <p>
             In a world that often emphasizes achievement and productivity, FunFair aims to remind you that life's true essence lies in the simple pleasures and moments of happiness that can be found in the everyday.
             <br></br><br></br>
-            Go to the next slide for a short demo fo how to use this application.
+            Go to the next slide for a short demo of how to use this application.
             </p>
           </div>
         </SwiperSlide>
