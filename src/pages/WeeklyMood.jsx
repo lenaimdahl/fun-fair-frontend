@@ -52,7 +52,7 @@ function WeeklyMood() {
   }, []);
 
   return (
-    <div>
+    <div className="weekly-mood-page">
       {isLoading ? (
         <div>Loading...</div>
       ) : (

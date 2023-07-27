@@ -13,7 +13,7 @@ export const options = {
       labels: {
         usePointStyle: true,
         pointStyle: "circle",
-        color: "white",
+        color: "black",
         padding: 30,
       },
     },

@@ -1,0 +1,82 @@
+.swiper {
+  width: 700px;
+  height: 550px;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background-color: rgba(255, 255, 255, 0.528);
+  border-radius: 10px;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-button-next {
+  margin-left: 20px;
+}
+
+.swiper-button-prev {
+  padding-right: 20px;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.slider-card {
+  margin: 0 20px 0 20px;
+}
+
+.slider-card img {
+  margin: 10px auto 10px auto;
+  object-fit: cover;
+  display: block;
+}
+
+.slider-card p {
+  color: black;
+  margin: 0 40px 0 40px;
+  line-height: 200%;
+  background-color: rgba(255, 255, 255, 0.528);
+  padding: 10px;
+  border-radius: 30px;
+}
+
+@media (max-width: 400px) {
+
+  .swiper {
+    width: 350px;
+    height: 350px;
+  }
+
+  .slider-card h2{
+    font-size: 20px;
+  }
+
+  .slider-card p {
+    font-size: 15px;
+    margin: 0 20px 0 20px;
+    line-height: 120%;
+    overflow: auto;
+  }
+
+  .swiper-button-next::after {
+    font-size: 10px;
+  }
+  
+  .swiper-button-prev::after {
+    --swiper-navigation-size: 10px;
+  }
+
+
+
+  
+}
