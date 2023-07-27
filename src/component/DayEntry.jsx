@@ -37,7 +37,7 @@ function DayEntry({ fetchEntriesByDate, id, text }) {
           <input
             className="diary-edit-input"
             type="text"
-            value={text}
+            value={newText}
             onChange={(event) => setNewText(event.target.value)}
           />
         </div>
