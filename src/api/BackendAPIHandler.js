@@ -75,6 +75,14 @@ export class BackendAPI {
     }
   }
 
+  async deleteFriend(id) {
+    try {
+      await this.api.delete(`/api/friend/${id}`);
+    } catch (error) {
+      console.error("Error while deleting entries:", error);
+    }
+  }
+
   async saveMood(type, timestamp) {
     try {
       const { data } = await this.api.post("/api/mood", {

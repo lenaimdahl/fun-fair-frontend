@@ -34,7 +34,7 @@ function DayEntry({ fetchEntriesByDate, id, text }) {
     <>
       <input
         type="text"
-        value={text}
+        value={newText}
         onChange={(event) => setNewText(event.target.value)}
       />
       <button onClick={handleUpdateEntry}>ok</button>
