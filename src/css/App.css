@@ -1,3 +1,9 @@
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 body {
   background-image: url("../assets/milad-fakurian-CN2FEPXERRI-unsplash.jpg");
   background-size: cover;
@@ -678,7 +684,10 @@ footer {
   /* bottom: 20px; */
   padding: 0 20px;
   width: 90%;
-  margin: 0 auto 30px auto;
+  margin-top: auto;
+  margin-bottom: 30px;
+  margin-right: auto;
+  margin-left: auto;
   border-radius: 10px;
   /* position: fixed; */
 }
