@@ -533,6 +533,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 50px;
   padding-bottom: 50px;
 }
@@ -544,6 +545,7 @@ body {
   justify-content: center;
   align-items: center;
   margin: 20px 40px;
+  width: 600px;
 }
 
 .chart-container {
@@ -642,6 +644,29 @@ body {
   width: 300px;
   margin-right: 10px;
   border: none;
+}
+
+.diary-edit-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.diary-edit-btn {
+  border: none;
+  /* margin: 10px; */
+  padding: 5px;
+  border-radius: 10px;
+  background-color: transparent;
+  font-size: 20px;
+  text-align: center;
+}
+
+.diary-edit-input {
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
 }
 
 footer {

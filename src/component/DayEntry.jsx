@@ -32,13 +32,24 @@ function DayEntry({ fetchEntriesByDate, id, text }) {
 
   return isEditing ? (
     <>
-      <input
-        type="text"
-        value={text}
-        onChange={(event) => setNewText(event.target.value)}
-      />
-      <button onClick={handleUpdateEntry}>ok</button>
-      <button onClick={handleCancelEditing}>cancel</button>
+      <div className="diary-edit-box">
+        <div>
+          <input
+            className="diary-edit-input"
+            type="text"
+            value={text}
+            onChange={(event) => setNewText(event.target.value)}
+          />
+        </div>
+        <div>
+          <button onClick={handleUpdateEntry} className="diary-edit-btn">
+            ✅
+          </button>
+          <button onClick={handleCancelEditing} className="diary-edit-btn">
+            ✖️
+          </button>
+        </div>
+      </div>
     </>
   ) : (
     <div className="single-entry-box">
