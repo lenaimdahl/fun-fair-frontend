@@ -2,18 +2,20 @@
 
 ## Go to [FunFair app] (https://funfair.netlify.app/)
 
-## Go to [FunFair Backend](https://github.com/lenaimdahl/funfair-backend.git)
+## Go to [FunFair Backend] (https://github.com/lenaimdahl/funfair-backend.git)
 
 ## Introduction
 
-FunFair is a fun and interactive calendar app that allows you to track your mood, add friends, and create meetings with friends. It's a great way to stay organized, plan activities, and keep in touch with your friends. All that while having fun.
+FunFair is an innovative and delightful application designed to encourage you to appreciate and embrace the small joys that can often be overlooked in the midst of busy routines, calories counting, and constant pressure for self-improvement. 
+
+In a world that often emphasizes achievement and productivity, FunFair aims to remind you that life's true essence lies in the simple pleasures and moments of happiness that can be found in the everyday.
 
 ## Features
 
 1. Mood Tracking: Keep track of your mood every day and view your mood history in weekly mood with a line chart and a dougnut chart..
 2. Friend Management: Add and manage friends, making it easy to schedule events and meetings together.
 3. Meetings and Events: Create and manage meetings and events on the calendar.
-4. Points System: Earn points for completing activities and maintaining a positive mood.
+4. Points System: Earn points for completing activities and maintaining a positive mood. Set up your weekly goal and try to reach it.
 
 ## Technologies
 
@@ -21,11 +23,14 @@ FunFair is a fun and interactive calendar app that allows you to track your mood
 - React Router: For managing navigation and routing within the app.
 - Material-UI: Component library for styling the user interface.
   MUI Calendar: Provides a customizable and interactive calendar view.
+- Swiper: Component library used for slider in About page.
 - Axios: For making HTTP requests to interact with the backend API.
+- BoredAPI: External API for generating activity tips.
+
+conneted to backend using:
 - Express.js: Backend web application framework for Node.js.
 - MongoDB: NoSQL database for storing user and event data.
 - Node.js: JavaScript runtime for server-side development.
-- BoredAPI: External API for generating activity tips.
 
 ## Installation
 
@@ -37,9 +42,9 @@ FunFair is a fun and interactive calendar app that allows you to track your mood
 
 2. Install dependencies:
 
-```bash
- npm install
-```
+   ```bash
+   npm install
+   ```
 
 3. Set up the MongoDB database:
 
@@ -72,5 +77,5 @@ This project is licensed under the MIT License.
 
 ## Author
 
-This game was created by [Lena Imdahl](https://github.com/lenaimdahl) and [Olga ](https://github.com/). If you have any questions or feedback, please feel free to [open an issue](https://github.com/lenaimdahl/Nasa-Library/issues/new). 🙂
+This full stack application was created by [Lena Imdahl](https://github.com/lenaimdahl) and [Olga Martyniuk](https://github.com/olga321go). If you have any questions or feedback, please feel free to [open an issue](https://github.com/lenaimdahl/Nasa-Library/issues/new). 🙂
 Thank you for using Galaxia! We hope you enjoy exploring the wonders of space.
