@@ -62,7 +62,7 @@ function Profile() {
             <h2>Friend Zone</h2>
             <div className="friend-zone-box">
               <AddFriend friends={friends} fetchFriends={fetchFriends} />
-              <ShowFriends friends={friends} />
+              <ShowFriends friends={friends} fetchFriends={fetchFriends} />
             </div>
           </div>
           <div className="centered">
