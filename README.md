@@ -1,8 +1,8 @@
 # FunFair Calendar App
 
-## Go to [FunFair app] (https://funfair.netlify.app/)
+## Go to [FunFair app](https://funfair.netlify.app/)
 
-## Go to [FunFair Backend] (https://github.com/lenaimdahl/funfair-backend.git)
+## Go to [FunFair Backend](https://github.com/lenaimdahl/funfair-backend.git)
 
 ## Introduction
 
