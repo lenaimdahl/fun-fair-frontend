@@ -37,7 +37,7 @@ conneted to backend using:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/lenaimdahl/funfair-calendar.git
+   git clone https://github.com/lenaimdahl/fun-fair-frontend.git
    ```
 
 2. Install dependencies:
